@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Review of Session 3  " />
+  <meta name="copyright" content="<span class='footer-right'><a href='../acknowledgements.html'>Acknowledgements</a></span><span class='footer-right'><a href=' https://etherpad.wikimedia.org/p/rspatial-bgs24 ' target='_blank'>Forum</a></span><span class='footer-right'><a href=' https://ajlyons.github.io/rspatial_bgs24 '> https://ajlyons.github.io/rspatial_bgs24 </a></span><span class='footer-right'><a href='../index.html'>Home</a></span><span class='footer-subtitle'> Spatial Data Analysis with R </span>"/>
+  <meta name="font-size-adjustment" content="2"/>
+  <title>Spatial Data Analysis with R  BayGeo, Spring 2024</title>
+  <style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+              </style>
+  <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACkUlEQVQ4jX2SW0jTcRTHTzNyeZlh6lqmm3POdNPC6SxSEzaqafkykOFoIxTDWpKRFV6iQMNLFyMSsQvUW0WORc2WWBmGKEGZXUyz0NrmNmfa1PYgfHsQ1v5oHjgvX875/M45vy/R8mDJ9caxrFIL5CUWJB00Q9n+7Q+l1BetUMuMTL3JpTB0QVnejd1Hu9DQ60G5eQbqB7PIvj0L2bUZ0KZzghWbs0o7Fx3Tc/B6vStm6+g0wrQvIKh2gKKyUxnNSZoO685SC1YDeL1e9Ll+Ia7WCd5pJ4hojQ8g1nViezETYBqZx93BOdwa9jAgsdUT4J6ZQqC6f4GIiLYU9/RzNWYIdU9hd/8rLjN7UGT8DbWROVVMlQsBBWas142DiIikdfbFMF0POIVm2NzM1zwLS+mvcSsnEajpBSv/8RIgucGJ1EYXEs+NwjrlWfUGMee/Y2PFJIJLrFibex8kOsahhCYnUlpnIL1kh9X9/yMKG2yIOOlAsPYnAveZsE75EEQUQLwTwy5Rsxvx9UxApKEPEYY+BiSizA623oaggkdgq4xLKwRLq7i8sy6EFlpg8wNEVwyAd3wAbZ8cPu3CazeCC/sRojYjaL8Jvm8MPWLDBm03A8CveQ9+7RBia4cYU4QfeokwzTOwc6/4OzKXHap/C5ufD0RNo0i4OAZR81dcnnD69Mp3PxBe9GRkuZdFKk7sqTcQ132EpGUMydetSLnpgOSGHVtbxpHU9AX8mkFEG55/ZrjQL1h82V6esPLVh8Sr40i940J6xzzS7s1C0m6HqHEEiTnatgT5gcPijHxltFwhjpRIQpZjBAJ2lFTBFW5TiOPT8mXx6apdcRl5OaJM1Q6hLC9ls3RPTLgok0NELCKiv02kPqt/O1MZAAAAAElFTkSuQmCC" rel="icon" type="image/x-icon" />
+  <meta name="robots" content="noindex,nofollow"/>
+  <script language="javascript" type="text/javascript">
+  function TriShowHide(shID) {
+    shIDspan = shID + "span";
+    shIDdiv = shID + "div";
+    if (document.getElementById(shIDdiv).style.display != 'block') {
+      document.getElementById(shIDdiv).style.display = 'block';
+      txtSpan = "&#9660;";
+    } else {
+      document.getElementById(shIDdiv).style.display = 'none';
+      txtSpan = "&#9654;";
+    }
+    document.getElementById(shIDspan).innerHTML = txtSpan + " ";
+  }
+  function showHide(shID) {
+    if (shID=="soln-show-all") {
+      var allAnswerCode = document.getElementsByClassName("answer-code");
+      for (i = 0; i < allAnswerCode.length; i++) {
+          allAnswerCode[i].style.display = 'block';
+      }
+    } else if (shID=="soln-hide-all") {
+      var allAnswerCode = document.getElementsByClassName("answer-code");
+      for (i = 0; i < allAnswerCode.length; i++) {
+          allAnswerCode[i].style.display = 'none';
+      }
+    } else if (shID=="hints-show-all") {
+      var allAnswerCode = document.getElementsByClassName("hint");
+      for (i = 0; i < allAnswerCode.length; i++) {
+          allAnswerCode[i].style.display = 'block';
+      }
+    } else if (shID=="hints-hide-all") {
+      var allAnswerCode = document.getElementsByClassName("hint");
+      for (i = 0; i < allAnswerCode.length; i++) {
+          allAnswerCode[i].style.display = 'none';
+      }
+    } else {
+      if (document.getElementById(shID)) {
+        if (document.getElementById(shID).style.display != 'block') {
+          document.getElementById(shID).style.display = 'block';
+        } else {
+          document.getElementById(shID).style.display = 'none';
+        }
+      }
+    }
+  }
+  function CopyToClipboard(containerid) {
+  if (document.selection) {
+      var range = document.body.createTextRange();
+      range.moveToElementText(document.getElementById(containerid));
+      range.select().createTextRange();
+      document.execCommand("copy");
+  } else if (window.getSelection) {
+      var range = document.createRange();
+      range.selectNode(document.getElementById(containerid));
+      window.getSelection().addRange(range);
+      document.execCommand("copy");
+      // alert("text copied")
+  }}
+  </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163964617-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-163964617-1');
+  </script>
+  <script src="lib/header-attrs-2.25/header-attrs.js"></script>
+  <link href="lib/slidy-2/styles/slidy.css" rel="stylesheet" />
+  <script src="lib/slidy-2/scripts/slidy.js"></script>
+  <script src="lib/slidy_shiny-1/slidy_shiny.js"></script>
+  <script src="lib/kePrint-0.0.1/kePrint.js"></script>
+  <link href="lib/lightable-0.0.1/lightable.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="../css/slidy_styles.css" />
+  <meta name="duration" content="0" />
+</head>
+<body>
+<script type="text/javascript">w3c_slidy.mouse_click_enabled = false;</script>
+<div class="slide titlepage">
+  <h1 class="title"><span class="course-title">Spatial Data Analysis
+with R </span><br/><span class="course-subtitle">BayGeo, Spring
+2024</span></h1>
+  <p class="author">
+Review of Session 3 <br/><img src='images/computer_review_414x300.png'/>
+  </p>
+</div>
+<div id="warm-up-quiz" class="slide section level1">
+<h1>Warm-Up Quiz</h1>
+<p><br />
+</p>
+<p><img src="./images/warmup_720x480.jpg"
+style="display:block; margin:1em auto; border:none;" /></p>
+<p><br />
+</p>
+</div>
+<div id="dplyr" class="slide section level1">
+<h1><code>dplyr</code></h1>
+<script language="javascript" type="text/javascript">w3c_slidy.mouse_click_enabled = false;</script>
+<p><strong>Useful <code>dplyr</code> functions:</strong></p>
+<table class="tbl_compact">
+<tbody>
+<tr>
+<td style="text-align:left;width: 12em; ">
+select column(s)
+</td>
+<td style="text-align:left;font-family: monospace;">
+select()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 12em; ">
+select rows
+</td>
+<td style="text-align:left;font-family: monospace;">
+filter()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 12em; ">
+order rows
+</td>
+<td style="text-align:left;font-family: monospace;">
+arrange()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 12em; ">
+add new columns
+</td>
+<td style="text-align:left;font-family: monospace;">
+mutate()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 12em; ">
+join data frames
+</td>
+<td style="text-align:left;font-family: monospace;">
+left_join(), right_join(), inner_join()
+</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="../extras/data-transformation.pdf" target="_blank"
+rel="noopener"><strong><code>dplyr</code> cheatsheet</strong></a> for
+more</p>
+<p><br />
+</p>
+<p><strong>Filter rows</strong></p>
+<div class="indented2">
+<p><code>iris |&gt; filter(Sepal.Length &gt; 7, Species=="virginica")</code></p>
+<p><code>iris |&gt; slice(5:10)</code></p>
+<p><code>iris |&gt; filter(Sepal.Length &gt; 7, Species=="virginica")</code></p>
+<p><code>iris |&gt; slice(5:10)</code></p>
+</div>
+<p><br />
+</p>
+<p><strong>Subset, rearrange, and rename columns</strong></p>
+<div class="indented2">
+<p><code>iris |&gt; select(Petal.Length, Species)</code></p>
+<p><code>iris |&gt; select(pet_len = Petal.Length, species = Species)</code></p>
+</div>
+<p><br />
+</p>
+</div>
+<div
+id="sneak-preview-dplyr-functions-work-with-spatial-data-frames-also"
+class="slide section level1">
+<h1>Sneak Preview: <code>dplyr</code> functions work with spatial data
+frames also!</h1>
+<table class="tbl_compact">
+<thead>
+<tr>
+<th style="text-align:left;">
+dplyr function
+</th>
+<th style="text-align:left;">
+GIS equivalent
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+filter(), slice()
+</td>
+<td style="text-align:left;width: 12em; ">
+attribute query
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+select()
+</td>
+<td style="text-align:left;width: 12em; ">
+drop field
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+mutate
+</td>
+<td style="text-align:left;width: 12em; ">
+add field, recalculate field
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+group_by() –&gt; summarize()
+</td>
+<td style="text-align:left;width: 12em; ">
+dissolve, union
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-family: monospace;">
+left_join(), right_join(), inner_join()
+</td>
+<td style="text-align:left;width: 12em; ">
+add table relate
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="importing-data-from-the-cloud" class="slide section level1">
+<h1>Importing Data from the cloud</h1>
+<p>Three options</p>
+<div class="compact">
+<ol style="list-style-type: decimal">
+<li><p>Regular R functions that take URLs</p></li>
+<li><p><strong>API packages</strong></p>
+<ul>
+<li><a href="https://github.com/Chicago/RSocrata" target="_blank"
+rel="noopener"><code>RSocrata</code></a><br />
+</li>
+<li><a href="https://walker-data.com/tidycensus/" target="_blank"
+rel="noopener"><code>tidyCensus</code></a><br />
+</li>
+<li><a href="https://ucanr-igis.github.io/caladaptr/" target="_blank"
+rel="noopener"><code>caladaptR</code></a></li>
+</ul></li>
+<li><p>Write your own download code</p></li>
+</ol>
+</div>
+<p><br />
+</p>
+</div>
+<div id="socrata-api" class="slide section level1">
+<h1>Socrata API</h1>
+<div class="compact">
+<ul>
+<li>Used by a lot of orgs to share data (including <a
+href="https://datasf.org/opendata/"><strong>DataSF</strong></a>)</li>
+<li>Every dataset has a:</li>
+</ul>
+</div>
+<div class="compact" style="margin-left:2em;">
+<ul>
+<li>preview URL - tells you about the data, where it came from, which
+columns it has, preview, etc.</li>
+<li>resource URL - direct link to the CSV, JSON, GeoJSON, or another
+standard filetype</li>
+</ul>
+</div>
+<div class="compact">
+<ul>
+<li>Don’t need it all? Add a query parameter to the URL:</li>
+</ul>
+<p style="font-family:monospace; margin-left:4em;">
+<a href="https://data.sfgov.org/resource/wwmu-gmzc.json"
+class="uri">https://data.sfgov.org/resource/wwmu-gmzc.json</a><span
+style="color:crimson;">?release_year=2011</span>
+</p>
+<ul>
+<li>RSocrata package</li>
+</ul>
+</div>
+<div class="compact" style="margin-left:2em;">
+<ul>
+<li>convenience functions<br />
+</li>
+<li>pass a API token</li>
+<li>parse JSON results into a data frame</li>
+<li>list datasets on a Socrata domain</li>
+<li>write to a Socrata dataset</li>
+</ul>
+</div>
+<p>
+<br/>
+<hr/>
+<strong>Next: </strong> <a href="r-intro04-wrangling2.html">Data
+wrangling part 2</a>
+</p>
+</div>
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+</body>
+</html>

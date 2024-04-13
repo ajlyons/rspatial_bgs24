@@ -348,8 +348,8 @@ class="slide section level1">
 </div>
 <p>RStudio Cloud project for this workshop:</p>
 <p style="font-family:monospace; font-size:110%; text-align:center;">
-<a href="https://posit.cloud/content/xxxx"
-target="_blank">https://posit.cloud/content/xxxx</a>
+<a href="https://posit.cloud/content/8003179"
+target="_blank">https://posit.cloud/content/8003179</a>
 </p>
 <p>After it opens, click on ‘Save a Permanent Copy’:</p>
 <p><img src="images/rstudio-cloud_save-perm-copy_334x58.png"
@@ -554,27 +554,30 @@ style="margin-left:2em;" /></p>
 <p>Some built-in constants are also vectors:</p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>LETTERS</span></code></pre></div>
-<pre><code>##  [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot; &quot;K&quot; &quot;L&quot; &quot;M&quot; &quot;N&quot; &quot;O&quot; &quot;P&quot; &quot;Q&quot; &quot;R&quot; &quot;S&quot; &quot;T&quot; &quot;U&quot; &quot;V&quot; &quot;W&quot; &quot;X&quot; &quot;Y&quot; &quot;Z&quot;</code></pre>
+<pre><code>##  [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot; &quot;K&quot; &quot;L&quot; &quot;M&quot; &quot;N&quot; &quot;O&quot; &quot;P&quot; &quot;Q&quot; &quot;R&quot; &quot;S&quot; &quot;T&quot; &quot;U&quot; &quot;V&quot; &quot;W&quot; &quot;X&quot;
+## [25] &quot;Y&quot; &quot;Z&quot;</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>state.abb</span></code></pre></div>
-<pre><code>##  [1] &quot;AL&quot; &quot;AK&quot; &quot;AZ&quot; &quot;AR&quot; &quot;CA&quot; &quot;CO&quot; &quot;CT&quot; &quot;DE&quot; &quot;FL&quot; &quot;GA&quot; &quot;HI&quot; &quot;ID&quot; &quot;IL&quot; &quot;IN&quot; &quot;IA&quot; &quot;KS&quot; &quot;KY&quot; &quot;LA&quot; &quot;ME&quot; &quot;MD&quot; &quot;MA&quot; &quot;MI&quot; &quot;MN&quot; &quot;MS&quot;
-## [25] &quot;MO&quot; &quot;MT&quot; &quot;NE&quot; &quot;NV&quot; &quot;NH&quot; &quot;NJ&quot; &quot;NM&quot; &quot;NY&quot; &quot;NC&quot; &quot;ND&quot; &quot;OH&quot; &quot;OK&quot; &quot;OR&quot; &quot;PA&quot; &quot;RI&quot; &quot;SC&quot; &quot;SD&quot; &quot;TN&quot; &quot;TX&quot; &quot;UT&quot; &quot;VT&quot; &quot;VA&quot; &quot;WA&quot; &quot;WV&quot;
-## [49] &quot;WI&quot; &quot;WY&quot;</code></pre>
+<pre><code>##  [1] &quot;AL&quot; &quot;AK&quot; &quot;AZ&quot; &quot;AR&quot; &quot;CA&quot; &quot;CO&quot; &quot;CT&quot; &quot;DE&quot; &quot;FL&quot; &quot;GA&quot; &quot;HI&quot; &quot;ID&quot; &quot;IL&quot; &quot;IN&quot; &quot;IA&quot; &quot;KS&quot; &quot;KY&quot; &quot;LA&quot; &quot;ME&quot;
+## [20] &quot;MD&quot; &quot;MA&quot; &quot;MI&quot; &quot;MN&quot; &quot;MS&quot; &quot;MO&quot; &quot;MT&quot; &quot;NE&quot; &quot;NV&quot; &quot;NH&quot; &quot;NJ&quot; &quot;NM&quot; &quot;NY&quot; &quot;NC&quot; &quot;ND&quot; &quot;OH&quot; &quot;OK&quot; &quot;OR&quot; &quot;PA&quot;
+## [39] &quot;RI&quot; &quot;SC&quot; &quot;SD&quot; &quot;TN&quot; &quot;TX&quot; &quot;UT&quot; &quot;VT&quot; &quot;VA&quot; &quot;WA&quot; &quot;WV&quot; &quot;WI&quot; &quot;WY&quot;</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>month.name</span></code></pre></div>
-<pre><code>##  [1] &quot;January&quot;   &quot;February&quot;  &quot;March&quot;     &quot;April&quot;     &quot;May&quot;       &quot;June&quot;      &quot;July&quot;      &quot;August&quot;    &quot;September&quot; &quot;October&quot;  
-## [11] &quot;November&quot;  &quot;December&quot;</code></pre>
+<pre><code>##  [1] &quot;January&quot;   &quot;February&quot;  &quot;March&quot;     &quot;April&quot;     &quot;May&quot;       &quot;June&quot;      &quot;July&quot;      &quot;August&quot;   
+##  [9] &quot;September&quot; &quot;October&quot;   &quot;November&quot;  &quot;December&quot;</code></pre>
 </div>
 <p><br />
 </p>
 <p>Random number functions:</p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##  [1] 0.6143457 0.1498626 0.4522572 0.1468181 0.4582264 0.8355039 0.7332163 0.4224360 0.8032221 0.2924349 0.4629129 0.2937773
-## [13] 0.1709291 0.6149190 0.3593899 0.9824637 0.6846420 0.0300506 0.4704172 0.3501216</code></pre>
+<pre><code>##  [1] 0.1135766 0.2167564 0.8505344 0.5460916 0.6410876 0.6194059 0.4121985 0.8032331 0.9815310
+## [10] 0.5357364 0.5815957 0.9080078 0.8956250 0.5872723 0.1080362 0.2095332 0.4846867 0.7984096
+## [19] 0.8493735 0.7906608</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##  [1] -0.3178124 -1.6290068 -1.0646349  0.1272167 -0.7127673  0.9513531  1.2804800  0.1091396 -0.1752836 -0.4895973 -0.3305260
-## [12] -2.1834412 -1.3605629 -1.0160463 -0.4277407  0.4620604  0.7466162 -0.5706156  1.2500939  0.2237109</code></pre>
+<pre><code>##  [1] -0.35499766  0.33400852 -1.17702313 -0.32052948  1.07821385 -1.54079944  0.54349056  0.85331129
+##  [9] -1.55304785  0.56209862  0.26063215 -0.53858211 -2.61074054  0.41187391 -0.02865348 -1.26197757
+## [17] -0.81329843 -0.39284224 -1.34490218 -1.85909560</code></pre>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">sample</span>(month.abb, <span class="dv">3</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;Jun&quot; &quot;Dec&quot; &quot;Nov&quot;</code></pre>
+<pre><code>## [1] &quot;Feb&quot; &quot;Dec&quot; &quot;Mar&quot;</code></pre>
 </div>
 </div>
 <div id="how-vectors-behave" class="slide section level1">
@@ -620,19 +623,20 @@ style="margin-left:2em;" /></p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">runif</span>(<span class="dv">20</span>)</span>
 <span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>x</span></code></pre></div>
-<pre><code>##  [1] 0.75337692 0.46630994 0.31666146 0.62657627 0.41264596 0.42030402 0.05974478 0.50969365 0.41312405 0.85107734 0.45866541
-## [12] 0.13502805 0.20683710 0.29012474 0.04176303 0.40123608 0.73706014 0.17990475 0.28480855 0.04660340</code></pre>
+<pre><code>##  [1] 0.20731230 0.05624301 0.91186955 0.10036520 0.65688833 0.01394076 0.51999187 0.46922086
+##  [9] 0.60025544 0.59938195 0.25909733 0.54606673 0.44896529 0.96498800 0.02196959 0.68821389
+## [17] 0.70204918 0.54187065 0.45487717 0.76508056</code></pre>
 </div>
 <p><br />
 </p>
 <p>Most descriptive stats functions are aggregate:</p>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
-<pre><code>## [1] 0.3805773</code></pre>
+<pre><code>## [1] 0.4764324</code></pre>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="fu">median</span>(x)</span></code></pre></div>
-<pre><code>## [1] 0.406941</code></pre>
+<pre><code>## [1] 0.5309313</code></pre>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div>
-<pre><code>## [1] 0.2366001</code></pre>
+<pre><code>## [1] 0.2847675</code></pre>
 </div>
 <p><br />
 </p>
