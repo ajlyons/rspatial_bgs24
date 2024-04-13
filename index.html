@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title> Spatial Data Analysis with R </title>
+
+<script src="slides/lib/header-attrs-2.25/header-attrs.js"></script>
+<script src="slides/lib/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="slides/lib/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="slides/lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="slides/lib/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="slides/lib/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="slides/lib/navigation-1.1/tabsets.js"></script>
+<link href="slides/lib/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="slides/lib/highlightjs-9.12.0/highlight.js"></script>
+<link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACkUlEQVQ4jX2SW0jTcRTHTzNyeZlh6lqmm3POdNPC6SxSEzaqafkykOFoIxTDWpKRFV6iQMNLFyMSsQvUW0WORc2WWBmGKEGZXUyz0NrmNmfa1PYgfHsQ1v5oHjgvX875/M45vy/R8mDJ9caxrFIL5CUWJB00Q9n+7Q+l1BetUMuMTL3JpTB0QVnejd1Hu9DQ60G5eQbqB7PIvj0L2bUZ0KZzghWbs0o7Fx3Tc/B6vStm6+g0wrQvIKh2gKKyUxnNSZoO685SC1YDeL1e9Ll+Ia7WCd5pJ4hojQ8g1nViezETYBqZx93BOdwa9jAgsdUT4J6ZQqC6f4GIiLYU9/RzNWYIdU9hd/8rLjN7UGT8DbWROVVMlQsBBWas142DiIikdfbFMF0POIVm2NzM1zwLS+mvcSsnEajpBSv/8RIgucGJ1EYXEs+NwjrlWfUGMee/Y2PFJIJLrFibex8kOsahhCYnUlpnIL1kh9X9/yMKG2yIOOlAsPYnAveZsE75EEQUQLwTwy5Rsxvx9UxApKEPEYY+BiSizA623oaggkdgq4xLKwRLq7i8sy6EFlpg8wNEVwyAd3wAbZ8cPu3CazeCC/sRojYjaL8Jvm8MPWLDBm03A8CveQ9+7RBia4cYU4QfeokwzTOwc6/4OzKXHap/C5ufD0RNo0i4OAZR81dcnnD69Mp3PxBe9GRkuZdFKk7sqTcQ132EpGUMydetSLnpgOSGHVtbxpHU9AX8mkFEG55/ZrjQL1h82V6esPLVh8Sr40i940J6xzzS7s1C0m6HqHEEiTnatgT5gcPijHxltFwhjpRIQpZjBAJ2lFTBFW5TiOPT8mXx6apdcRl5OaJM1Q6hLC9ls3RPTLgok0NELCKiv02kPqt/O1MZAAAAAElFTkSuQmCC" rel="icon" type="image/x-icon" />
+<meta name="robots" content="noindex,nofollow"/>
+<script language="javascript" type="text/javascript">
+function TriShowHide(shID) {
+  shIDspan = shID + "span";
+  shIDdiv = shID + "div";
+  if (document.getElementById(shIDdiv).style.display != 'block') {
+    document.getElementById(shIDdiv).style.display = 'block';
+    txtSpan = "&#9660;";
+  } else {
+    document.getElementById(shIDdiv).style.display = 'none';
+    txtSpan = "&#9654;";
+  }
+  document.getElementById(shIDspan).innerHTML = txtSpan + " ";
+}
+function showHide(shID) {
+  if (shID=="soln-show-all") {
+    var allAnswerCode = document.getElementsByClassName("answer-code");
+    for (i = 0; i < allAnswerCode.length; i++) {
+        allAnswerCode[i].style.display = 'block';
+    }
+  } else if (shID=="soln-hide-all") {
+    var allAnswerCode = document.getElementsByClassName("answer-code");
+    for (i = 0; i < allAnswerCode.length; i++) {
+        allAnswerCode[i].style.display = 'none';
+    }
+  } else if (shID=="hints-show-all") {
+    var allAnswerCode = document.getElementsByClassName("hint");
+    for (i = 0; i < allAnswerCode.length; i++) {
+        allAnswerCode[i].style.display = 'block';
+    }
+  } else if (shID=="hints-hide-all") {
+    var allAnswerCode = document.getElementsByClassName("hint");
+    for (i = 0; i < allAnswerCode.length; i++) {
+        allAnswerCode[i].style.display = 'none';
+    }
+  } else {
+    if (document.getElementById(shID)) {
+      if (document.getElementById(shID).style.display != 'block') {
+        document.getElementById(shID).style.display = 'block';
+      } else {
+        document.getElementById(shID).style.display = 'none';
+      }
+    }
+  }
+}
+function CopyToClipboard(containerid) {
+if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(document.getElementById(containerid));
+    range.select().createTextRange();
+    document.execCommand("copy");
+} else if (window.getSelection) {
+    var range = document.createRange();
+    range.selectNode(document.getElementById(containerid));
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+    // alert("text copied")
+}}
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163964617-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-163964617-1');
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="css/slidy_styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore"><a href='http://ccsfgis.org' target='_blank' rel='nooperner'><img src='images/gis-ed-center_logo_300x77.png' style='margin-bottom:0.5em;'/></a><br/><span
+class="course-title">Spatial Data Analysis with R<br/></span></h1>
+
+</div>
+
+
+<style type="text/css">
+h1 {
+  font-size: 130%;
+}
+p {
+  font-size: 120%;
+}
+h1.section_head {
+  text-align: center; 
+  background-color: #ddd;
+  padding: 0.5em;
+  border-top: 4px solid gray;
+  border-bottom: 4px solid gray;
+}
+</style>
+<p style="font-size:150%;" onclick="showHide(&#39;vfelgf&#39;);return false;">
+BayGeo, Spring 2024
+</p>
+<div id="vfelgf" class="hint">
+<div
+style="font-size:140%; font-weight:normal; margin-left:0.5em; margin-right:0.5em;">
+<p>As we get going, please:<br />
+i) open the course website:<br/><tt><a
+href="https://ajlyons.github.io/rspatial_bgs24"
+class="uri">https://ajlyons.github.io/rspatial_bgs24</a></tt><br />
+<br />
+ii) introduce yourself on the community forum:<br/><tt><a
+href="https://etherpad.wikimedia.org/p/rspatial-bgs24"
+class="uri">https://etherpad.wikimedia.org/p/rspatial-bgs24</a></tt></p>
+</div>
+</div>
+<div class="hrleft">
+
+</div>
+<div id="workshop-materials" class="section level1">
+<h1>Workshop Materials</h1>
+<li class="website">
+Website: <span style="font-family:monospace;"><a
+href="https://ajlyons.github.io/rspatial_bgs24"
+target="_blank">https://ajlyons.github.io/rspatial_bgs24</a></span>
+</li>
+<li class="forum">
+Community Forum: <a
+href="https://etherpad.wikimedia.org/p/rspatial-bgs24"
+target="_blank">https://etherpad.wikimedia.org/p/rspatial-bgs24</a>
+</li>
+<li class="setup">
+<a href="setup.html" target="_blank">Setup</a>
+</li>
+<!----
+<li class="data">[Data files](datasets.html){target="_blank"}</li>
+
+<li class="notebook">[R Notebooks](notebooks.html){target="_blank" rel="noopener"}</li>
+--->
+<h1 id="part-1-the-basics" class="section_head">
+PART 1: THE BASICS
+</h1>
+<h1 id="april-13-am-getting-started">
+April 13 (am). Getting Started
+</h1>
+<p style="font-size:100%;">
+10:00a - 12:00p. Getting to know RStudio, commands, vectors
+</p>
+<li class="slides">
+<a target="_blank" class="slides" href="slides/wrkshp-intro-pt1.html">Introduction
+Part I</a>
+</li>
+<p class="slides_desc">
+Workshop overview, resources, RStudio
+</p>
+<li class="slides">
+<a target="_blank" class="slides" href="slides/r-intro01-getting-started.html">Getting
+Started with R</a>
+</li>
+<p class="slides_desc">
+R vs RStudio, R as a fancy calculator, data types, vectors
+</p>
+<li class="homeworks">
+<a target="_blank" class="homeworks" href="homeworks/hw01.R">Homework
+1</a> <span
+class="answer_key">(<a href='./homeworks/answers/hw01_answers.html' target='_blank'>solutions</a>)</span>
+</li>
+<p class="homeworks_desc">
+Create vectors, descriptive stats, subset vectors with square bracket
+notation
+</p>
+<div class="hrleft">
+
+</div>
+<h1 id="april-13-pm-plotting-packages-functions-and-importing-data">
+April 13 (pm). Plotting, Packages, Functions, and Importing Data
+</h1>
+<p style="font-size:100%;">
+1:00p - 3:00p. Plotting, whats in a package, calling functions,
+importing tabular data
+</p>
+<li class="slides">
+<a target="_blank" class="slides" href="slides/r-intro02-packages.html">Packages,
+Functions, Data Frames, and Importing Data</a>
+</li>
+<p class="slides_desc">
+What’s in a package? Using functions, Importing CSV files as data frames
+</p>
+<li class="homeworks">
+<a target="_blank" class="homeworks" href="homeworks/hw02.R">Homework
+2</a> <span
+class="answer_key">(<a href='./homeworks/answers/hw02_answers.html' target='_blank'>solutions</a>)</span>
+</li>
+<p class="homeworks_desc">
+Explore buit-in data frames, make a scatterplot map, import a CSV file
+</p>
+<div class="hrleft">
+
+</div>
+<h1 id="april-16-wrangling-your-data">
+April 16. Wrangling your Data
+</h1>
+<p style="font-size:100%;">
+6:00p - 8:00p. Data wrangling with dplyr and tidyr, Notebooks
+</p>
+<div class="hrleft">
+
+</div>
+<h1 id="april-18-ggplot">
+April 18. ggplot
+</h1>
+<p style="font-size:100%;">
+6:00p - 8:00p. Making plots with ggplot
+</p>
+<h1 id="extras" class="section_head">
+EXTRAS
+</h1>
+<li class="slides">
+<a target="_blank" class="slides" href="slides/gis101.html">Foundational
+GIS Concepts</a>
+</li>
+<p class="slides_desc">
+Vector and Raster Data, Projections, Attribute Tables
+</p>
+<li class="slides">
+<a target="_blank" class="slides" href="slides/color.html">Working with
+Color</a>
+</li>
+<p class="slides_desc">
+Color models, color functions, RColorBrewer
+</p>
+<li class="slides">
+<a target="_blank" class="slides" href="slides/socrata-api.html">Using
+the Socrata API</a>
+</li>
+<p class="slides_desc">
+Importing SF Data using the Socrata API
+</p>
+<li class="slides">
+<a target="_blank" class="slides" href="slides/data-apis.html">Getting
+Data from APIs</a>
+</li>
+<p class="slides_desc">
+Using data and API packages, functions to import data directly into R,
+API keys
+</p>
+<li class="slides">
+<a target="_blank" class="slides" href="slides/ggplot-maps.html">Making
+maps with ggplot</a>
+</li>
+<p class="slides_desc">
+Techniques for making maps with ggplot; ggspatial; binning, heat maps
+</p>
+<p>&lt;!div class=“hrleft”&gt;&lt;!/div&gt;</p>
+<h1 id="other" class="section_head">
+Other
+</h1>
+<li class="website">
+<a href="resources.html" target="_blank" rel="noopener">Additional
+Resources</a>
+</li>
+<li class="script">
+<a href="https://github.com/ajlyons/rspatial_bgs24/tree/main/scripts"
+target="_blank" rel="noopener">Sample Scripts</a>
+</li>
+<li class="acknowledgment">
+<a href="acknowledgements.html" target="_blank"
+rel="noopener">Acknowledgements</a>
+</li>
+<p><br />
+<br />
+</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
