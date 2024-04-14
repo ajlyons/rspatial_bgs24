@@ -36,7 +36,8 @@
 
 
 
-## Q8. Import the following CSV file as a data frame:<br/>https://raw.githubusercontent.com/ajlyons/rspatial_bgs23/main/notebooks/data/sf_libraries.csv
+## Q8. Import the following CSV file as a data frame:
+## https://raw.githubusercontent.com/ajlyons/rspatial_bgs24/main/exercises/data/sf_libraries.csv
 ## How many libraries are there in San Francisco?
 
 
