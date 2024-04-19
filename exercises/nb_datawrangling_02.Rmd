@@ -1,16 +1,111 @@
 ---
-title: "Exercise 6: Data Wrangling Pt 2"
+title: "Data Wrangling 2: Table Summaries, Joins, & Reshaping"
 output: 
   html_notebook:
     toc: yes
+    toc_depth: 2
     toc_float: yes
 ---
+
+```{css echo = FALSE}
+h1,h2,h3 {font-weight:bold;}
+h1 {font-size:24px;}
+h2 {font-size:20px;}
+h3 {font-size:16px;}
+```
+\
+
+# Load Packages 
+
+```{r chunk01}
+library(dplyr)
+
+# Specify package preferences for filter, count, select, and arrange
+library(conflicted)
+conflict_prefer("filter", "dplyr", quiet = TRUE)
+conflict_prefer("count", "dplyr", quiet = TRUE)
+conflict_prefer("select", "dplyr", quiet = TRUE)
+conflict_prefer("arrange", "dplyr", quiet = TRUE)
+```
+
+# Table Summaries
+
+The main dplyr function for creating summaries of data is `summarise()`. The syntax is similar to `mutate()`. Summary columns can use any aggregate function from base R or dplyr (see the [dplyr cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf) for a list of functions that are designed to use with `summarise()`).
+
+\
+
+## Summarise an entire tibble
+
+Compute the mean of several columns (using the `na.rm = TRUE` to ignore NA values):
+
+```{r chunk02}
+
+library(palmerpenguins)
+penguins |> 
+  summarise(bill_len_mean = mean(bill_length_mm, na.rm = TRUE), 
+            bill_depth_mean = mean(bill_depth_mm, na.rm = TRUE), 
+            body_mass_mean = mean(body_mass_g, na.rm = TRUE))
+```
+
+\
+
+## Summarise groups of rows
+
+Often you want to create summaries for groups of rows (i.e., a different unit of analysis). 
+
+If we wanted to compute summary stats for each species, you would first group the rows by species with `group_by()`, and then use `summarise()`.
+
+```{r chunk03}
+penguins |> 
+  group_by(species) |> 
+  summarise(bill_len_mean = mean(bill_length_mm, na.rm = TRUE), 
+            bill_depth_mean = mean(bill_depth_mm, na.rm = TRUE), 
+            body_mass_mean = mean(body_mass_g, na.rm = TRUE))
+```
+
+\
+
+**How many rows per island?**
+
+For this question, we can use the `n()` function in `summarise()`:
+
+```{r chunk04}
+penguins |> 
+  group_by(island) |> 
+  summarise(num_records = n())
+```
+
+\
+
+# CHALLENGE #1
+
+Compute the number of observations per year.
+
+```{r chunk05}
+## Your answer here
+
+```
+
+\
+
+# CHALLENGE #2
+
+Compute the number of observations per year and species.
+
+Hint: `group_by()` can take more than one column
+
+```{r chunk06}
+# Your answer here
+
+```
+
+\
 
 # Join tables
 
 Import a dataset with some (fake) genetic information about Penguins:
 
-```{r chunk01}
+```{r chunk07}
 library(readr)
 genetics_tbl <- read_csv("./data/penguin_genetic_diversity.csv")
 genetics_tbl
@@ -20,10 +115,7 @@ genetics_tbl
 
 We can join these columns to the Palmer Penguins dataset:
 
-```{r chunk02}
-library(palmerpenguins)
-library(dplyr)
-
+```{r chunk08}
 penguins |>
   left_join(genetics_tbl, by = "species") |> 
   head()
@@ -31,36 +123,69 @@ penguins |>
 
 # Reshape Data
 
+## Wide to Long
+
+Start by creating a 'wide' data frame:
+
+```{r chunk09}
+cases_df <- data.frame(country = c("FR", "DE", "US"),
+                       `2011` = c(7000,5800,15000),
+                       `2012` = c(6900,6000,14000),
+                       `2013` = c(7000,6200,13000),
+                       check.names = FALSE)
+cases_df
+```
+
+\
+
+Next, we combine the values of three year columns into one, with another column for the year:
+
+```{r chunk10}
+library(tidyr)
+
+cases_tidy_df <- cases_df |> 
+  pivot_longer(cols = c("2011", "2012", "2013"), 
+               names_to = "year", 
+               values_to = "cases")
+
+cases_tidy_df
+```
+
+\
+
+## Long to wide
+
 We begin by importing the January 2050 projected daily minimum and maximum temperature for Sacramento:
 
-```{r chunk03}
+```{r chunk11}
 sac_temps_tbl <- read_csv("./data/sacramento_daily_temp_jan2050.csv")
-sac_temps_tbl |> head()
+sac_temps_tbl |> arrange(dt)
 ```
 
 \
 
 Convert from a long to wide format:
 
-```{r chunk04}
-library(tidyr)
-
+```{r chunk12}
 sac_temps_tbl |> 
-  pivot_wider(names_from = clim_var, values_from = temp_f) |> 
-  head()
+  pivot_wider(names_from = clim_var, values_from = temp_f)
 ```
 
 \
 
-# Compute Daily Temperature Rnage
+## Compute Daily Temperature Range
 
-Compute the daily temperature range:
+Use the 'new' columns to compute the daily temperature range:
 
-```{r chunk05}
+```{r chunk13}
 sac_temps_tbl |> 
   pivot_wider(names_from = clim_var, values_from = temp_f) |> 
   mutate(diurnal_range_f = tasmax - tasmin) |> 
   head()
 ```
 
+\
 
+# End
+
+Remember to save your work to render a HTML copy of the notebook.

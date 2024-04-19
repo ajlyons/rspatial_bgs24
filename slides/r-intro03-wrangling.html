@@ -384,9 +384,9 @@ style="border:1px solid grey;" /></a></p>
 <p><br />
 </p>
 </div>
-<div id="most-popular-dplyr-functions" class="slide section level1">
-<h1>Most Popular <code>dplyr</code> Functions</h1>
-<h2 id="wrangling">Wrangling</h2>
+<div id="popular-dplyr-functions" class="slide section level1">
+<h1>Popular <code>dplyr</code> Functions</h1>
+<h2 id="row-and-column-manipulations">Row and Column Manipulations</h2>
 <table class="tbl_compact">
 <tbody>
 <tr>
@@ -421,22 +421,17 @@ add new columns
 mutate()
 </td>
 </tr>
-<tr>
-<td style="text-align:left;width: 12em; ">
-join data frames
-</td>
-<td style="text-align:left;font-family: monospace;">
-left_join(), right_join(), inner_join()
-</td>
-</tr>
 </tbody>
 </table>
+<!----- taken out:
+, "join data frames on a column", "left_join(), right_join(), inner_join()", "stack data frame", "bind_rows()"
+----->
 <p><br />
 </p>
 <h2 id="chaining-dplyr-functions">Chaining dplyr functions</h2>
 <div class="indented2 indented2r">
-<p>Most <code>dplyr</code> functions <em>take a tibble</em>, and
-<em>return a tibble</em>.</p>
+<p>Most <code>dplyr</code> functions <em>take a tibble</em> as the first
+argument , and <em>return a tibble</em>.</p>
 <p>This makes them very <em>pipe friendly</em>.</p>
 </div>
 <p><br />
@@ -449,16 +444,14 @@ left_join(), right_join(), inner_join()
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">head</span>(storms)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 13
-##   name   year month   day  hour   lat  long status    category  wind pressure tropicalstorm_force_…¹
-##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;        &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;                  &lt;int&gt;
-## 1 Amy    1975     6    27     0  27.5 -79   tropical…       NA    25     1013                     NA
-## 2 Amy    1975     6    27     6  28.5 -79   tropical…       NA    25     1013                     NA
-## 3 Amy    1975     6    27    12  29.5 -79   tropical…       NA    25     1013                     NA
-## 4 Amy    1975     6    27    18  30.5 -79   tropical…       NA    25     1013                     NA
-## 5 Amy    1975     6    28     0  31.5 -78.8 tropical…       NA    25     1012                     NA
-## 6 Amy    1975     6    28     6  32.4 -78.7 tropical…       NA    25     1012                     NA
-## # ℹ abbreviated name: ¹​tropicalstorm_force_diameter
-## # ℹ 1 more variable: hurricane_force_diameter &lt;int&gt;</code></pre>
+##   name   year month   day  hour   lat  long status              category  wind pressure tropicalstorm_force_diameter hurricane_force_diameter
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;                  &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;                        &lt;int&gt;                    &lt;int&gt;
+## 1 Amy    1975     6    27     0  27.5 -79   tropical depression       NA    25     1013                           NA                       NA
+## 2 Amy    1975     6    27     6  28.5 -79   tropical depression       NA    25     1013                           NA                       NA
+## 3 Amy    1975     6    27    12  29.5 -79   tropical depression       NA    25     1013                           NA                       NA
+## 4 Amy    1975     6    27    18  30.5 -79   tropical depression       NA    25     1013                           NA                       NA
+## 5 Amy    1975     6    28     0  31.5 -78.8 tropical depression       NA    25     1012                           NA                       NA
+## 6 Amy    1975     6    28     6  32.4 -78.7 tropical depression       NA    25     1012                           NA                       NA</code></pre>
 </div>
 <p><br />
 </p>
@@ -489,6 +482,52 @@ column names in quotes</p>
 <p><br />
 </p>
 </div>
+<div id="duplicate-function-names" class="slide section level1">
+<h1>Duplicate Function Names</h1>
+<p>Occasionally two or more packages will have a function with the same
+name. <img src="images/sad-face-32x32.png" /></p>
+<p>R will use whichever one was loaded first. <img
+src="images/sad-face-32x32.png" /> <img
+src="images/sad-face-32x32.png" /></p>
+<p>Best practice: use the package name and the <code>::</code> reference
+to specify which package a function is from.</p>
+<div class="indented2 indented2r">
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> sp<span class="sc">::</span><span class="fu">over</span>()</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> grDevices<span class="sc">::</span><span class="fu">over</span>()</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>y <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">select</span>()</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>y <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>()</span></code></pre></div>
+</div>
+<div class="tip">
+<p>When you use the <em><code>package_name::function_name</code></em>
+syntax, you don’t actually have to first load the package with
+<tt>library()</tt>.</p>
+</div>
+<p><br />
+</p>
+<div class="tip">
+<p><strong>Resolving Name Conflicts with the <code>conflicted</code>
+Package</strong></p>
+<p>When you call a function that exists in multiple packages, R uses
+whichever package was loaded first.</p>
+<p>The <code>conflicted</code> package helps you avoid problems with
+duplicate function names, by specifying which one to prioritize <em>no
+matter what order</em> they were loaded.</p>
+<div class="indented2 indented2r">
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">library</span>(conflicted)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co"># Set conflict preference</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">&quot;filter&quot;</span>, <span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">&quot;count&quot;</span>, <span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">&quot;select&quot;</span>, <span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co"># From here on out, anytime we call select() or filter(), R will</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co"># always use the dplyr version.</span></span></code></pre></div>
+</div>
+</div>
+<p><br />
+</p>
+</div>
 <div id="r-notebooks" class="slide section level1">
 <h1>R Notebooks</h1>
 <p>R Notebooks are written in “R Markdown”, which combines text and R
@@ -514,10 +553,9 @@ class="slide section level1">
 <p>We’ll be looking at the <a
 href="https://allisonhorst.github.io/palmerpenguins/" target="_blank"
 rel="noopener">Palmer Penguins</a> dataset.</p>
-<center>
-<img src="./images/palmer-penguins-logo_130x150.png" /> <img
-src="./images/penguiin-culmen-depth_310x200.png" />
-</center>
+<p><img src="./images/palmer-penguins-logo_130x150.png"
+style="margin-left:2em;" /> <img
+src="./images/penguiin-culmen-depth_310x200.png" /></p>
 <p><br />
 </p>
 <p>This exercise will be <em>R Notebook</em>!</p>
@@ -527,10 +565,9 @@ src="./images/penguiin-culmen-depth_310x200.png" />
 <li>Subsetting columns</li>
 <li>Calculating columns</li>
 <li>Sorting and subsetting rows</li>
-<li>Dealing with missing values</li>
 </ol>
 </div>
-<p><a href='https://raw.githubusercontent.com/ajlyons/rspatial_bgs24/master/exercises/nb_datawrangling_01.Rmd' target='_blank'>nb_datawrangling_01.Rmd</a></p>  <p style='font-size:80%;'><a href='https://ajlyons.github.io/rspatial_bgs24/exercises/nb_datawrangling_01.nb.html' target='_blank' rel='noopener' style='color:#8993d3;'>preview notebook</a> | <a href='https://ajlyons.github.io/rspatial_bgs24/exercises/nb_datawrangling_01_ans.nb.html' target='_blank' style='color:#8993d3;'>answer key</a></p>
+<p><a href='https://raw.githubusercontent.com/ajlyons/rspatial_bgs24/main/exercises/nb_datawrangling_01.Rmd' target='_blank'>nb_datawrangling_01.Rmd</a></p>  <p style='font-size:80%;'><a href='https://ajlyons.github.io/rspatial_bgs24/exercises/nb_datawrangling_01.nb.html' target='_blank' rel='noopener' style='color:#8993d3;'>preview notebook</a> | <a href='https://ajlyons.github.io/rspatial_bgs24/exercises/nb_datawrangling_01_ans.nb.html' target='_blank' style='color:#8993d3;'>answer key</a></p>
 <p><br />
 </p>
 </div>
@@ -540,6 +577,48 @@ src="./images/penguiin-culmen-depth_310x200.png" />
 style="display:block; margin:1em auto; border:none;" /></p>
 <p><br />
 </p>
+</div>
+<div id="pro-tips" class="slide section level1">
+<h1>Pro Tips</h1>
+<h2 id="renaming-columns">Renaming columns</h2>
+<div class="indented2" style="font-family:monospace;">
+<p>my_dataframe |&gt; rename(fname = First, lname = Last)</p>
+<p>my_dataframe |&gt; select(fname = First, lname = Last, term, grade,
+passed)</p>
+</div>
+<p><br />
+</p>
+<h2 id="advanced-select">Advanced <code>select()</code></h2>
+<table class="tbl_compact">
+<tbody>
+<tr>
+<td style="text-align:left;width: 16em; font-family: monospace;">
+select(-age)
+</td>
+<td style="text-align:left;">
+Select all columns <em>except</em> age
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 16em; font-family: monospace;">
+select(fname:grade)
+</td>
+<td style="text-align:left;">
+Select all columns between <code>fname</code> and <code>grade</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 16em; font-family: monospace;">
+select(starts_with(“Sepal”))
+</td>
+<td style="text-align:left;">
+Select all columns that start with ‘Sepal’<br>(see also
+<code>ends_width()</code>, <code>contains()</code>, and
+<code>matches()</code>
+</td>
+</tr>
+</tbody>
+</table>
 <!-------
 
 # Advanced `select()`
@@ -551,6 +630,240 @@ select(fname:grade)
 functions you can put in select(): 
 starts_with(), ends_with(), contains(), matches()
 ---->
+</div>
+<div id="joining-and-merging-tables" class="slide section level1">
+<h1>Joining and Merging Tables</h1>
+<table class="tbl_compact">
+<tbody>
+<tr>
+<td style="text-align:left;width: 12em; ">
+join data frames on a column
+</td>
+<td style="text-align:left;font-family: monospace;">
+left_join(), right_join(), inner_join()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 12em; ">
+stack data frames
+</td>
+<td style="text-align:left;font-family: monospace;">
+bind_rows()
+</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<h2 id="join-tables-on-a-common-column">Join tables on a common
+column</h2>
+<p><img src="images/table_join01_820x442x256.png" /></p>
+<p>To join two data frames based on a common column, you can use:</p>
+<div class="indented1">
+<p><tt><strong>left_join(<em>x</em>, <em>y</em>,
+<em>by</em>)</strong></tt></p>
+</div>
+<p>where <em>x</em> and <em>y</em> are data frames, and <em>by</em> is
+the name of a column they have in common.</p>
+<div class="tip">
+<p>If there is only one column in common, and if it has the same name in
+both data frames, you can omit the <em>by</em> argument.</p>
+<p>If the common column is named differently in the two data frames, you
+can deal with that by passing a named vector as the <em>by</em>
+argument. See below.</p>
+</div>
+<!--- tip --->
+<p>To illustrate a table join, we’ll first import a csv with some fake
+data about the genetics of different iris species:</p>
+<div class="indented2 indented2r">
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Create a data frame with additional info about the three IRIS species</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>iris_genetics <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Species=</span><span class="fu">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolor&quot;</span>, <span class="st">&quot;virginica&quot;</span>),</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>                          <span class="at">num_genes =</span> <span class="fu">c</span>(<span class="dv">42000</span>, <span class="dv">41000</span>, <span class="dv">43000</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>                          <span class="at">prp_alles_recessive =</span> <span class="fu">c</span>(<span class="fl">0.8</span>, <span class="fl">0.76</span>, <span class="fl">0.65</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>iris_genetics</span></code></pre></div>
+<pre><code>##      Species num_genes prp_alles_recessive
+## 1     setosa     42000                0.80
+## 2 versicolor     41000                0.76
+## 3  virginica     43000                0.65</code></pre>
+</div>
+<p>We can join these additional columns to the iris data frame with
+<code>left_join()</code>:</p>
+<div class="indented2 indented2r">
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>iris <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">left_join</span>(iris_genetics, <span class="at">by =</span> <span class="st">&quot;Species&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species num_genes prp_alles_recessive
+## 1           5.1         3.5          1.4         0.2  setosa     42000                 0.8
+## 2           4.9         3.0          1.4         0.2  setosa     42000                 0.8
+## 3           4.7         3.2          1.3         0.2  setosa     42000                 0.8
+## 4           4.6         3.1          1.5         0.2  setosa     42000                 0.8
+## 5           5.0         3.6          1.4         0.2  setosa     42000                 0.8
+## 6           5.4         3.9          1.7         0.4  setosa     42000                 0.8
+## 7           4.6         3.4          1.4         0.3  setosa     42000                 0.8
+## 8           5.0         3.4          1.5         0.2  setosa     42000                 0.8
+## 9           4.4         2.9          1.4         0.2  setosa     42000                 0.8
+## 10          4.9         3.1          1.5         0.1  setosa     42000                 0.8</code></pre>
+</div>
+<p><br />
+</p>
+<div class="infobox">
+<p>If you need to join tables on multiple columns, add additional column
+names to the <code>by</code> argument.</p>
+<p>Join columns must be the same data type (i.e., both numeric or both
+character).</p>
+<p>There are several variants of <code>left_join()</code>, the most
+common being <strong><code>right_join()</code></strong> and
+<strong><code>inner_join()</code></strong>. See help for details.</p>
+</div>
+<!--- info-box --->
+<h2 id="joining-tables-when-the-column-name-is-different">Joining Tables
+When the Column Name is Different</h2>
+<p>If the join column is named differently in the two tables, you can
+pass a named character vector as the <code>by</code> argument. A named
+vector is a vector whose elements have been assigned names. You can
+construct a named vector with <code>c()</code>.</p>
+<p><img src="images/table_join02_820x442x256.png" /></p>
+<p>For example if the join column was named ‘<em>SpeciesName</em>’ in
+<em>x</em>, and just ‘<em>Species</em>’ in <em>y</em>, your expression
+would be:</p>
+<div class="indented2">
+<strong><code>left_join(x, y, by = c("SpeciesName" = "Species"))</code></strong>
+</div>
+<p><br />
+</p>
+</div>
+<div id="stacking-or-merging-data-frames" class="slide section level1">
+<h1>Stacking or Merging Data Frames</h1>
+<p><img src="./images/bind_rows_520x220x256.png"
+style="display:block; margin:0 auto;" /></p>
+<div class="indented2">
+<p><strong><code>bind_rows(x, y)</code></strong></p>
+<p>where <strong><code>x</code></strong> and
+<strong><code>y</code></strong>:</p>
+<div class="indented1">
+<ul>
+<li>are data frames</li>
+<li>have the <em>exact</em> same column structure (names, order, &amp;
+class)</li>
+<li>you can add more than two data frames</li>
+</ul>
+</div>
+</div>
+<p><br />
+</p>
+</div>
+<div id="reshaping-data" class="slide section level1">
+<h1>Reshaping Data</h1>
+<p><img src="images/tidyr_240x277.png"
+style="width:140px; float:right;" /></p>
+<p><em>Reshaping</em> data includes:</p>
+<div class="compact">
+<ul>
+<li>turning rows into columns (aka pivot tables, cross tab query)<br />
+</li>
+<li>turning columns into rows</li>
+</ul>
+</div>
+<p>The go-to Tidyverse package for reshaping data frames is <a
+href="https://tidyr.tidyverse.org" target="_blank"
+rel="noopener"><tt><strong>tidyr</strong></tt></a></p>
+<p><br />
+</p>
+<div class="centerblock">
+<p><a href="https://rawgit.com/rstudio/cheatsheets/master/tidyr.pdf"
+target="_blank" rel="noopener"><img
+src="images/tidyr_cheatsheet_600x464x256.png"
+style="border:1px solid grey;" /></a></p>
+</div>
+<p><br />
+</p>
+</div>
+<div id="pivot-functions" class="slide section level1">
+<h1>Pivot Functions</h1>
+<div class="indented2" style="text-align:center;">
+<p><em><code>pivot_longer()</code></em><br />
+<img src="images/pivot_longer_566x212x256.png" /></p>
+<p><em><code>pivot_wider()</code></em><br />
+<img src="images/pivot_wider_674x336x256.png" /></p>
+</div>
+<p>More info and examples in the tidyr <a
+href="https://tidyr.tidyverse.org/articles/pivot.html" target="_blank"
+rel="noopener"><strong>Pivoting Vignette</strong></a></p>
+<p><br />
+</p>
+</div>
+<div id="group-and-summarize" class="slide section level1">
+<h1>Group and Summarize</h1>
+<table class="tbl_compact">
+<tbody>
+<tr>
+<td style="text-align:left;">
+<strong>Step 1 (optional):</strong><br>group rows (i.e., change the unit
+of analysis)
+</td>
+<td style="text-align:left;font-family: monospace;">
+group_by()
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<strong>Step 2:</strong><br>Compute summaries for each group of rows
+</td>
+<td style="text-align:left;font-family: monospace;">
+summarize() with:<br>n(), mean(), median(), sum(), sd(), IQR(), first(),
+etc.
+</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>Example:</p>
+<div class="indented2 indented2r">
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">head</span>(storms)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 13
+##   name   year month   day  hour   lat  long status              category  wind pressure tropicalstorm_force_diameter hurricane_force_diameter
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;                  &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;                        &lt;int&gt;                    &lt;int&gt;
+## 1 Amy    1975     6    27     0  27.5 -79   tropical depression       NA    25     1013                           NA                       NA
+## 2 Amy    1975     6    27     6  28.5 -79   tropical depression       NA    25     1013                           NA                       NA
+## 3 Amy    1975     6    27    12  29.5 -79   tropical depression       NA    25     1013                           NA                       NA
+## 4 Amy    1975     6    27    18  30.5 -79   tropical depression       NA    25     1013                           NA                       NA
+## 5 Amy    1975     6    28     0  31.5 -78.8 tropical depression       NA    25     1012                           NA                       NA
+## 6 Amy    1975     6    28     6  32.4 -78.7 tropical depression       NA    25     1012                           NA                       NA</code></pre>
+</div>
+<p><br />
+</p>
+<p><em>For each month, how many storm observations are saved in the data
+frame</em></p>
+<div class="indented2 indented2r">
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>storms <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>  <span class="fu">select</span>(name, year, month, category) <span class="sc">|&gt;</span>    <span class="do">## select the columns we need</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">|&gt;</span>                        <span class="do">## group the rows by month</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_storms =</span> <span class="fu">n</span>())               <span class="do">## for each group, report the count</span></span></code></pre></div>
+<pre><code>## # A tibble: 10 × 2
+##    month num_storms
+##    &lt;dbl&gt;      &lt;int&gt;
+##  1     1         70
+##  2     4         66
+##  3     5        201
+##  4     6        779
+##  5     7       1603
+##  6     8       4440
+##  7     9       7509
+##  8    10       3077
+##  9    11       1109
+## 10    12        212</code></pre>
+</div>
+<p><br />
+</p>
+</div>
+<div id="notebook-exercise-2" class="slide section level1">
+<h1>Notebook Exercise #2</h1>
+<p><a href='https://raw.githubusercontent.com/ajlyons/rspatial_bgs24/main/exercises/nb_datawrangling_02.Rmd' target='_blank'>nb_datawrangling_02.Rmd</a></p> <div class='nb_desc'>Join and reshape tables</div> <p style='font-size:80%;'><a href='https://ajlyons.github.io/rspatial_bgs24/exercises/nb_datawrangling_02.nb.html' target='_blank' rel='noopener' style='color:#8993d3;'>preview notebook</a> | <a href='https://ajlyons.github.io/rspatial_bgs24/exercises/nb_datawrangling_02_ans.nb.html' target='_blank' style='color:#8993d3;'>answer key</a></p>
+<p><br />
+</p>
 </div>
 <div id="end" class="slide section level1">
 <h1>END!</h1>

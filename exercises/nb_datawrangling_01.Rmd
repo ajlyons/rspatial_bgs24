@@ -1,10 +1,19 @@
 ---
-title: "Exercise 6: Data Wrangling Pt 1"
+title: "Data Wrangling 1: Importing Messy Data, Manipulating Columns and Rows"
 output: 
   html_notebook:
     toc: yes
+    toc_depth: 2
     toc_float: yes
 ---
+
+```{css echo = FALSE}
+h1,h2,h3 {font-weight:bold;}
+h1 {font-size:24px;}
+h2 {font-size:20px;}
+h3 {font-size:16px;}
+```
+\
 
 # Importing Messy Excel Data
 
@@ -19,7 +28,7 @@ Here we see a bunch of stuff before the data, the column "names" are unwieldy, t
 You can tackle many of these issues when you import the data. First, we construct the file name and verify it exists:
 
 ```{r chunk01}
-reg_list_fn = "./data/SurveyResults_36100.xlsx"
+reg_list_fn <- "./data/SurveyResults_36100.xlsx"
 file.exists(reg_list_fn)
 ```
 
@@ -29,7 +38,7 @@ To import Excel files, we'll go to `read_xlsx()` from the *readxl* package. This
 
 ```{r chunk02}
 library(readxl)
-reg_list_tbl = read_xlsx(path = reg_list_fn, 
+reg_list_tbl <- read_xlsx(path = reg_list_fn, 
                          sheet = "Survey Output", 
                          skip = 3, 
                          col_names = c("user", "reg_date", "fname", "lname", 
@@ -97,12 +106,13 @@ glimpse(penguins)
 
 \
 
+# Maniuplating Columns
+
 ## Subset Columns
 
 Suppose we want to compare how bill length and flipper length look for each species. We could start by selecting just those columns:
 
 ```{r chunk07}
-library(dplyr)
 penguins |> 
   select(species, bill_length_mm, flipper_length_mm) |> 
   head()
@@ -129,7 +139,7 @@ penguins |> pull(species) |> table()
 
 \
 
-## Adding/Modifying Columns
+## Add/Modify Columns
 
 To **add a column**, we can use `mutate()`. Let's create a new column with the ratio of the bill to flipper length:
 
@@ -154,7 +164,10 @@ head(peng_billflip_tbl)
 
 \
 
-**CHALLENGE #1**: Add a column called `bill_flip_sum` which represents the sum of the bill and flipper length.
+
+# CHALLENGE #1
+
+Add a column called `bill_flip_sum` which represents the sum of the bill and flipper length.
 
 Hint: use `mutate()`
 
@@ -165,9 +178,9 @@ Hint: use `mutate()`
 
 \
 
-# Managing Rows
+# Maniuplating Rows
 
-## Sorting
+## Sort Rows
 
 You can **sort** a table using `arrange()`, passing the column(s) you want to sort by. The default sort order is ascending, but you can change that to descending by wrapping the column name in `desc()`.
 
@@ -191,7 +204,7 @@ peng_billflip_tbl |>
 
 \
 
-## Subsetting
+## Subset Rows
 
 The two functions most commonly used to subset rows include `filter()` and `slice()`.
 
@@ -249,7 +262,9 @@ gentoo_billflip_tbl |>
 
 \
 
-**CHALLENGE #2**: Write an expression that pulls out just the males on Torgersen Island. HOw many are there?
+# CHALLENGE #2
+
+Write an expression that pulls out just the males on Torgersen Island. HOw many are there?
 
 Tip: For challenge questions 2 & 3, mix and match the following functions:
 
@@ -260,11 +275,11 @@ Tip: For challenge questions 2 & 3, mix and match the following functions:
 
 ```
 
-Ans. 23
-
 \
 
-**CHALLENGE #3**: COmpute the ratio of body mass to bill length and add it as a new column. Return just the species, sex, and this ratio.
+# CHALLENGE #3
+
+Compute the ratio of body mass to bill length and add it as a new column. Return just the species, sex, and this ratio.
 
 ```{r chunk20}
 # Your answer here
@@ -273,95 +288,9 @@ Ans. 23
 
 \
 
-# Missing Values
+# End
 
-In general you have three options for missing values:
+That's it! Remember to save your work to render a copy of your Notebook in HTML
 
-1. Remove any row that has missing values from the data
-2. Leave all rows but ignore NA values when you compute summaries (like mean)
-3. Estimate or impute them
 
-\
-
-Suppose we wanted to keep only observations that have no missing values for flipper_length_mm, body_mass_g, and sex.
-
-```{r chunk21}
-penguins |> 
-  select(species, flipper_length_mm, body_mass_g, sex) |> 
-  filter(!is.na(flipper_length_mm), !is.na(body_mass_g), !is.na(sex)) |> 
-  head()
-```
-
-\
-
-# Table Summaries
-
-The main dplyr function for creating summaries of data is `summarise()`. The syntax is similar to `mutate()`. Summary columns can use any aggregate function from base R or dplyr (see the [dplyr cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf) for a list of functions that are designed to use with `summarise()`).
-
-\
-
-## Summarise an entire tibble
-
-Compute the mean of several columns (using the `na.rm = TRUE` to ignore NA values):
-
-```{r chunk22}
-penguins |> 
-  summarise(bill_len_mean = mean(bill_length_mm, na.rm = TRUE), 
-            bill_depth_mean = mean(bill_depth_mm, na.rm = TRUE), 
-            body_mass_mean = mean(body_mass_g, na.rm = TRUE))
-```
-
-\
-
-## Summarise groups of rows
-
-Often you want to create summaries for groups of rows (i.e., a different unit of analysis). 
-
-If we wanted to compute summary stats for each species, you would first group the rows by species with `group_by()`, and then use `summarise()`.
-
-```{r chunk23}
-penguins |> 
-  group_by(species) |> 
-  summarise(bill_len_mean = mean(bill_length_mm, na.rm = TRUE), 
-            bill_depth_mean = mean(bill_depth_mm, na.rm = TRUE), 
-            body_mass_mean = mean(body_mass_g, na.rm = TRUE))
-```
-
-\
-
-**How many rows per island?**
-
-For this question, we can use the `n()` function in `summarise()`:
-
-```{r chunk24}
-penguins |> 
-  group_by(island) |> 
-  summarise(num_records = n())
-```
-
-\
-
-**CHALLENGE #4**: Compute the number of observations per year
-
-```{r chunk25}
-## Your answer here
-
-```
-
-\
-
-**CHALLENGE #5**: Compute the number of observations per year and species?
-
-Hint: `group_by()` can take more than one column
-
-```{r chunk26}
-# Your answer here
-
-```
-
-\
-
-# END
-
-That's it!
 

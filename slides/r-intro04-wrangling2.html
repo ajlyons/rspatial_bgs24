@@ -487,16 +487,15 @@ etc.
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">head</span>(storms)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 13
-##   name   year month   day  hour   lat  long status    category  wind pressure tropicalstorm_force_…¹
-##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;        &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;                  &lt;int&gt;
-## 1 Amy    1975     6    27     0  27.5 -79   tropical…       NA    25     1013                     NA
-## 2 Amy    1975     6    27     6  28.5 -79   tropical…       NA    25     1013                     NA
-## 3 Amy    1975     6    27    12  29.5 -79   tropical…       NA    25     1013                     NA
-## 4 Amy    1975     6    27    18  30.5 -79   tropical…       NA    25     1013                     NA
-## 5 Amy    1975     6    28     0  31.5 -78.8 tropical…       NA    25     1012                     NA
-## 6 Amy    1975     6    28     6  32.4 -78.7 tropical…       NA    25     1012                     NA
-## # ℹ abbreviated name: ¹​tropicalstorm_force_diameter
-## # ℹ 1 more variable: hurricane_force_diameter &lt;int&gt;</code></pre>
+##   name   year month   day  hour   lat  long status             category  wind pressure tropicalstorm_force_…¹ hurricane_force_diam…²
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;                 &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;                  &lt;int&gt;                  &lt;int&gt;
+## 1 Amy    1975     6    27     0  27.5 -79   tropical depressi…       NA    25     1013                     NA                     NA
+## 2 Amy    1975     6    27     6  28.5 -79   tropical depressi…       NA    25     1013                     NA                     NA
+## 3 Amy    1975     6    27    12  29.5 -79   tropical depressi…       NA    25     1013                     NA                     NA
+## 4 Amy    1975     6    27    18  30.5 -79   tropical depressi…       NA    25     1013                     NA                     NA
+## 5 Amy    1975     6    28     0  31.5 -78.8 tropical depressi…       NA    25     1012                     NA                     NA
+## 6 Amy    1975     6    28     6  32.4 -78.7 tropical depressi…       NA    25     1012                     NA                     NA
+## # ℹ abbreviated names: ¹​tropicalstorm_force_diameter, ²​hurricane_force_diameter</code></pre>
 </div>
 <p><br />
 </p>
@@ -526,7 +525,7 @@ frame</em></p>
 </div>
 <div id="notebook-exercise-2" class="slide section level1">
 <h1>Notebook Exercise #2</h1>
-<p><a href='https://raw.githubusercontent.com/ajlyons/rspatial_bgs24/master/exercises/nb_datawrangling_02.Rmd' target='_blank'>nb_datawrangling_02.Rmd</a></p> <div class='nb_desc'>Join and reshape tables</div> <p style='font-size:80%;'><a href='https://ajlyons.github.io/rspatial_bgs24/exercises/nb_datawrangling_02.nb.html' target='_blank' rel='noopener' style='color:#8993d3;'>preview notebook</a> | <a href='https://ajlyons.github.io/rspatial_bgs24/exercises/nb_datawrangling_02_ans.nb.html' target='_blank' style='color:#8993d3;'>answer key</a></p>
+<p><a href='https://raw.githubusercontent.com/ajlyons/rspatial_bgs24/main/exercises/nb_datawrangling_02.Rmd' target='_blank'>nb_datawrangling_02.Rmd</a></p> <div class='nb_desc'>Join and reshape tables</div> <p style='font-size:80%;'><a href='https://ajlyons.github.io/rspatial_bgs24/exercises/nb_datawrangling_02.nb.html' target='_blank' rel='noopener' style='color:#8993d3;'>preview notebook</a> | <a href='https://ajlyons.github.io/rspatial_bgs24/exercises/nb_datawrangling_02_ans.nb.html' target='_blank' style='color:#8993d3;'>answer key</a></p>
 </div>
 <div id="end" class="slide section level1">
 <h1>END!</h1>
