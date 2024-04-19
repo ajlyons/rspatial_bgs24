@@ -106,7 +106,7 @@ glimpse(penguins)
 
 \
 
-# Maniuplating Columns
+# Manipulating Columns
 
 ## Subset Columns
 

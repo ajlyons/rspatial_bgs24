@@ -182,7 +182,7 @@ penguins |>
 
 \
 
-# Maniuplating Rows
+# Manipulating Rows
 
 ## Sort Rows
 

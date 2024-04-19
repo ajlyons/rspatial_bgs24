@@ -377,7 +377,7 @@ url1 &lt;- &quot;https://data.sfgov.org/resource/vw6y-z8j6.csv?$select=service_r
 ## Next, read in the data. (URLencode() removes spaces in the URL)
 df &lt;- read.csv(URLencode(url1))
 
-## Finally, change the name of one of the columns
+## Load packages
 library(dplyr)</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
@@ -387,7 +387,16 @@ library(dplyr)</code></pre>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>df &lt;- df |&gt; rename(neighborhood = neighborhoods_sffind_boundaries)</code></pre>
+<pre class="r"><code>library(conflicted)
+
+# Set conflict preferences
+conflict_prefer(&quot;filter&quot;, &quot;dplyr&quot;, quiet = TRUE)
+conflict_prefer(&quot;count&quot;, &quot;dplyr&quot;, quiet = TRUE)
+conflict_prefer(&quot;select&quot;, &quot;dplyr&quot;, quiet = TRUE)
+conflict_prefer(&quot;arrange&quot;, &quot;dplyr&quot;, quiet = TRUE)
+
+## Finally, change the name of one of the columns
+df &lt;- df |&gt; rename(neighborhood = neighborhoods_sffind_boundaries)</code></pre>
 <p><br />
 </p>
 <p>If you’d like, uncomment the following line to view the data frame in
@@ -510,7 +519,7 @@ neighborhood, sorted <em>alphabetically by neighborhood</em>.</h2>
 ##  8 &quot;Chinatown&quot;              4
 ##  9 &quot;Civic Center&quot;           2
 ## 10 &quot;Crocker Amazon&quot;         2
-## # … with 34 more rows</code></pre>
+## # ℹ 34 more rows</code></pre>
 <p><br />
 </p>
 </div>
@@ -531,7 +540,7 @@ neighborhood, sorted by the <em>number of calls</em>.</h2>
 ##  8 Financial District              3
 ##  9 Fisherman&#39;s Wharf               3
 ## 10 Inner Sunset                    3
-## # … with 34 more rows</code></pre>
+## # ℹ 34 more rows</code></pre>
 <p><br />
 </p>
 </div>

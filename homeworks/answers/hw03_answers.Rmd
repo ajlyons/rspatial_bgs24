@@ -27,8 +27,17 @@ url1 <- "https://data.sfgov.org/resource/vw6y-z8j6.csv?$select=service_request_i
 ## Next, read in the data. (URLencode() removes spaces in the URL)
 df <- read.csv(URLencode(url1))
 
-## Finally, change the name of one of the columns
+## Load packages
 library(dplyr)
+library(conflicted)
+
+# Set conflict preferences
+conflict_prefer("filter", "dplyr", quiet = TRUE)
+conflict_prefer("count", "dplyr", quiet = TRUE)
+conflict_prefer("select", "dplyr", quiet = TRUE)
+conflict_prefer("arrange", "dplyr", quiet = TRUE)
+
+## Finally, change the name of one of the columns
 df <- df |> rename(neighborhood = neighborhoods_sffind_boundaries)
 ```
 
@@ -63,6 +72,7 @@ names(df)
 ## Q03. Write an expression that returns the data frame sorted by the responsible agency.
 
 ```{r}
+
 df |> arrange(agency_responsible) |> head()
 ```
 
