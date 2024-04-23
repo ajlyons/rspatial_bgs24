@@ -2837,6 +2837,12 @@ font-size: 0.90em;
 .tocify .list-group-item {
 border-radius: 0px;
 }
+.tocify-subheader {
+display: inline;
+}
+.tocify-subheader .tocify-item {
+font-size: 0.95em;
+}
 </style>
 
 
@@ -3021,24 +3027,24 @@ head(penguins)</code></pre>
 <!-- rnb-text-begin -->
 <p><br />
 </p>
-<p>dplyr provides <code>glimpse()</code> which is an alternative way
-preview a tibble:</p>
+<p><code>dplyr</code> also provides <code>glimpse()</code> which is an
+alternative way preview a tibble:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2xpbXBzZShwZW5ndWlucylcbmBgYCJ9 -->
 <pre class="r"><code>glimpse(penguins)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMzQ0XG5Db2x1bW5zOiA4XG4kIHNwZWNpZXMgICAgICAgICAgIDxmY3Q+IEFkZWxpZSwgQWRlbGllLCBBZGVsaWUsIEFkZWxpZSwgQWRlbGllLCBBZGVsaWUsIEFkZWxpZSwgQWRlbOKAplxuJCBpc2xhbmQgICAgICAgICAgICA8ZmN0PiBUb3JnZXJzZW4sIFRvcmdlcnNlbiwgVG9yZ2Vyc2VuLCBUb3JnZXJzZW4sIFRvcmdlcnNlbiwgVG9yZ2XigKZcbiQgYmlsbF9sZW5ndGhfbW0gICAgPGRibD4gMzkuMSwgMzkuNSwgNDAuMywgTkEsIDM2LjcsIDM5LjMsIDM4LjksIDM5LjIsIDM0LjEsIDQyLjAsIDM34oCmXG4kIGJpbGxfZGVwdGhfbW0gICAgIDxkYmw+IDE4LjcsIDE3LjQsIDE4LjAsIE5BLCAxOS4zLCAyMC42LCAxNy44LCAxOS42LCAxOC4xLCAyMC4yLCAxN+KAplxuJCBmbGlwcGVyX2xlbmd0aF9tbSA8aW50PiAxODEsIDE4NiwgMTk1LCBOQSwgMTkzLCAxOTAsIDE4MSwgMTk1LCAxOTMsIDE5MCwgMTg2LCAxODAsIDHigKZcbiQgYm9keV9tYXNzX2cgICAgICAgPGludD4gMzc1MCwgMzgwMCwgMzI1MCwgTkEsIDM0NTAsIDM2NTAsIDM2MjUsIDQ2NzUsIDM0NzUsIDQyNTAsIDMz4oCmXG4kIHNleCAgICAgICAgICAgICAgIDxmY3Q+IG1hbGUsIGZlbWFsZSwgZmVtYWxlLCBOQSwgZmVtYWxlLCBtYWxlLCBmZW1hbGUsIG1hbGUsIE5BLCBOQeKAplxuJCB5ZWFyICAgICAgICAgICAgICA8aW50PiAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCDigKZcbiJ9 -->
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMzQ0XG5Db2x1bW5zOiA4XG4kIHNwZWNpZXMgICAgICAgICAgIDxmY3Q+IEFkZWxpZSwgQWRlbGllLCBBZGVsaWUsIEFkZWxpZSwgQWRlbGllLCBBZGVsaWUsIEFkZWxpZSwgQWRlbGllLCBBZGVsaWUsIEFkZWxpZSwgQWRlbGllLCBBZGVsaWUsIEFkZWxpZeKAplxuJCBpc2xhbmQgICAgICAgICAgICA8ZmN0PiBUb3JnZXJzZW4sIFRvcmdlcnNlbiwgVG9yZ2Vyc2VuLCBUb3JnZXJzZW4sIFRvcmdlcnNlbiwgVG9yZ2Vyc2VuLCBUb3JnZXJzZW4sIFRvcmdlcnNlbiwgVG9yZ2Vyc2VuLCBUb3LigKZcbiQgYmlsbF9sZW5ndGhfbW0gICAgPGRibD4gMzkuMSwgMzkuNSwgNDAuMywgTkEsIDM2LjcsIDM5LjMsIDM4LjksIDM5LjIsIDM0LjEsIDQyLjAsIDM3LjgsIDM3LjgsIDQxLjEsIDM4LjYsIDM0LjYsIDM2LjYsIDM4LjcsIDQy4oCmXG4kIGJpbGxfZGVwdGhfbW0gICAgIDxkYmw+IDE4LjcsIDE3LjQsIDE4LjAsIE5BLCAxOS4zLCAyMC42LCAxNy44LCAxOS42LCAxOC4xLCAyMC4yLCAxNy4xLCAxNy4zLCAxNy42LCAyMS4yLCAyMS4xLCAxNy44LCAxOS4wLCAyMOKAplxuJCBmbGlwcGVyX2xlbmd0aF9tbSA8aW50PiAxODEsIDE4NiwgMTk1LCBOQSwgMTkzLCAxOTAsIDE4MSwgMTk1LCAxOTMsIDE5MCwgMTg2LCAxODAsIDE4MiwgMTkxLCAxOTgsIDE4NSwgMTk1LCAxOTcsIDE4NCwgMTk0LCAxNzTigKZcbiQgYm9keV9tYXNzX2cgICAgICAgPGludD4gMzc1MCwgMzgwMCwgMzI1MCwgTkEsIDM0NTAsIDM2NTAsIDM2MjUsIDQ2NzUsIDM0NzUsIDQyNTAsIDMzMDAsIDM3MDAsIDMyMDAsIDM4MDAsIDQ0MDAsIDM3MDAsIDM0NTAsIDQ14oCmXG4kIHNleCAgICAgICAgICAgICAgIDxmY3Q+IG1hbGUsIGZlbWFsZSwgZmVtYWxlLCBOQSwgZmVtYWxlLCBtYWxlLCBmZW1hbGUsIG1hbGUsIE5BLCBOQSwgTkEsIE5BLCBmZW1hbGUsIG1hbGUsIG1hbGUsIGZlbWFsZSwgZmVtYeKAplxuJCB5ZWFyICAgICAgICAgICAgICA8aW50PiAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCAyMDA3LCDigKZcbiJ9 -->
 <pre><code>Rows: 344
 Columns: 8
-$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
-$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torge…
-$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, 42.0, 37…
-$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, 20.2, 17…
-$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186, 180, 1…
-$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, 4250, 33…
-$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male, NA, NA…
-$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, …</code></pre>
+$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie…
+$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Tor…
+$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, 42.0, 37.8, 37.8, 41.1, 38.6, 34.6, 36.6, 38.7, 42…
+$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, 20.2, 17.1, 17.3, 17.6, 21.2, 21.1, 17.8, 19.0, 20…
+$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186, 180, 182, 191, 198, 185, 195, 197, 184, 194, 174…
+$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, 4250, 3300, 3700, 3200, 3800, 4400, 3700, 3450, 45…
+$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male, NA, NA, NA, NA, female, male, male, female, fema…
+$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, …</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -3155,17 +3161,14 @@ head(peng_billflip_tbl)</code></pre>
 <p><br />
 </p>
 </div>
-</div>
-<div id="challenge-1" class="section level1">
-<h1>CHALLENGE #1</h1>
+<div id="challenge-1" class="section level2">
+<h2>CHALLENGE #1</h2>
 <p>Add a column called <code>bill_flip_sum</code> which represents the
-sum of the bill and flipper length.</p>
-<p>Hint: use <code>mutate()</code></p>
+<strong>sum of the bill and flipper length</strong>.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMgWW91ciBhbnN3ZXIgaGVyZVxucGVuZ3VpbnMgfD4gXG4gIG11dGF0ZShiaWxsX2ZsaXBfc3VtID0gYmlsbF9sZW5ndGhfbW0gKyBmbGlwcGVyX2xlbmd0aF9tbSkgfD4gXG4gIGhlYWQoKVxuYGBgIn0= -->
-<pre class="r"><code>## Your answer here
-penguins |&gt; 
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGVuZ3VpbnMgfD4gXG4gIG11dGF0ZShiaWxsX2ZsaXBfc3VtID0gYmlsbF9sZW5ndGhfbW0gKyBmbGlwcGVyX2xlbmd0aF9tbSkgfD4gXG4gIGhlYWQoKVxuYGBgIn0= -->
+<pre class="r"><code>penguins |&gt; 
   mutate(bill_flip_sum = bill_length_mm + flipper_length_mm) |&gt; 
   head()</code></pre>
 <!-- rnb-source-end -->
@@ -3181,14 +3184,36 @@ penguins |&gt;
 <p><br />
 </p>
 </div>
+<div id="challenge-2" class="section level2">
+<h2>CHALLENGE #2</h2>
+<p>Write an expression that returns <strong>only</strong> the
+<code>species</code>, <code>sex</code>, and <code>bill_flip_sum</code>
+columns.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGVuZ3VpbnMgfD4gXG4gIG11dGF0ZShiaWxsX2ZsaXBfc3VtID0gYmlsbF9sZW5ndGhfbW0gKyBmbGlwcGVyX2xlbmd0aF9tbSkgfD4gXG4gIHNlbGVjdChzcGVjaWVzLCBzZXgsIGJpbGxfZmxpcF9zdW0pIHw+IFxuICBoZWFkKClcbmBgYCJ9 -->
+<pre class="r"><code>penguins |&gt; 
+  mutate(bill_flip_sum = bill_length_mm + flipper_length_mm) |&gt; 
+  select(species, sex, bill_flip_sum) |&gt; 
+  head()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6Mywic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI2IMOXIDMiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbjFSVFV2RFFCRGRaSk9HQmxxRS9nNkQwb3ZIaUtKM1VlaXRiTk5OdTNTekc3TGIycHVDdjBLUDN2d0QvamJ4MExpZnBRM3FRTWlidHp0djVzM2VYVS9HNlNRRkFFQVF3UURBV0VFUVA5emZuRjRBRUlVcUNVQUUrdnEvVlpkRzVpYUFBL1h2bWNOZnY2UENIc1ViVElWQ0o3YVBaUy9ubUJMc3N2N1ZrakFoRzFUNzQxdk1KT2NkcWJpZ1NIaWx2WDZKQ3NrYmhYWUhrNFYrbW1kZ0lyQ2NsZ3RicHhEdUZYQ0ZxSjhsTXRqY2hPMS92Y0JRTS9ucVphd2pwMmVtVVY2UlZ4VnZUMTg2Uzk1eitsbnF5T21INGJ1V0dLcHdkem1KcUhGQkZHMVRLUERXd2NHTVVEb3RLYW1uWWwxMXRQb05mOHk4bmw1RXFNMjNiZnY5aDUxMGppVEt5a2FWV0V0SGNnbXZKZUZNaVlVanQ5WEQ0cURwRUVteFhMUFYrYmhEdzVvdGRDLzNDTURORmpoSmo2SHRIdmtaZTM3bG1DMEk4NDhUVXpURDFDdlA4Y2JCb2JKdW5HZDFRNWowL2hRck1za2w4aVZwd2FsbjdDUHVmZ0F6VmxNTkJBTUFBQT09In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["species"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["bill_flip_sum"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Adelie","2":"male","3":"220.1"},{"1":"Adelie","2":"female","3":"225.5"},{"1":"Adelie","2":"female","3":"235.3"},{"1":"Adelie","2":"NA","3":"NA"},{"1":"Adelie","2":"female","3":"229.7"},{"1":"Adelie","2":"male","3":"229.3"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
 <div id="manipulating-rows" class="section level1">
 <h1>Manipulating Rows</h1>
 <div id="sort-rows" class="section level2">
 <h2>Sort Rows</h2>
 <p>You can <strong>sort</strong> a table using <code>arrange()</code>,
-passing the column(s) you want to sort by. The default sort order is
-ascending, but you can change that to descending by wrapping the column
-name in <code>desc()</code>.</p>
+passing the column(s) you want to sort by.</p>
 <p>Sort by flipper size (smallest to largest):</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
@@ -3197,7 +3222,7 @@ name in <code>desc()</code>.</p>
   arrange(flipper_length_mm) |&gt; 
   head()</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6NCwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI2IMOXIDQiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCZ3R5aVREbWl1QmlZR0JnWm1CaFptUmdaZ1V5R1ZoRFE5eDBMUmdZV0ppQUhFWUdGZ1pPRUYwQlZDUU1aTEFBYVY0Z3pRYVd4SXBSTkxMbHBKYWw1aFFEV1FJUWV5Q2lqaW1wT1ptcFVCNm5jMFptWG5GSlVXSUJUTm85TmE4a1B4L05LTmJrbk1SaW1FbHc4OU1TazB2eWk0Q3NmMERNQnhKeGNQcHNEQUlPVHMvU1FNREJSWEltRU14eWNENEE4aCtEZzlOTUNOK2g1d3dRbkFVS3dYeTBCb2pYQWZFR0lONkVoTUhtMnAvUitIcW9QMGJUL3ZTeDVlL25idEsxUDZzdk5YOWYyVW43TTFsMVAyOHJYYlEvZGFCWktHOTZyLzN4Y3pmRjJyV1owSjJmbDVpYkNuTStDMVNRdmJnZ05Ua1RLQXpoOGlWbDV1VEU1NlRtcFpka3hPZm1Ra1VGMDNJeUN3cFNpekFrK01IS1FiTHhSWWtsbWVnQnhsbVVYNjRIc3hYa1JhWUdJUEgvLy85ZkVJWE0vOUVDa3lzbHNTUlJMNjBJcUFVU29DakdzZWNYQU8zSUF4ckdKQXdOTDJUTmpFVm9BdXpKR2FWNTJZYkdhTUxNQlhucElMdWdDWVlCNmpaR3FKRXdOZ3ZFZGhhWUc5bGdFUTRNZzh3OFdOSmh6VWxNU3MyQm1aeVNXZ1lMU0tEWHdUN1hLeWpLekN1QitROG9XcXhYa2wrU0NOUENsWnlmQXhPQkpLRi9BSEluWG9jV0F3QUEifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6NCwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI2IMOXIDQiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCZ3R5aVREbWl1QmlZR0JnWm1CaFptUmdaZ1V5R1ZoRFE5eDBMUmdZV0ppQUhFWUdGZ1pPRUYwQlZDUU1aTEFBYVY0Z3pRYVd4SXBSTkxMbHBKYWw1aFFEV1FJUWV5Q2lqaW1wT1ptcFVCNm5jMFptWG5GSlVXSUJUTm85TmE4a1B4L05LTmJrbk1SaW1FbHc4OU1TazB2eWk0Q3NmMERNQnhKeGNQcHNEQUlPVHMvU1FNREJSWEltRU14eWNENEE4aCtEZzlOTUNOK2g1d3dRbkFVS3dYeTBCb2pYQWZFR0lONkVoTUhtMnAvUitIcW9QMGJUL3ZTeDVlL25idEsxUDZzdk5YOWYyVW43TTFsMVAyOHJYYlEvZGFCWktHOTZyLzN4Y3pmRjJyV1owSjJmbDVpYkNuTStDMVNRdmJnZ05Ua1RLQXpoOGlWbDV1VEU1NlRtcFpka3hPZm1Ra1VGMDNJeUN3cFNpekFrK01IS1FiTHhSWWtsbWVnQnhsbVVYNjRIc3hYa1JhWUdJUEgvLy85ZkVJWE0vOUVDa3lzbHNTUlJMNjBJcUFVU29DakdzZWNYQU8zSUF4ckdKQXdOTDJUTmpFVm9BdXpKR2FWNTJZWW1hTUxNQlhucElMdWdDWVlCNmpaR3FKRXdOZ3ZFZGhhWUc5bGdFUTRNZzh3OFdOSmh6VWxNU3MyQm1aeVNXZ1lMU0tEWHdUN1hLeWpLekN1QitROG9XcXhYa2wrU0NOUENsWnlmQXhPQkpLRi9BS0F3YmRvV0F3QUEifQ== -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["species"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["bill_length_mm"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["flipper_length_mm"],"name":[3],"type":["int"],"align":["right"]},{"label":["bill_flip_ratio"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Adelie","2":"37.9","3":"172","4":"0.220"},{"1":"Adelie","2":"37.8","3":"174","4":"0.217"},{"1":"Adelie","2":"40.2","3":"176","4":"0.228"},{"1":"Adelie","2":"39.5","3":"178","4":"0.222"},{"1":"Adelie","2":"37.2","3":"178","4":"0.209"},{"1":"Adelie","2":"33.1","3":"178","4":"0.186"}],"options":{"columns":{"min":{},"max":[10],"total":[4]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
@@ -3208,7 +3233,9 @@ name in <code>desc()</code>.</p>
 <!-- rnb-text-begin -->
 <p><br />
 </p>
-<p>Largest to smallest:</p>
+<p>The default sort order is ascending, but you can change that to
+descending by wrapping the column name in <code>desc()</code>.</p>
+<p>To sort the rows by largest to smallest flipper length:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGVuZ19iaWxsZmxpcF90YmwgfD4gXG4gIGFycmFuZ2UoZGVzYyhmbGlwcGVyX2xlbmd0aF9tbSkpIHw+IFxuICBoZWFkKClcbmBgYCJ9 -->
@@ -3216,7 +3243,7 @@ name in <code>desc()</code>.</p>
   arrange(desc(flipper_length_mm)) |&gt; 
   head()</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6NCwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI2IMOXIDQiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbTFTdlU0Q1FSQmV1QVBDQlZBRGhVOWdCNGxSRXpzd0dnRi9HcU9HU3JJY2k1d3VlNWU3QlkyRjhSMm9yZTBzTEkyMURXSjhCUnNzN1NrNDUyNXZDWnhNTWpjejM4NThzek8zSjN1MURhMm1JWVFVcENvUnBNVEFSYkd6MC8zOE5rSnFGSUlJVWxIU3M3ZVFsQVZIQlpzR0cvZXJGdXBjWVp5U0hxRU9lTXVpajBCM21vUWFKSWlTdTIyRE9kekdsand1RThaTk0wUVYweWwySk5PVXY0VjFidHJnVFVBekhsSTZYR3Q1VXFvaVgwckhINTRNUzVXUndDdEhJajVJK1JaUzVFUS9vS01GNnZNV1AzTjMzK1huWEhIdy92VDcrSkl2ZnZYNTI5WDllQm9Qb3FucTY4VldjWmc1VjFmNzNmRDFHZTRRZVgwMUFCT09SWFFEWUJGbUdnYWxkVXJZSlcvWE81MEFYV2xSdzdLSS9lOWd5VS8zVHVzMjVrWjRZVW5idkNuSXJ0NkkwUWY0dUs0N0ZvbUtHMXFtMXNRY0YxbzJsSWlGenRFbFRBdDZNQ0NMWm9OOXpSWkg3QkNRME50ZGRyMitHWUlWaTExNnZYeElTRHJ3NHpPK0tycXI4bzV4K2NOaEJ3YVRUeWRHY1lOUXlkd2tQYmxJR04yZnZHRFpCdU55UGtDZEFqYzVsaVdhYmxLSmlDYzArUVBldk9VUEZnTUFBQT09In0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6NCwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI2IMOXIDQiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbTFTdlU0Q1FSQmV1RHNJQkZBRGhVOWdCNGt4SkhhSDBRajQweGcxVkpMbFdPUjAyYnZjTFdnc2pPOUFiVzFuWVdtc2JSRGpLOWhnYVU4Qnp0M2VFamlaWkc1bXZwMzVabWR1VC9acVc4bGFFaUdrSUZXSklFVURGMmxucC92NWJZVFVLQVFScEtLRVoyOGhLUXVPQ2pZTk51WlhMZFdGd2hnbFBVSmQ4RlpGSDRIdU5BazFTUkFsZHRzbWM3bURiWGxjSm94YlZvaEtNeWgySmRPTXY0VU5iam5nVFVBekhsSTYzR2g1VXFvaVgwckhINTRNUzVXUndDdEhJajVJK1JaUzVFUS9vS01sNnZQcW43bTc3L0p6VGgrOFAvMCt2dVQxcno1L3U3b2Z6K0pCTkZWOXZTanF3OHk1dXQ3dmhxL1BjSWZJNjZzQkdIZHRZcGdBaXpEVE1DbXRVOEl1ZWJ2ZTZRVG9Xb3VhdGsyY2Z3Y3JmcnAzV25jd044TUxTempXVFVGMjlVYU1Qc0JuT3AyT1JhSXlEUzB6MmNRY0Yxb09sSWlGTHRERkxSdDZNQ0NMWm9OOXpSZEhuQkFRTjlwZGRyMVpETUdLelM2OVhqNGtKQjM0c1RsZkZkMVZlY2VZL09Hd0E1UEpwNk5SM0NCVU1qZEpUeTRTUnZjbkw5aU95YmljRDFDM3dDMk9aVW5Tc0toRXhCT2EvQUdERFA1VkZnTUFBQT09In0= -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["species"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["bill_length_mm"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["flipper_length_mm"],"name":[3],"type":["int"],"align":["right"]},{"label":["bill_flip_ratio"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Gentoo","2":"54.3","3":"231","4":"0.235"},{"1":"Gentoo","2":"50.0","3":"230","4":"0.217"},{"1":"Gentoo","2":"59.6","3":"230","4":"0.259"},{"1":"Gentoo","2":"49.8","3":"230","4":"0.217"},{"1":"Gentoo","2":"48.6","3":"230","4":"0.211"},{"1":"Gentoo","2":"52.1","3":"230","4":"0.227"}],"options":{"columns":{"min":{},"max":[10],"total":[4]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
@@ -3247,19 +3274,18 @@ expressions</p></li>
 penguins:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2VudG9vX2JpbGxmbGlwX3RibCA8LSBwZW5nX2JpbGxmbGlwX3RibCB8PiBcbiAgZmlsdGVyKHNwZWNpZXMgPT0gXCJHZW50b29cIikgXG5cbmdsaW1wc2UoZ2VudG9vX2JpbGxmbGlwX3RibClcbmBgYCJ9 -->
-<pre class="r"><code>gentoo_billflip_tbl &lt;- peng_billflip_tbl |&gt; 
-  filter(species == &quot;Gentoo&quot;) 
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2VudG9vX2JpbGxmbGlwX3RibCA8LSBwZW5nX2JpbGxmbGlwX3RibCB8PiBmaWx0ZXIoc3BlY2llcyA9PSBcIkdlbnRvb1wiKSBcblxuZ2xpbXBzZShnZW50b29fYmlsbGZsaXBfdGJsKVxuYGBgIn0= -->
+<pre class="r"><code>gentoo_billflip_tbl &lt;- peng_billflip_tbl |&gt; filter(species == &quot;Gentoo&quot;) 
 
 glimpse(gentoo_billflip_tbl)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTI0XG5Db2x1bW5zOiA0XG4kIHNwZWNpZXMgICAgICAgICAgIDxmY3Q+IEdlbnRvbywgR2VudG9vLCBHZW50b28sIEdlbnRvbywgR2VudG9vLCBHZW50b28sIEdlbnRvbywgR2VudOKAplxuJCBiaWxsX2xlbmd0aF9tbSAgICA8ZGJsPiA0Ni4xLCA1MC4wLCA0OC43LCA1MC4wLCA0Ny42LCA0Ni41LCA0NS40LCA0Ni43LCA0My4zLCA0Ni44LCDigKZcbiQgZmxpcHBlcl9sZW5ndGhfbW0gPGludD4gMjExLCAyMzAsIDIxMCwgMjE4LCAyMTUsIDIxMCwgMjExLCAyMTksIDIwOSwgMjE1LCAyMTQsIDIxNiwg4oCmXG4kIGJpbGxfZmxpcF9yYXRpbyAgIDxkYmw+IDAuMjE4LCAwLjIxNywgMC4yMzIsIDAuMjI5LCAwLjIyMSwgMC4yMjEsIDAuMjE1LCAwLjIxMywgMC4yMOKAplxuIn0= -->
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTI0XG5Db2x1bW5zOiA0XG4kIHNwZWNpZXMgICAgICAgICAgIDxmY3Q+IEdlbnRvbywgR2VudG9vLCBHZW50b28sIEdlbnRvbywgR2VudG9vLCBHZW50b28sIEdlbnRvbywgR2VudG9vLCBHZW50b28sIEdlbnRvbywgR2VudG9vLCBHZW50b28sIEdlbnRvb+KAplxuJCBiaWxsX2xlbmd0aF9tbSAgICA8ZGJsPiA0Ni4xLCA1MC4wLCA0OC43LCA1MC4wLCA0Ny42LCA0Ni41LCA0NS40LCA0Ni43LCA0My4zLCA0Ni44LCA0MC45LCA0OS4wLCA0NS41LCA0OC40LCA0NS44LCA0OS4zLCA0Mi4wLCDigKZcbiQgZmxpcHBlcl9sZW5ndGhfbW0gPGludD4gMjExLCAyMzAsIDIxMCwgMjE4LCAyMTUsIDIxMCwgMjExLCAyMTksIDIwOSwgMjE1LCAyMTQsIDIxNiwgMjE0LCAyMTMsIDIxMCwgMjE3LCAyMTAsIDIyMSwgMjA5LCAyMjIsIDIx4oCmXG4kIGJpbGxfZmxpcF9yYXRpbyAgIDxkYmw+IDAuMjE4LCAwLjIxNywgMC4yMzIsIDAuMjI5LCAwLjIyMSwgMC4yMjEsIDAuMjE1LCAwLjIxMywgMC4yMDcsIDAuMjE4LCAwLjE5MSwgMC4yMjcsIDAuMjEzLCAwLjIyNywgMC4yMeKAplxuIn0= -->
 <pre><code>Rows: 124
 Columns: 4
-$ species           &lt;fct&gt; Gentoo, Gentoo, Gentoo, Gentoo, Gentoo, Gentoo, Gentoo, Gent…
-$ bill_length_mm    &lt;dbl&gt; 46.1, 50.0, 48.7, 50.0, 47.6, 46.5, 45.4, 46.7, 43.3, 46.8, …
-$ flipper_length_mm &lt;int&gt; 211, 230, 210, 218, 215, 210, 211, 219, 209, 215, 214, 216, …
-$ bill_flip_ratio   &lt;dbl&gt; 0.218, 0.217, 0.232, 0.229, 0.221, 0.221, 0.215, 0.213, 0.20…</code></pre>
+$ species           &lt;fct&gt; Gentoo, Gentoo, Gentoo, Gentoo, Gentoo, Gentoo, Gentoo, Gentoo, Gentoo, Gentoo, Gentoo, Gentoo, Gentoo…
+$ bill_length_mm    &lt;dbl&gt; 46.1, 50.0, 48.7, 50.0, 47.6, 46.5, 45.4, 46.7, 43.3, 46.8, 40.9, 49.0, 45.5, 48.4, 45.8, 49.3, 42.0, …
+$ flipper_length_mm &lt;int&gt; 211, 230, 210, 218, 215, 210, 211, 219, 209, 215, 214, 216, 214, 213, 210, 217, 210, 221, 209, 222, 21…
+$ bill_flip_ratio   &lt;dbl&gt; 0.218, 0.217, 0.232, 0.229, 0.221, 0.221, 0.215, 0.213, 0.207, 0.218, 0.191, 0.227, 0.213, 0.227, 0.21…</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -3269,25 +3295,26 @@ $ bill_flip_ratio   &lt;dbl&gt; 0.218, 0.217, 0.232, 0.229, 0.221, 0.221, 0.215,
 <code>filter()</code>:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGVuZ19iaWxsZmxpcF90YmwgfD4gXG4gIGZpbHRlcihzcGVjaWVzID09IFwiR2VudG9vXCIsIGZsaXBwZXJfbGVuZ3RoX21tID4gMjIwKSB8PiBcbiAgc2VsZWN0KHNwZWNpZXMsIGZsaXBwZXJfbGVuZ3RoX21tKSB8PiBcbiAgZ2xpbXBzZSgpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGVuZ19iaWxsZmxpcF90YmwgfD4gXG4gIGZpbHRlcihzcGVjaWVzID09IFwiR2VudG9vXCIsIGZsaXBwZXJfbGVuZ3RoX21tID4gMjIwKSB8PiBcbiAgc2VsZWN0KHNwZWNpZXMsIGZsaXBwZXJfbGVuZ3RoX21tKSB8PiBcbiAgaGVhZCgpXG5gYGAifQ== -->
 <pre class="r"><code>peng_billflip_tbl |&gt; 
   filter(species == &quot;Gentoo&quot;, flipper_length_mm &gt; 220) |&gt; 
   select(species, flipper_length_mm) |&gt; 
-  glimpse()</code></pre>
+  head()</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMzVcbkNvbHVtbnM6IDJcbiQgc3BlY2llcyAgICAgICAgICAgPGZjdD4gR2VudG9vLCBHZW50b28sIEdlbnRvbywgR2VudG9vLCBHZW50b28sIEdlbnRvbywgR2VudG9vLCBHZW504oCmXG4kIGZsaXBwZXJfbGVuZ3RoX21tIDxpbnQ+IDIzMCwgMjIxLCAyMjIsIDIyMiwgMjMwLCAyMjUsIDIyMiwgMjI1LCAyMjUsIDIyNCwgMjIxLCAyMzEsIOKAplxuIn0= -->
-<pre><code>Rows: 35
-Columns: 2
-$ species           &lt;fct&gt; Gentoo, Gentoo, Gentoo, Gentoo, Gentoo, Gentoo, Gentoo, Gent…
-$ flipper_length_mm &lt;int&gt; 230, 221, 222, 222, 230, 225, 222, 225, 225, 224, 221, 231, …</code></pre>
-<!-- rnb-output-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI2IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbTFSVFV2RU1CQk5tMzdRd29xeXY4T0NlTkNyS0hvWGhiMHRzVTIzd1RRSmFWdzkra2NWdlBnalBHeWROb25zQmdNdmVmT2FlVFBUM04rc3pzdFZpUkRDS01FUndpbFFsRDQrM0o1ZUlwVEVFRVFvUWNWMHZzR2xKUkFROFFMT2JNNzZGd2VKR2FkYnlnZGd4N2FPVmE4YXlobDFVWEhkTVRFWVRaVC9mRWVGa1RLd1NtdE9CdS8wNTkrUzJrZ05iQWZ3blgwRFBnQ2ZEbFA4RmRvSjBsTnZGenN4SHhTdEdjZzJQR2s1VTRycU5hZGlZN3AxM3djbWhaYXZsVGVhcXNmdnNJM2orR012NGpIb3QyeUlJVldySWNYMmZHQ1hTMldZRkdBV0w5MG8rOG1SRG9TODdsN0U4OWxGSUdNbE5sT3RXYkpyNFhpMngyTmJQZkU5WnY2ZndyQk0rTmRKT1htaTNEczNkT3ZvRVl3K1QxNHB6WVR4ODRFNlZFWWE0bFBLV25LdjJGZmEvUUs1TldMQ2VRSUFBQT09In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["species"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["flipper_length_mm"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Gentoo","2":"230"},{"1":"Gentoo","2":"221"},{"1":"Gentoo","2":"222"},{"1":"Gentoo","2":"222"},{"1":"Gentoo","2":"230"},{"1":"Gentoo","2":"225"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p><br />
 </p>
 <p>Suppose we wanted to identify the top 5 Gentoo observations with the
-largest bill_flip_ratio value. We can do that using a combination of
-<code>arrange()</code> and <code>slice()</code>:</p>
+largest <code>bill_flip_ratio</code> value. We can do that using a
+combination of <code>arrange()</code> and <code>slice()</code>:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2VudG9vX2JpbGxmbGlwX3RibCB8PiBcbiAgYXJyYW5nZShkZXNjKGJpbGxfZmxpcF9yYXRpbykpIHw+IFxuICBzbGljZSgxOjUpIFxuYGBgIn0= -->
@@ -3295,7 +3322,7 @@ largest bill_flip_ratio value. We can do that using a combination of
   arrange(desc(bill_flip_ratio)) |&gt; 
   slice(1:5) </code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6NCwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDQiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbVZTTVVzRE1SUk9lM2V0UGJBcXJ1THNZa0U2cURoY1JWRm9jVkFVaWhSS2VrM2IwelIzM01YcUpDNXVnb04vdzAySERrNU9EdHE2aTV1NE9JcUxRdXRMYzFGNkRiems1Y3Q3Mzh2N2twMzFZdFlzbWdnaERlbGFER2tHdU1qWTI5MllYMEpJajhNbWhuU1VFdXNKQkUyRG84TTZMcUlHV1NNMmxKU2dwRVZvQU42a3JDSFIxU3FoRGdsM3FiV0d3d0x1WTA4ZGJ4TEdYVGRDWmRnVUI0cnBqNytHYmU3NjRQWEEwaUlzdC9Vb3hsT3U4SmtWSTVlL2tXdmhRdUw1SEFxSDZ1SWQ3QTNzSmZSZkZaZjFmTVh2RGs2L3JXNXA3dXYrc21SMVY2cjdNOWRqVnFlOS9YRSsyN1k2cllmYjVlSms5S29NTjRtNnFoNkN5Y0FqdGdPdzNLWXJEcVZsU2xpZE44ck5ab2hPMWFqamVjUWZPWmdZaEl2VHNvKzVFeFVuNWJ2SEdWVlZ0QlUvZzZuZjcvL0lRSzBmRWM2c1lvNHpOUjlTcEhoRGRFblhneG9NeU9MaXhST1I1SmdmQVpKMjQ0Z2RMaXhHWU0xamRWRnJBUDFMSGd0bFY3NHVxK3ZxamduMXVLQ0J3OVEzTVNpdUVLcVlxNlNsaElUV0I1MW5QTjloWFBVSGFKRGhMc2NxeGJSZHFoRDVYWHEvZkMyRzF2NENBQUE9In0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6NCwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDQiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbVZTTVVzRE1SUk9lOWZXRnF5S3F6aTdXSkF1RlllcktBb3REb3BDa1VKSjc5TDJOTTBkZDdFNmlZdWI0T0RmY05PaGc1T1RnN2J1NGlZdWp1S2kwUE9sdVNpOUJsN3k4dVc5NytWOXljNTZKWitwWkJCQ0d0SzFHTklTNEtMRTN1N0dZZ0VoUFE2YkdOSlJXcXduRURRTGpnN3JwSWdhWm8zWlNGS1NrZzZoUG5qVHNvWkVWeTFDYlJMdTBtc3RtL25jdzY0NjNpU01PMDZFS21GUzdDdW1QLzRHTnJuamdUY0F5NHF3NHRhakdFL0Y4bWRlakdMcFJxN2xDNG1YaWlnY3FvdDNzRGV3bDlCL1ZWekc4eFcvT3pqOU52clZoYS83eTZyUlg3SDI1NjRuakY1MysrTjh2bXYwT2crM3k1WHA2RlVaYmhOMVZUMEVVNzVMVEJ0Z3VjM1diVXBybExBbWI5WGE3UkNkYVZEYmRZazNkakExREJlbk5ROXpPeXBPMm5PT2M2cXFhQ3QrQmxNUUJEOHlVQXNpd21Vc3pIR3U0VUdLRkcrRUx1VzRVSU1CV1Z5OGVES1NIUE1pUU1wc0hiSERwVUlFMWx6V0ZMV0cwTC9rc1ZCMjVldXl1cTd1bUZTUEN4cllUSDJUQk1WMVFoV3pSVHBLU0doOTJIbk85V3pHVlgrQStqbnVjS3hTTXFaREZTSy95K0FYaGJMN052NENBQUE9In0= -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["species"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["bill_length_mm"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["flipper_length_mm"],"name":[3],"type":["int"],"align":["right"]},{"label":["bill_flip_ratio"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Gentoo","2":"59.6","3":"230","4":"0.259"},{"1":"Gentoo","2":"55.9","3":"228","4":"0.245"},{"1":"Gentoo","2":"53.4","3":"219","4":"0.244"},{"1":"Gentoo","2":"55.1","3":"230","4":"0.240"},{"1":"Gentoo","2":"52.5","3":"221","4":"0.238"}],"options":{"columns":{"min":{},"max":[10],"total":[4]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
@@ -3314,7 +3341,7 @@ largest bill_flip_ratio value. We can do that using a combination of
   top_n(5, bill_flip_ratio) |&gt; 
   arrange(desc(bill_flip_ratio))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6NCwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI2IMOXIDQiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbTFTTVV2RFFCUytObWxxQzYyVnJ1THNZa0c2VkJ3U1VWUVVCMFdoaUZDdXliV05YaThoT2F1VHVMZ0pEdjROTngwY25Kd0V0WFVYTjNGeEZCY0g0MHN1SnhvOWVIbmZmZS9lOSs2OTNOcGN2WnF2NXhGQ0NsS1ZGRkl5QUZGbVkzMStvb2FRbW9aTkNxa29GL3A5T0ZRR29JSXZnTmVpckgvdFY2SkdTWTlRSDFCSjFCSHNqRVdvVGVKZGJyWmpNNTk3MkpYaEJjSzQ0eVNrTWliRnZsVDYxbTloa3pzZW9FK3dZc2dZSzNmaHVqZVczNnJoTXBiT2hWOCtGdnlTRWZhSmpNV0lyZ0tVSGIyQVBZTTl4dmdKN0ZicTZnK24vR3I3NEVNZmJJMi9YNTlzNllOcGEzUDBiRWp2WDY2K0hvMWQ2djNlemNWVXZTUjk4dm9NZDRtOHZocVRXZDhscGcyMDJCYWJOcVVOU2xpYmR4cmRic3lPdEtqdHVzVDdFeGlPam9mUmhvZTVuUnhZem5QMktySnEyR0w2RUQ1QkVIeUlnMHFRR0diZXdoeFhXaDZraUlIK2tzczZMdFJnSUpZdXgvUDZtWnp5RWtUVzdPeXluY2xhZ2xaYzFnNXJSWlJZaFJoclA3QXFxcXZ5anByODRUQURtOG1uazZHNFNhaFV0a2hQRGhKYWp6cXZ1SjdOdU93UFdML0NIWTVsU3Q1MHFHVEVFL3I4QXF3VVJaNFdBd0FBIn0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6NCwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI2IMOXIDQiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbTFTdjB2RFFCUytObWxyQy9VSFhjWFp4WUowc1Rna29xaTBPQ2dLUlFybG1sN2I2UFVTa3JNNmlZdWI0T0MvNGFaREJ5Y253Wis3dUltTG83aDBhSHpKNWFTTkhyeTg3NzUzNzN2M1htNXJwVkxJVkRJSUlRV3BTZ3dwQ1lBb3NiTzlPcmVBa0JxSFRReXBLTzM3SXppVUE2Q0N6NEpQQmxuLzJraGlrcEl1b1M2Z1NWRkhzRXNOUWswUzd0TExiWk81M01HMkRLOFJ4aTBySXBVd0tIYWwwcTkrRXh2Y2NnQU53TVo5UnQ5NDhOZWpYdjRxK0VzdlhRbGZQaE44U2ZmN1JQcDZRQmNBeW80K3dON0JYa1A4Qm5ZdmRiV1hDMzZ6ZDl6WG5xdXozN2ZuVmUxNXNiRTdmVG1tUGZVMlAwOW5ldHBUOSs2NldKbVVQbnA5aGp0RVhsOE55WlJyRThNRVdtekg2eWFsTlVwWWk3ZHJuVTdJVGpXcGFkdkUrUk9ZQ0k3NzBacUR1UmtkV05xeER2T3lxdDlpL0FRK251ZjF4VUhGaXd3ejA4QWM1NXNPcElpQmpzaWxMQnRxTUJDTDU4SjVEU2ZIbkFpUk10b0hiSCsrR0tFVm03WDhXZ0VsVmpiRXlTR3NpdXFxdkdOUy9uQ1lnY25rMDBsUVhDZFVLamRJVnc0U1dnODZ6OXVPeWJqc0QxZzN6eTJPWlVyR3NLaGt4Qk1hL0FEeHBGN0VGZ01BQUE9PSJ9 -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["species"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["bill_length_mm"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["flipper_length_mm"],"name":[3],"type":["int"],"align":["right"]},{"label":["bill_flip_ratio"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Gentoo","2":"59.6","3":"230","4":"0.259"},{"1":"Gentoo","2":"55.9","3":"228","4":"0.245"},{"1":"Gentoo","2":"53.4","3":"219","4":"0.244"},{"1":"Gentoo","2":"55.1","3":"230","4":"0.240"},{"1":"Gentoo","2":"52.5","3":"221","4":"0.238"},{"1":"Gentoo","2":"48.4","3":"203","4":"0.238"}],"options":{"columns":{"min":{},"max":[10],"total":[4]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
@@ -3326,58 +3353,71 @@ largest bill_flip_ratio value. We can do that using a combination of
 <p><br />
 </p>
 </div>
-</div>
-<div id="challenge-2" class="section level1">
-<h1>CHALLENGE #2</h1>
-<p>Write an expression that pulls out just the males on Torgersen
-Island. HOw many are there?</p>
-<p>Tip: For challenge questions 2 &amp; 3, mix and match the following
-functions:</p>
-<p><code>select()</code>, <code>mutate()</code>, <code>pull()</code>,
-<code>arrange()</code>, <code>filter()</code>, <code>slice()</code></p>
+<div id="challenge-3" class="section level2">
+<h2>CHALLENGE #3</h2>
+<p>Write an expression that pulls out just the observations from
+<strong>Torgersen Island</strong>. Then compute the <strong>number of
+rows</strong>.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA9IHBlbmd1aW5zIHw+IFxuICBmaWx0ZXIoaXNsYW5kID09IFwiVG9yZ2Vyc2VuXCIsIHNleCA9PSBcIm1hbGVcIikgfD4gXG4gIGhlYWQoKVxuXG54XG5gYGAifQ== -->
-<pre class="r"><code>x = penguins |&gt; 
-  filter(island == &quot;Torgersen&quot;, sex == &quot;male&quot;) |&gt; 
-  head()
-
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA9IHBlbmd1aW5zIHw+IGZpbHRlcihpc2xhbmQgPT0gXCJUb3JnZXJzZW5cIilcbnhcbmBgYCJ9 -->
+<pre class="r"><code>x = penguins |&gt; filter(island == &quot;Torgersen&quot;)
 x</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6OCwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI2IMOXIDgiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbzFUelk3VE1CQjJrL1FYYmNXeUp4NkNDdWl1Qkxmc1pvRUxKN1JJZTZ2Y1pOcGFPSGJrbUdYM3hnTnc1QUlQc0MrQXVNSUJ3UW5POEN3Y05reHFUMmxEUVl6MFpjYWZQYjkybmh5ZmpnZW5BOFpZeUtLd3hjSTJtcXo5OU9UaHJYdU1SUUV1V2l4aS9WcWY0NkU5Tkhxb2QxQjNscHRic2VIWWtYQUdza1RydXN2ajJNTU1wQUMvNmljTG9VcHJlRUhiajBCWnJSdWgycW5rSlVWYXhaL3gxR3FEMXRWYVplRjIxT0dDcWxuTGtTaFRUYlcwanczd25BbzcwV1lPcGdUbGZNUHFYOW5ac0diaTVOVlhsRzl4Y2ptckpVN2UxUEkyVGg0Ny90RHJCekh6NHZ6dXZodlhFdS83ODJPdkQ4YU9QN2pwMXZ2dUhQcFF0KzhSSHhDZkVCOFJYeENmZis4UEx4RkhqTjFJVVA5Z2JQYzI0dlhhdElMdDJKaFdzT29ZY2k1cFd0SFMvcC9aK0Z6ZDc5dXhlZEdLNTBBWDNmTmt0eXdnRlVqNzZLS1VYR1YrTlp3S0tTY1MxTnd1SmpsZDM4NlN6YUJZSjNkblVoUUZtRDlPWDV2cTdHS1M0eE9iekQwVmxuQk9uVjRBTjQwNiswYS9HRkd0ZFlQQlMveFVWZlh6THlNWlpOenkwY3lnaXh2TFJyaXVMcXpRQ29NRmUvNW0xcDFicGtGMDA4Vno5ZXpPL1FZZEZtcGU1L0kvSlBPMXRYeElzbnN1ZTBRMWRtaXdPQmFoVnIrRDVGT1FGRG1ETXhvNHRyN3NmRlFZb1N6MWgydzVzdHB5Y2hta1doTGpIc0xWTDdTL0c1eDJCQUFBIn0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NTIsIm5jb2wiOjgsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiNTIgw5cgOCJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJ0MVdPMjhVVnhTKys3RFhObDQvUUVLaVJvcEVnZkhPMmhFRnhUeDJUWU1va0NNUkNja2E3OTYxUjh6T3JHWUc4MmpnQjZRTGphbWlGRlFVaUpjZ3hJWmdiRXVKYWRJRW1sUVJCUlVTTlpoejkzNW5zanNCS1JKSVNJeDBkTzg1NXp2ZmVkelp2WE9xZHJvNmNucEVDRkVReFVKT0ZBWm9Ld2ErbTU4N2ZGU0lZcDZVbkNpS1liVmVJTkErMmd6UldxWjFwdXY4cXFTdjRVRmZya2cvcHQyRW5vKzJXazNwZXhMYXNMUHNCWEVTdVIxMkg1ZEJFb1lacW9HRzc4Yk1sUEszM0VZU1JyUjcxelBSd3RjbGFnejUzZXdNYlM5dWhEekRnVm9rM1RZUGRENk1sbVFVeTBESEZqajJnMU1UWTJwcXB2UEREajNQVE9leFVJOVorNmFsbnN1dmxWYjYyYlMvWDZYbm11bGM3OXBOSjY2cXgzUld0ZDBhMWZGMW9lUHRseHJIYTQzNVQralZ3bXBqZGNCZk4zVzhWZFg4eDhGbnZkRjZEWHdtNm5SZW9LNGR6VE1IdndWL3ZZWDhxTmRHdmZZQjVCdnRyNmZPT05SalplcTIwYitGdk53WDg5bHNoMTY3cmZrczVLMXh2MXdYOTNGRnIzT294OEVjNnBvL1BTY0RmQlhFRzNvKzZUbFZ3VCtEZkJYTXBRcmRRRjB6bUc4RmVnVnhGZUJtNFo4OWtPSEJlY3lnRGdOMXpLTCthY1JYWVdjODR5cmdOWEJPRmNRWkhNOTVnSjlHL2lyWHdYVnpQeGw4aGVzREgrdkdhbjk4RlhHcEgvZ2ptVDdUUER3ZjFHR3dIMzFvV2hYRi8wSjNTWDRoMmRETTRqZVNkZGczZW5TRnVVTnlqK1FSeVJiSkEyQTJTZTZUUEFGMkM2dVNwL0N2QS9zSTJJZlExNEI1aUZ5L2ttekR2Z2E3NHJ0SjhqdnEyQVlQOC8wSi9zMS8reHE3VHZKY2lORmJ1cS95SmRKdGtrTkM3SFZJLzVIK2JLNlIveCt5SmJSZTBmakphYTByL09SVnNyOGwzTElRZTE2UnZraStDU0hHajVIL2I3Si9xN0dLUjYxc0gvOUo4KzA5b3ptNzhmTzBwMXJMK3pYbjZFbmEzOUI1eGc5cS9tN2NINFRmNmRIZmFseDZhK2pMaGdUbmxldXg1Wld0VjNyOGFWd3Yvc3V2ZmJkR1B2M25sMjNYNTF1ajJOMy9uenNDTXlyOTlabmwrU2ZLaTArVC9nK013RzFML3NBWWdyRVVkMlRESXpPbTRzVytHelNoalMxNnZyL2d5MkFwV1Y1bzgvVmI3bHFic3ROcm5HejVYcWNqby8rZzl5eUd6WXNMYmZxMFdWaUNxUkRMQzN4Q0Y2VWJaZW9janNMelUxeHJtVi9PM2QzZG5ZOGM1VWpUVGR5cFZrUWgramo3NkVwaEovSENnTWp5NnN0ME1CT2NpektHVW1QNVhIRFdtTTZZQzUxZ1NlWENDeWhRV3c0L0x0NFA2ZXhGcm5HUUIwdGo4WUwwYzhaM0Y2WFB6RTI1d2dPbjFydWRUM1VpTDBpNFA3TEdVMG1ZdUJ3eTBnaDl0dWdYK04xN0JNaU5PcVlMQUFBPSJ9 -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["species"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["island"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["bill_length_mm"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["bill_depth_mm"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["flipper_length_mm"],"name":[5],"type":["int"],"align":["right"]},{"label":["body_mass_g"],"name":[6],"type":["int"],"align":["right"]},{"label":["sex"],"name":[7],"type":["fctr"],"align":["left"]},{"label":["year"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"Adelie","2":"Torgersen","3":"39.1","4":"18.7","5":"181","6":"3750","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"39.3","4":"20.6","5":"190","6":"3650","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"39.2","4":"19.6","5":"195","6":"4675","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"38.6","4":"21.2","5":"191","6":"3800","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"34.6","4":"21.1","5":"198","6":"4400","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"42.5","4":"20.7","5":"197","6":"4500","7":"male","8":"2007"}],"options":{"columns":{"min":{},"max":[10],"total":[8]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+{"columns":[{"label":["species"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["island"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["bill_length_mm"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["bill_depth_mm"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["flipper_length_mm"],"name":[5],"type":["int"],"align":["right"]},{"label":["body_mass_g"],"name":[6],"type":["int"],"align":["right"]},{"label":["sex"],"name":[7],"type":["fctr"],"align":["left"]},{"label":["year"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"Adelie","2":"Torgersen","3":"39.1","4":"18.7","5":"181","6":"3750","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"39.5","4":"17.4","5":"186","6":"3800","7":"female","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"40.3","4":"18.0","5":"195","6":"3250","7":"female","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"36.7","4":"19.3","5":"193","6":"3450","7":"female","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"39.3","4":"20.6","5":"190","6":"3650","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"38.9","4":"17.8","5":"181","6":"3625","7":"female","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"39.2","4":"19.6","5":"195","6":"4675","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"34.1","4":"18.1","5":"193","6":"3475","7":"NA","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"42.0","4":"20.2","5":"190","6":"4250","7":"NA","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"37.8","4":"17.1","5":"186","6":"3300","7":"NA","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"37.8","4":"17.3","5":"180","6":"3700","7":"NA","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"41.1","4":"17.6","5":"182","6":"3200","7":"female","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"38.6","4":"21.2","5":"191","6":"3800","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"34.6","4":"21.1","5":"198","6":"4400","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"36.6","4":"17.8","5":"185","6":"3700","7":"female","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"38.7","4":"19.0","5":"195","6":"3450","7":"female","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"42.5","4":"20.7","5":"197","6":"4500","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"34.4","4":"18.4","5":"184","6":"3325","7":"female","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"46.0","4":"21.5","5":"194","6":"4200","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"35.9","4":"16.6","5":"190","6":"3050","7":"female","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"41.8","4":"19.4","5":"198","6":"4450","7":"male","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"33.5","4":"19.0","5":"190","6":"3600","7":"female","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"39.7","4":"18.4","5":"190","6":"3900","7":"male","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"39.6","4":"17.2","5":"196","6":"3550","7":"female","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"45.8","4":"18.9","5":"197","6":"4150","7":"male","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"35.5","4":"17.5","5":"190","6":"3700","7":"female","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"42.8","4":"18.5","5":"195","6":"4250","7":"male","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"40.9","4":"16.8","5":"191","6":"3700","7":"female","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"37.2","4":"19.4","5":"184","6":"3900","7":"male","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"36.2","4":"16.1","5":"187","6":"3550","7":"female","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"42.1","4":"19.1","5":"195","6":"4000","7":"male","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"34.6","4":"17.2","5":"189","6":"3200","7":"female","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"42.9","4":"17.6","5":"196","6":"4700","7":"male","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"36.7","4":"18.8","5":"187","6":"3800","7":"female","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"35.1","4":"19.4","5":"193","6":"4200","7":"male","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"38.6","4":"17.0","5":"188","6":"2900","7":"female","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"37.3","4":"20.5","5":"199","6":"3775","7":"male","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"35.7","4":"17.0","5":"189","6":"3350","7":"female","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"41.1","4":"18.6","5":"189","6":"3325","7":"male","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"36.2","4":"17.2","5":"187","6":"3150","7":"female","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"37.7","4":"19.8","5":"198","6":"3500","7":"male","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"40.2","4":"17.0","5":"176","6":"3450","7":"female","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"41.4","4":"18.5","5":"202","6":"3875","7":"male","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"35.2","4":"15.9","5":"186","6":"3050","7":"female","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"40.6","4":"19.0","5":"199","6":"4000","7":"male","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"38.8","4":"17.6","5":"191","6":"3275","7":"female","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"41.5","4":"18.3","5":"195","6":"4300","7":"male","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"39.0","4":"17.1","5":"191","6":"3050","7":"female","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"44.1","4":"18.0","5":"210","6":"4000","7":"male","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"38.5","4":"17.9","5":"190","6":"3325","7":"female","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"43.1","4":"19.2","5":"197","6":"3500","7":"male","8":"2009"}],"options":{"columns":{"min":{},"max":[10],"total":[8]},"rows":{"min":[10],"max":[10],"total":[52]},"pages":{}}}
   </script>
 </div>
 <!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubnJvdyh4KVxuYGBgIn0= -->
-<pre class="r"><code>nrow(x)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5ucm93KHgpXG5gYGAifQ== -->
+<pre class="r"><code>
+nrow(x)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDZcbiJ9 -->
-<pre><code>[1] 6</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDUyXG4ifQ== -->
+<pre><code>[1] 52</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p><br />
-</p>
 </div>
-<div id="challenge-3" class="section level1">
-<h1>CHALLENGE #3</h1>
-<p>Compute the ratio of body mass to bill length and add it as a new
-column. Return just the species, sex, and this ratio.</p>
+<div id="challenge-4" class="section level2">
+<h2>CHALLENGE #4</h2>
+<p>Write an expression that pulls out just the <strong>males</strong> on
+Torgersen Island, and then <strong>orders them by body
+mass</strong>.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGVuZ3VpbnMgfD4gXG4gIG11dGF0ZShibV9iaWxsX2xlbl9yYXRpbyA9IGJvZHlfbWFzc19nIC8gYmlsbF9sZW5ndGhfbW0pIHw+IFxuICBzZWxlY3Qoc3BlY2llcywgc2V4LCBibV9iaWxsX2xlbl9yYXRpbykgfD4gXG4gIGhlYWQoKVxuYGBgIn0= -->
-<pre class="r"><code>penguins |&gt; 
-  mutate(bm_bill_len_ratio = body_mass_g / bill_length_mm) |&gt; 
-  select(species, sex, bm_bill_len_ratio) |&gt; 
-  head()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueSA9IHBlbmd1aW5zIHw+IGZpbHRlcihpc2xhbmQgPT0gXCJUb3JnZXJzZW5cIiwgc2V4ID09IFwibWFsZVwiKSB8PiBhcnJhbmdlKGJvZHlfbWFzc19nKVxueVxuYGBgIn0= -->
+<pre class="r"><code>y = penguins |&gt; filter(island == &quot;Torgersen&quot;, sex == &quot;male&quot;) |&gt; arrange(body_mass_g)
+y</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6Mywic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI2IMOXIDMiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbjFSelVyRFFCRGVaSk9HQmkyVmV0SW5VREQ0QTlLVFJCU0xQWlpLNjZsczAyMGIzRzdDWnEyOXRVY2Z3Q2NRdlBrQW5uMGY4U2JTUStNbTJTMXRVQU5odi9sMjVwdjVaaHVYN1JPN2JRTUFJRENnQnFBcElEQnZtbGNIVlFBTVhRUWFNRUF4T1NjaXFaSm1BcmdwemtKNitldS9WbGdnZUl4SkpGQTU2NU94NXoxTWZDeWo0c1hRcHhGbktGVFhOVXg1RU9Ta1RJK2dTQ2t0OWZ2STR3RVRhTEV5bWE2bW1ZSDAwekl1a2ROanFhQXZGZkFJRVRXTGtlSTBFOGIvOVFLbGhIRmI4OTNwNjlHNzI5NzRxdFVmZDl6bVhyM3g5TEkvL1U3YVdzOXVhM1o3ZmJiOTRiYXE1bW41OHkxdmlhSVJ6aS9IaWtMcytZTE9RaGpoaVlSYjNWR242eFBTSVpoMkdPSitma1ZGRmp3NFNqTlpocDRzSUk3aitSK1c3QjdpeU9relVaTFpXcE96Z2xEMG9FSk1yOGpOcmhackxFZFkzdkNlM2gwZjVtZ1kwa0hTU3o0RWtMTnBVbEpobUhVMzFJd0Z0WFpNQno1VkQyUVMxTVZFS2Zmd1dNS1NzSjQ2ZDBMbVU2NzhDVFp5ZU1DUktyRzlnQ2dtZThqRkQrUVZydFFJQXdBQSJ9 -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MjMsIm5jb2wiOjgsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiMjMgw5cgOCJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJyVlZPNC9UUUJEZXhIbHpGM0pRSUdwcUlzNU9UaFFVdnJ5dW9VS0hkQVZTNU1TYnhHSmpXN1k1N2pwK0FDWE5VVkZkUlllUWFIZ2VEd21GaGlhWFA0REVqK0RDMkR1VGN3eElORm5wMDg1OHUvUE56R3E5dnRQYTAwcDdKY2FZd2pKS2lpbFpNRm4yN203bitrM0dNbWx3VWl6RGl1RjhBSnN1ZzFHQWVSM21LOUhpeXJDVVBDZjRQaGMrV0JWWnEyUzNUUzRzamw2eE9iSnNQL0FNbDVaM3VCMDRUa0lxMnhlR1Qwb0wvWUhSRHh3UHJMTllkOHJxRUphVW5pZjdhVmgrMzZGK3NpMlBHMk5xYnRmeGh0enp1UzFqRllyOWF3ZXNISGFndHg1UFlIelRHN01qR0UvMU52ck40MEU0OUNhdGszOWIrcTBYV2pqMEpzWTFqakIrRGRkeFh3Zjl6ZzhadjhPaW9XK2pibnNnK2RZNzVFa2Y5N2QxeVRkSjM0L3lMdXBYa2RjbU1rNlRRNjhocjJLZHRVZFNwNDdyS3ZvcTV0ZG92b3A2V0tkS005WlR4emphdjlEQnV1c1VqK3Mxeks5aFBadHloaEM2UWE4Qm53R2ZBRzhBTHdGZkFHOEJYNUY3QlRoQi9qdnUvUUI0ai93SmFwQk82SDg4ejdIMkM4em5FdVVHNEJnQSt1VlR4aTVlQTl4Q1BEdEhaUXN3UWtDOWxRbGpHemNBUGNBVHhpNDFBZmRpWDBKNmRWajZFdEtMMjh6SGhxQXZJUlBaLzNQdnNkNzhMSVlwWWhhYlQyT1l4YmhwZ3AvR2VMU1hIeFBiR0hONlRBcEk1bjJYOXkyZ3NVTExGNFp0b2xmdVdVSjBCYmVId2FnN3BzOTdQV0pON3NiSmpZR3dYSmQ3Zit5KzBIUE13KzRZbnJIdUVDbkY1d2QwV29mYzhCSjFGajNuWVpWcURROHBIVjd0K1h6Kzh4L0hXaktOd0tnT1BBaVJSN3NrbDNmY3dISnNFRXVIZjRSY0lqamxKWWg4Zi9UQXZxOXVKbWpGdFlkaExpWWZmWWExcGZEU2tWMlEyVE5VWTQ0T0ZvN0ZzaGZQcFRCNlhKQ3l5ZmZwd0tIMXFQT3E2MWwyUVAwQjYxY0RKekFvcE5SM0JESHlNcDM5QnY5Um5Oa2VCd0FBIn0= -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["species"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["bm_bill_len_ratio"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Adelie","2":"male","3":"95.90793"},{"1":"Adelie","2":"female","3":"96.20253"},{"1":"Adelie","2":"female","3":"80.64516"},{"1":"Adelie","2":"NA","3":"NA"},{"1":"Adelie","2":"female","3":"94.00545"},{"1":"Adelie","2":"male","3":"92.87532"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+{"columns":[{"label":["species"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["island"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["bill_length_mm"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["bill_depth_mm"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["flipper_length_mm"],"name":[5],"type":["int"],"align":["right"]},{"label":["body_mass_g"],"name":[6],"type":["int"],"align":["right"]},{"label":["sex"],"name":[7],"type":["fctr"],"align":["left"]},{"label":["year"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"Adelie","2":"Torgersen","3":"41.1","4":"18.6","5":"189","6":"3325","7":"male","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"37.7","4":"19.8","5":"198","6":"3500","7":"male","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"43.1","4":"19.2","5":"197","6":"3500","7":"male","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"39.3","4":"20.6","5":"190","6":"3650","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"39.1","4":"18.7","5":"181","6":"3750","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"37.3","4":"20.5","5":"199","6":"3775","7":"male","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"38.6","4":"21.2","5":"191","6":"3800","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"41.4","4":"18.5","5":"202","6":"3875","7":"male","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"39.7","4":"18.4","5":"190","6":"3900","7":"male","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"37.2","4":"19.4","5":"184","6":"3900","7":"male","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"42.1","4":"19.1","5":"195","6":"4000","7":"male","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"40.6","4":"19.0","5":"199","6":"4000","7":"male","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"44.1","4":"18.0","5":"210","6":"4000","7":"male","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"45.8","4":"18.9","5":"197","6":"4150","7":"male","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"46.0","4":"21.5","5":"194","6":"4200","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"35.1","4":"19.4","5":"193","6":"4200","7":"male","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"42.8","4":"18.5","5":"195","6":"4250","7":"male","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"41.5","4":"18.3","5":"195","6":"4300","7":"male","8":"2009"},{"1":"Adelie","2":"Torgersen","3":"34.6","4":"21.1","5":"198","6":"4400","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"41.8","4":"19.4","5":"198","6":"4450","7":"male","8":"2008"},{"1":"Adelie","2":"Torgersen","3":"42.5","4":"20.7","5":"197","6":"4500","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"39.2","4":"19.6","5":"195","6":"4675","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"42.9","4":"17.6","5":"196","6":"4700","7":"male","8":"2008"}],"options":{"columns":{"min":{},"max":[10],"total":[8]},"rows":{"min":[10],"max":[10],"total":[23]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="challenge-5" class="section level2">
+<h2>CHALLENGE #5</h2>
+<p>Write an expression that returns the weight and species of the
+heaviest male penguin on Torgersen Island?</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGVuZ3VpbnMgfD4gXG4gIGZpbHRlcihpc2xhbmQgPT0gXCJUb3JnZXJzZW5cIiwgc2V4ID09IFwibWFsZVwiKSB8PiBcbiAgdG9wX24oYm9keV9tYXNzX2csIG4gPSAxKSB8PiBcbiAgc2VsZWN0KGlzbGFuZCwgc2V4LCBzcGVjaWVzLCBib2R5X21hc3NfZylcbmBgYCJ9 -->
+<pre class="r"><code>penguins |&gt; 
+  filter(island == &quot;Torgersen&quot;, sex == &quot;male&quot;) |&gt; 
+  top_n(body_mass_g, n = 1) |&gt; 
+  select(island, sex, species, body_mass_g)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6NCwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxIMOXIDQiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbzFTWFUrRE1CUXRVRWJBYUl6K0RubVlMNzZxaTc2Ym1lekJaT25nampXV2xyUjF6amQvK2VZRlduUWtKbXRDZSs3dHVlZCswSmZaNGpaYlpJU1FpTkFvSUZHTWtNU3Y4NmViTzBKb2lFWkFLRW5iYzRla2F3UVV6L1B1b28wNkprMEViRUVZUkplOVp1OTk0S1pRNEt4NHBvSFZ6a2puU2xlZ0RjaVJVbHdJWnJ6UUlMOW1oVlVhMGY1UEVXRWZHaDRjT3h6WVVEUGgwOUlPZDh6b2NKSnVNTklkMnJrdlFYQ3ZtejV1dURSV3M4WmZQNE8wU3AyU2lyaFVWMi9qN2lXcndYZFBmU2czZ3NuU1daR0JuWU9KYWFEZ3lPL05zNVVxdjVZMWptOVpqWFJUclQ1enI5MG1ENzl4TytENnA5eXNaSmJsYTQwaGZjbEhjb2xxTEZjU3hjTDJaVXhHd1lFZU9aSmk4eUhmcDlPUk8ycGsxZVp5Y3llL2craytqMm1mbmZvYUozNHVJQ3N1aCtjbDJBcUVWeTVoNitBRnR0NTFuamVhUyt2N1E2L0pyYkxNaDJTRkV0N1QvNlQ5RHd0RG9GWW1Bd0FBIn0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["island"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["species"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["body_mass_g"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"Torgersen","2":"male","3":"Adelie","4":"4700"}],"options":{"columns":{"min":{},"max":[10],"total":[4]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
   </script>
 </div>
 <!-- rnb-frame-end -->
@@ -3385,6 +3425,7 @@ column. Return just the species, sex, and this ratio.</p>
 <!-- rnb-text-begin -->
 <p><br />
 </p>
+</div>
 </div>
 <div id="end" class="section level1">
 <h1>End</h1>
@@ -3393,7 +3434,7 @@ Notebook in HTML</p>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkRhdGEgV3JhbmdsaW5nIDE6IEltcG9ydGluZyBNZXNzeSBEYXRhLCBNYW5pcHVsYXRpbmcgQ29sdW1ucyBhbmQgUm93cyINCm91dHB1dDogDQogIGh0bWxfbm90ZWJvb2s6DQogICAgdG9jOiB5ZXMNCiAgICB0b2NfZGVwdGg6IDMNCiAgICB0b2NfZmxvYXQ6IHllcw0KLS0tDQoNCmBgYHtjc3MgZWNobyA9IEZBTFNFfQ0KaDEsaDIsaDMge2ZvbnQtd2VpZ2h0OmJvbGQ7fQ0KaDEge2ZvbnQtc2l6ZToyNHB4O30NCmgyIHtmb250LXNpemU6MjBweDt9DQpoMyB7Zm9udC1zaXplOjE2cHg7fQ0KYGBgDQpcDQoNCiMgSW1wb3J0aW5nIE1lc3N5IEV4Y2VsIERhdGENCg0KQWx0aG91Z2ggeW91ciBkYXRhIG1heSBiZSBpbiBhIHNwcmVhZHNoZWV0IG9yIENTViBmaWxlLCBpdCBtYXkgbm90IGJlIGluIGFuIGlkZWFsIGZvcm1hdC4gU2VlIHRoaXMgcmVnaXN0cmF0aW9uIGxpc3Q6DQoNCiFbXSguL2ltYWdlcy9yZWdfbGlzdF9leGNlbF8xNTAweDYwMC5wbmcpDQoNClwNCg0KSGVyZSB3ZSBzZWUgYSBidW5jaCBvZiBzdHVmZiBiZWZvcmUgdGhlIGRhdGEsIHRoZSBjb2x1bW4gIm5hbWVzIiBhcmUgdW53aWVsZHksIHRoZXJlIGFyZSBzZXZlcmFsIGV4dHJhIGNvbHVtbnMgd2UgZG9uJ3QgbmVlZCwgbWlzc2luZyB2YWx1ZXMsIGV0Yy4NCg0KWW91IGNhbiB0YWNrbGUgbWFueSBvZiB0aGVzZSBpc3N1ZXMgd2hlbiB5b3UgaW1wb3J0IHRoZSBkYXRhLiBGaXJzdCwgd2UgY29uc3RydWN0IHRoZSBmaWxlIG5hbWUgYW5kIHZlcmlmeSBpdCBleGlzdHM6DQoNCmBgYHtyIGNodW5rMDF9DQpyZWdfbGlzdF9mbiA8LSAiLi9kYXRhL1N1cnZleVJlc3VsdHNfMzYxMDAueGxzeCINCmZpbGUuZXhpc3RzKHJlZ19saXN0X2ZuKQ0KYGBgDQoNClwNCg0KVG8gaW1wb3J0IEV4Y2VsIGZpbGVzLCB3ZSdsbCBnbyB0byBgcmVhZF94bHN4KClgIGZyb20gdGhlICpyZWFkeGwqIHBhY2thZ2UuIFRoaXMgZnVuY3Rpb24gaGFzIGEgbG90IG9mIG9wdGlvbnMsIHNvIGl0J3Mgd29ydGggcmVhZGluZyB0aGUgaGVscCBwYWdlOg0KDQpgYGB7ciBjaHVuazAyfQ0KbGlicmFyeShyZWFkeGwpDQpyZWdfbGlzdF90YmwgPC0gcmVhZF94bHN4KHBhdGggPSByZWdfbGlzdF9mbiwgDQogICAgICAgICAgICAgICAgICAgICAgICAgc2hlZXQgPSAiU3VydmV5IE91dHB1dCIsIA0KICAgICAgICAgICAgICAgICAgICAgICAgIHNraXAgPSAzLCANCiAgICAgICAgICAgICAgICAgICAgICAgICBjb2xfbmFtZXMgPSBjKCJ1c2VyIiwgInJlZ19kYXRlIiwgImZuYW1lIiwgImxuYW1lIiwgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZW1haWwiLCAidGl0bGUiLCAib3JnIiwgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiY29zcG9uc29yIiwgImFsbGVyZ2llcyIpLA0KICAgICAgICAgICAgICAgICAgICAgICAgIGNvbF90eXBlcyA9IGMoInRleHQiLCAidGV4dCIsICJ0ZXh0IiwgInRleHQiLCAidGV4dCIsICJ0ZXh0IiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJudW1lcmljIiwgInRleHQiLCAidGV4dCIpKQ0KDQpyZWdfbGlzdF90YmwNCmBgYA0KDQpcDQoNCkxpa2V3aXNlLCB0aGUgW3JlYWRyXShodHRwczovL3JlYWRyLnRpZHl2ZXJzZS5vcmcvKSBwYWNrYWdlIHByb3ZpZGVzIHN1cGVyLWNoYXJnZWQgZnVuY3Rpb25zIGZvciBpbXBvcnRpbmcgYW5kIGV4cG9ydGluZyByZWN0YW5ndWxhciBkYXRhIGluIHRleHQgZm9ybWF0cy4NCg0KXA0KDQoqKlRha2UgSG9tZSBNZXNzYWdlcyoqDQoNCi0gRGF0YSB3cmFuZ2xpbmcgc3RhcnRzIHdoZW4geW91IGltcG9ydA0KDQotIFlvdSdyZSBub3QgbGltaXRlZCB0byBqdXN0IHVzaW5nIGByZWFkLmNzdigpYA0KDQpcDQoNCiMgYGRwbHlyYCBtZXRob2RzDQoNCkxvYWQgZHBseXI6DQoNCmBgYHtyIGNodW5rMDN9DQpsaWJyYXJ5KGRwbHlyKQ0KDQpgYGANCg0KDQpcDQoNCldlIGNhbiBwcm9hY3RpdmVseSBwcmV2ZW50IGZ1bmN0aW9uIG5hbWUgY2xhc2hlcyB3aXRoIHRoZSBgY29uZmxpY3RlZGAgcGFja2FnZToNCg0KYGBge3IgY2h1bmswNH0NCiMjIExvYWQgdGhlIGNvbmZsaWN0ZWQgcGFja2FnZQ0KbGlicmFyeShjb25mbGljdGVkKQ0KDQojIFNldCBjb25mbGljdCBwcmVmZXJlbmNlcw0KY29uZmxpY3RfcHJlZmVyKCJmaWx0ZXIiLCAiZHBseXIiLCBxdWlldCA9IFRSVUUpDQpjb25mbGljdF9wcmVmZXIoImNvdW50IiwgImRwbHlyIiwgcXVpZXQgPSBUUlVFKQ0KY29uZmxpY3RfcHJlZmVyKCJzZWxlY3QiLCAiZHBseXIiLCBxdWlldCA9IFRSVUUpDQpjb25mbGljdF9wcmVmZXIoImFycmFuZ2UiLCAiZHBseXIiLCBxdWlldCA9IFRSVUUpDQpgYGANCg0KXA0KDQpXZSBiZWdpbiBieSBsb29raW5nIGF0IHRoZSBQYWxtZXIgUGVuZ3VpbnMgZGF0YToNCg0KYGBge3IgY2h1bmswNX0NCmxpYnJhcnkocGFsbWVycGVuZ3VpbnMpDQpoZWFkKHBlbmd1aW5zKQ0KYGBgDQoNClwNCg0KZHBseXIgcHJvdmlkZXMgYGdsaW1wc2UoKWAgd2hpY2ggaXMgYW4gYWx0ZXJuYXRpdmUgd2F5IHByZXZpZXcgYSB0aWJibGU6DQoNCmBgYHtyIGNodW5rMDZ9DQpnbGltcHNlKHBlbmd1aW5zKQ0KYGBgDQoNCg0KXA0KDQojIE1hbml1cGxhdGluZyBDb2x1bW5zDQoNCiMjIFN1YnNldCBDb2x1bW5zDQoNClN1cHBvc2Ugd2Ugd2FudCB0byBjb21wYXJlIGhvdyBiaWxsIGxlbmd0aCBhbmQgZmxpcHBlciBsZW5ndGggbG9vayBmb3IgZWFjaCBzcGVjaWVzLiBXZSBjb3VsZCBzdGFydCBieSBzZWxlY3RpbmcganVzdCB0aG9zZSBjb2x1bW5zOg0KDQpgYGB7ciBjaHVuazA3fQ0KcGVuZ3VpbnMgfD4gDQogIHNlbGVjdChzcGVjaWVzLCBiaWxsX2xlbmd0aF9tbSwgZmxpcHBlcl9sZW5ndGhfbW0pIHw+IA0KICBoZWFkKCkNCmBgYA0KDQpcDQoNCllvdSBjYW4gYWxzbyAqKnJlbmFtZSoqIGNvbHVtbnMgd2l0aCBgc2VsZWN0KClgIChkcGx5ciBhbHNvIGhhcyBhIGByZW5hbWUoKWAgZnVuY3Rpb24pOg0KDQpgYGB7ciBjaHVuazA4fQ0KcGVuZ3VpbnMgfD4gDQogIHNlbGVjdChzcGVjaWVzLCBiaWxsID0gYmlsbF9sZW5ndGhfbW0sIGZsaXBwZXIgPSBmbGlwcGVyX2xlbmd0aF9tbSkgfD4gDQogIGhlYWQoKQ0KYGBgDQoNClwNCg0KSWYgeW91IHdhbnQgdG8gZXh0cmFjdCB0aGUgdmFsdWVzIGZyb20gYSBzaW5nbGUgY29sdW1uIGFuZCBnZXQgdGhlIHJlc3VsdHMgYmFjayBhcyBhIHZlY3RvciwgDQp1c2UgYHB1bGwoKWAgKHNpbWlsYXIgdG8gdGhlIGAkYCBvcGVyYXRvcik6DQoNCmBgYHtyIGNodW5rMDl9DQpwZW5ndWlucyB8PiBwdWxsKHNwZWNpZXMpIHw+IHRhYmxlKCkNCmBgYA0KDQpcDQoNCiMjIEFkZC9Nb2RpZnkgQ29sdW1ucw0KDQpUbyAqKmFkZCBhIGNvbHVtbioqLCB3ZSBjYW4gdXNlIGBtdXRhdGUoKWAuIExldCdzIGNyZWF0ZSBhIG5ldyBjb2x1bW4gd2l0aCB0aGUgcmF0aW8gb2YgdGhlIGJpbGwgdG8gZmxpcHBlciBsZW5ndGg6DQoNCmBgYHtyIGNodW5rMTB9DQpwZW5nX2JpbGxmbGlwX3RibCA8LSBwZW5ndWlucyB8PiANCiAgc2VsZWN0KHNwZWNpZXMsIGJpbGxfbGVuZ3RoX21tLCBmbGlwcGVyX2xlbmd0aF9tbSkgfD4NCiAgbXV0YXRlKGJpbGxfZmxpcF9yYXRpbyA9IGJpbGxfbGVuZ3RoX21tIC8gZmxpcHBlcl9sZW5ndGhfbW0pDQogIA0KaGVhZChwZW5nX2JpbGxmbGlwX3RibCkNCmBgYA0KDQpcDQoNCmBtdXRhdGUoKWAgY2FuIGFsc28gYmUgdXNlZCB0byBtb2RpZnkgZXhpc3RpbmcgY29sdW1ucywgZm9yIGV4YW1wbGUgd2UgY291bGQgcm91bmQgYmlsbF9mbGlwX3JhdGlvIHRvIDMgZGVjaW1hbCBwbGFjZXMuDQoNCmBgYHtyIGNodW5rMTF9DQpwZW5nX2JpbGxmbGlwX3RibCA8LSBwZW5nX2JpbGxmbGlwX3RibCB8PiANCiAgbXV0YXRlKGJpbGxfZmxpcF9yYXRpbyA9IHJvdW5kKGJpbGxfZmxpcF9yYXRpbywgMykpDQoNCmhlYWQocGVuZ19iaWxsZmxpcF90YmwpDQpgYGANCg0KXA0KDQoNCiMgQ0hBTExFTkdFICMxDQoNCkFkZCBhIGNvbHVtbiBjYWxsZWQgYGJpbGxfZmxpcF9zdW1gIHdoaWNoIHJlcHJlc2VudHMgdGhlIHN1bSBvZiB0aGUgYmlsbCBhbmQgZmxpcHBlciBsZW5ndGguDQoNCkhpbnQ6IHVzZSBgbXV0YXRlKClgDQoNCmBgYHtyIGNodW5rMTJ9DQpwZW5ndWlucyB8PiANCiAgbXV0YXRlKGJpbGxfZmxpcF9zdW0gPSBiaWxsX2xlbmd0aF9tbSArIGZsaXBwZXJfbGVuZ3RoX21tKSB8PiANCiAgaGVhZCgpDQpgYGANCg0KXA0KDQojIE1hbmlwdWxhdGluZyBSb3dzDQoNCiMjIFNvcnQgUm93cw0KDQpZb3UgY2FuICoqc29ydCoqIGEgdGFibGUgdXNpbmcgYGFycmFuZ2UoKWAsIHBhc3NpbmcgdGhlIGNvbHVtbihzKSB5b3Ugd2FudCB0byBzb3J0IGJ5LiBUaGUgZGVmYXVsdCBzb3J0IG9yZGVyIGlzIGFzY2VuZGluZywgYnV0IHlvdSBjYW4gY2hhbmdlIHRoYXQgdG8gZGVzY2VuZGluZyBieSB3cmFwcGluZyB0aGUgY29sdW1uIG5hbWUgaW4gYGRlc2MoKWAuDQoNClNvcnQgYnkgZmxpcHBlciBzaXplIChzbWFsbGVzdCB0byBsYXJnZXN0KToNCg0KYGBge3IgY2h1bmsxM30NCnBlbmdfYmlsbGZsaXBfdGJsIHw+IA0KICBhcnJhbmdlKGZsaXBwZXJfbGVuZ3RoX21tKSB8PiANCiAgaGVhZCgpDQpgYGANCg0KXA0KDQpMYXJnZXN0IHRvIHNtYWxsZXN0Og0KDQpgYGB7ciBjaHVuazE0fQ0KcGVuZ19iaWxsZmxpcF90YmwgfD4gDQogIGFycmFuZ2UoZGVzYyhmbGlwcGVyX2xlbmd0aF9tbSkpIHw+IA0KICBoZWFkKCkNCmBgYA0KDQpcDQoNCiMjIFN1YnNldCBSb3dzDQoNClRoZSB0d28gZnVuY3Rpb25zIG1vc3QgY29tbW9ubHkgdXNlZCB0byBzdWJzZXQgcm93cyBpbmNsdWRlIGBmaWx0ZXIoKWAgYW5kIGBzbGljZSgpYC4NCg0KICAtIHVzZSBgc2xpY2UoKWAgdG8gc3Vic2V0IGJhc2VkIG9uIGluZGljZXMNCg0KICAtIHVzZSBgZmlsdGVyKClgIHRvIHN1YnNldCBiYXNlZCBvbiBhIGxvZ2ljYWwgZXhwcmVzc2lvbnMNCg0KXA0KDQpMb2dpY2FsIGV4cHJlc3Npb25zIHlvdSBjYW4gdXNlIGluIGBmaWx0ZXIoKWAgaW5jbHVkZToNCg0KIVtdKC4vaW1hZ2VzL2xvZ2ljYWwtZXhwcmVzc2lvbnMtNzQweDI4MHgyNTYucG5nKQ0KDQpcDQoNClN1cHBvc2Ugd2Ugb25seSB3YW50ZWQgdG8gd29yayB3aXRoIG9ic2VydmF0aW9ucyBvZiAqR2VudG9vKiBwZW5ndWluczoNCg0KYGBge3IgY2h1bmsxNX0NCmdlbnRvb19iaWxsZmxpcF90YmwgPC0gcGVuZ19iaWxsZmxpcF90YmwgfD4gDQogIGZpbHRlcihzcGVjaWVzID09ICJHZW50b28iKSANCg0KZ2xpbXBzZShnZW50b29fYmlsbGZsaXBfdGJsKQ0KYGBgDQoNClwNCg0KSWYgeW91IHdhbnQgdG8gZmlsdGVyIG9uIHR3byBjcml0ZXJpYSwgYWRkIGEgc2Vjb25kIGV4cHJlc3Npb24gdG8gYGZpbHRlcigpYDoNCg0KYGBge3IgY2h1bmsxNn0NCnBlbmdfYmlsbGZsaXBfdGJsIHw+IA0KICBmaWx0ZXIoc3BlY2llcyA9PSAiR2VudG9vIiwgZmxpcHBlcl9sZW5ndGhfbW0gPiAyMjApIHw+IA0KICBzZWxlY3Qoc3BlY2llcywgZmxpcHBlcl9sZW5ndGhfbW0pIHw+IA0KICBnbGltcHNlKCkNCmBgYA0KDQpcDQoNClN1cHBvc2Ugd2Ugd2FudGVkIHRvIGlkZW50aWZ5IHRoZSB0b3AgNSBHZW50b28gb2JzZXJ2YXRpb25zIHdpdGggdGhlIGxhcmdlc3QgYmlsbF9mbGlwX3JhdGlvIHZhbHVlLiBXZSBjYW4gZG8gdGhhdCB1c2luZyBhIGNvbWJpbmF0aW9uIG9mIGBhcnJhbmdlKClgIGFuZCBgc2xpY2UoKWA6DQoNCmBgYHtyIGNodW5rMTd9DQpnZW50b29fYmlsbGZsaXBfdGJsIHw+IA0KICBhcnJhbmdlKGRlc2MoYmlsbF9mbGlwX3JhdGlvKSkgfD4gDQogIHNsaWNlKDE6NSkgDQpgYGANCg0KXA0KDQpXZSBjb3VsZCBhbHNvIHVzZSBgdG9wX24oKWA6DQoNCmBgYHtyIGNodW5rMTh9DQpnZW50b29fYmlsbGZsaXBfdGJsIHw+IA0KICB0b3Bfbig1LCBiaWxsX2ZsaXBfcmF0aW8pIHw+IA0KICBhcnJhbmdlKGRlc2MoYmlsbF9mbGlwX3JhdGlvKSkNCmBgYA0KDQpcDQoNCiMgQ0hBTExFTkdFICMyDQoNCldyaXRlIGFuIGV4cHJlc3Npb24gdGhhdCBwdWxscyBvdXQganVzdCB0aGUgbWFsZXMgb24gVG9yZ2Vyc2VuIElzbGFuZC4gSE93IG1hbnkgYXJlIHRoZXJlPw0KDQpUaXA6IEZvciBjaGFsbGVuZ2UgcXVlc3Rpb25zIDIgJiAzLCBtaXggYW5kIG1hdGNoIHRoZSBmb2xsb3dpbmcgZnVuY3Rpb25zOg0KDQpgc2VsZWN0KClgLCBgbXV0YXRlKClgLCBgcHVsbCgpYCwgYGFycmFuZ2UoKWAsIGBmaWx0ZXIoKWAsIGBzbGljZSgpYA0KDQpgYGB7ciBjaHVuazE5fQ0KeCA9IHBlbmd1aW5zIHw+IA0KICBmaWx0ZXIoaXNsYW5kID09ICJUb3JnZXJzZW4iLCBzZXggPT0gIm1hbGUiKSB8PiANCiAgaGVhZCgpDQoNCngNCm5yb3coeCkNCmBgYA0KDQoNCg0KXA0KDQojIENIQUxMRU5HRSAjMw0KDQpDb21wdXRlIHRoZSByYXRpbyBvZiBib2R5IG1hc3MgdG8gYmlsbCBsZW5ndGggYW5kIGFkZCBpdCBhcyBhIG5ldyBjb2x1bW4uIFJldHVybiBqdXN0IHRoZSBzcGVjaWVzLCBzZXgsIGFuZCB0aGlzIHJhdGlvLg0KDQpgYGB7ciBjaHVuazIwfQ0KcGVuZ3VpbnMgfD4gDQogIG11dGF0ZShibV9iaWxsX2xlbl9yYXRpbyA9IGJvZHlfbWFzc19nIC8gYmlsbF9sZW5ndGhfbW0pIHw+IA0KICBzZWxlY3Qoc3BlY2llcywgc2V4LCBibV9iaWxsX2xlbl9yYXRpbykgfD4gDQogIGhlYWQoKQ0KYGBgDQoNClwNCg0KIyBFbmQNCg0KVGhhdCdzIGl0ISBSZW1lbWJlciB0byBzYXZlIHlvdXIgd29yayB0byByZW5kZXIgYSBjb3B5IG9mIHlvdXIgTm90ZWJvb2sgaW4gSFRNTA0KDQoNCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkRhdGEgV3JhbmdsaW5nIDE6IEltcG9ydGluZyBNZXNzeSBEYXRhLCBNYW5pcHVsYXRpbmcgQ29sdW1ucyBhbmQgUm93cyINCm91dHB1dDogDQogIGh0bWxfbm90ZWJvb2s6DQogICAgdG9jOiB5ZXMNCiAgICB0b2NfZGVwdGg6IDMNCiAgICB0b2NfZmxvYXQ6IA0KICAgICAgY29sbGFwc2VkOiBubw0KLS0tDQoNCmBgYHtjc3MgZWNobyA9IEZBTFNFfQ0KaDEsaDIsaDMge2ZvbnQtd2VpZ2h0OmJvbGQ7fQ0KaDEge2ZvbnQtc2l6ZToyNHB4O30NCmgyIHtmb250LXNpemU6MjBweDt9DQpoMyB7Zm9udC1zaXplOjE2cHg7fQ0KYGBgDQpcDQoNCiMgSW1wb3J0aW5nIE1lc3N5IEV4Y2VsIERhdGENCg0KQWx0aG91Z2ggeW91ciBkYXRhIG1heSBiZSBpbiBhIHNwcmVhZHNoZWV0IG9yIENTViBmaWxlLCBpdCBtYXkgbm90IGJlIGluIGFuIGlkZWFsIGZvcm1hdC4gU2VlIHRoaXMgcmVnaXN0cmF0aW9uIGxpc3Q6DQoNCiFbXSguL2ltYWdlcy9yZWdfbGlzdF9leGNlbF8xNTAweDYwMC5wbmcpDQoNClwNCg0KSGVyZSB3ZSBzZWUgYSBidW5jaCBvZiBzdHVmZiBiZWZvcmUgdGhlIGRhdGEsIHRoZSBjb2x1bW4gIm5hbWVzIiBhcmUgdW53aWVsZHksIHRoZXJlIGFyZSBzZXZlcmFsIGV4dHJhIGNvbHVtbnMgd2UgZG9uJ3QgbmVlZCwgbWlzc2luZyB2YWx1ZXMsIGV0Yy4NCg0KWW91IGNhbiB0YWNrbGUgbWFueSBvZiB0aGVzZSBpc3N1ZXMgd2hlbiB5b3UgaW1wb3J0IHRoZSBkYXRhLiBGaXJzdCwgd2UgY29uc3RydWN0IHRoZSBmaWxlIG5hbWUgYW5kIHZlcmlmeSBpdCBleGlzdHM6DQoNCmBgYHtyIGNodW5rMDF9DQpyZWdfbGlzdF9mbiA8LSAiLi9kYXRhL1N1cnZleVJlc3VsdHNfMzYxMDAueGxzeCINCmZpbGUuZXhpc3RzKHJlZ19saXN0X2ZuKQ0KYGBgDQoNClwNCg0KVG8gaW1wb3J0IEV4Y2VsIGZpbGVzLCB3ZSdsbCBnbyB0byBgcmVhZF94bHN4KClgIGZyb20gdGhlICpyZWFkeGwqIHBhY2thZ2UuIFRoaXMgZnVuY3Rpb24gaGFzIGEgbG90IG9mIG9wdGlvbnMsIHNvIGl0J3Mgd29ydGggcmVhZGluZyB0aGUgaGVscCBwYWdlOg0KDQpgYGB7ciBjaHVuazAyfQ0KbGlicmFyeShyZWFkeGwpDQpyZWdfbGlzdF90YmwgPC0gcmVhZF94bHN4KHBhdGggPSByZWdfbGlzdF9mbiwgDQogICAgICAgICAgICAgICAgICAgICAgICAgc2hlZXQgPSAiU3VydmV5IE91dHB1dCIsIA0KICAgICAgICAgICAgICAgICAgICAgICAgIHNraXAgPSAzLCANCiAgICAgICAgICAgICAgICAgICAgICAgICBjb2xfbmFtZXMgPSBjKCJ1c2VyIiwgInJlZ19kYXRlIiwgImZuYW1lIiwgImxuYW1lIiwgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZW1haWwiLCAidGl0bGUiLCAib3JnIiwgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiY29zcG9uc29yIiwgImFsbGVyZ2llcyIpLA0KICAgICAgICAgICAgICAgICAgICAgICAgIGNvbF90eXBlcyA9IGMoInRleHQiLCAidGV4dCIsICJ0ZXh0IiwgInRleHQiLCAidGV4dCIsICJ0ZXh0IiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJudW1lcmljIiwgInRleHQiLCAidGV4dCIpKQ0KDQpyZWdfbGlzdF90YmwNCmBgYA0KDQpcDQoNCkxpa2V3aXNlLCB0aGUgW3JlYWRyXShodHRwczovL3JlYWRyLnRpZHl2ZXJzZS5vcmcvKSBwYWNrYWdlIHByb3ZpZGVzIHN1cGVyLWNoYXJnZWQgZnVuY3Rpb25zIGZvciBpbXBvcnRpbmcgYW5kIGV4cG9ydGluZyByZWN0YW5ndWxhciBkYXRhIGluIHRleHQgZm9ybWF0cy4NCg0KXA0KDQoqKlRha2UgSG9tZSBNZXNzYWdlcyoqDQoNCi0gRGF0YSB3cmFuZ2xpbmcgc3RhcnRzIHdoZW4geW91IGltcG9ydA0KDQotIFlvdSdyZSBub3QgbGltaXRlZCB0byBqdXN0IHVzaW5nIGByZWFkLmNzdigpYA0KDQpcDQoNCiMgYGRwbHlyYCBtZXRob2RzDQoNCkxvYWQgZHBseXI6DQoNCmBgYHtyIGNodW5rMDN9DQpsaWJyYXJ5KGRwbHlyKQ0KDQpgYGANCg0KDQpcDQoNCldlIGNhbiBwcm9hY3RpdmVseSBwcmV2ZW50IGZ1bmN0aW9uIG5hbWUgY2xhc2hlcyB3aXRoIHRoZSBgY29uZmxpY3RlZGAgcGFja2FnZToNCg0KYGBge3IgY2h1bmswNH0NCiMjIExvYWQgdGhlIGNvbmZsaWN0ZWQgcGFja2FnZQ0KbGlicmFyeShjb25mbGljdGVkKQ0KDQojIFNldCBjb25mbGljdCBwcmVmZXJlbmNlcw0KY29uZmxpY3RfcHJlZmVyKCJmaWx0ZXIiLCAiZHBseXIiLCBxdWlldCA9IFRSVUUpDQpjb25mbGljdF9wcmVmZXIoImNvdW50IiwgImRwbHlyIiwgcXVpZXQgPSBUUlVFKQ0KY29uZmxpY3RfcHJlZmVyKCJzZWxlY3QiLCAiZHBseXIiLCBxdWlldCA9IFRSVUUpDQpjb25mbGljdF9wcmVmZXIoImFycmFuZ2UiLCAiZHBseXIiLCBxdWlldCA9IFRSVUUpDQpgYGANCg0KXA0KDQpXZSBiZWdpbiBieSBsb29raW5nIGF0IHRoZSBQYWxtZXIgUGVuZ3VpbnMgZGF0YToNCg0KYGBge3IgY2h1bmswNX0NCmxpYnJhcnkocGFsbWVycGVuZ3VpbnMpDQpoZWFkKHBlbmd1aW5zKQ0KYGBgDQoNClwNCg0KYGRwbHlyYCBhbHNvIHByb3ZpZGVzIGBnbGltcHNlKClgIHdoaWNoIGlzIGFuIGFsdGVybmF0aXZlIHdheSBwcmV2aWV3IGEgdGliYmxlOg0KDQpgYGB7ciBjaHVuazA2fQ0KZ2xpbXBzZShwZW5ndWlucykNCmBgYA0KDQoNClwNCg0KIyBNYW5pdXBsYXRpbmcgQ29sdW1ucw0KDQojIyBTdWJzZXQgQ29sdW1ucw0KDQpTdXBwb3NlIHdlIHdhbnQgdG8gY29tcGFyZSBob3cgYmlsbCBsZW5ndGggYW5kIGZsaXBwZXIgbGVuZ3RoIGxvb2sgZm9yIGVhY2ggc3BlY2llcy4gV2UgY291bGQgc3RhcnQgYnkgc2VsZWN0aW5nIGp1c3QgdGhvc2UgY29sdW1uczoNCg0KYGBge3IgY2h1bmswN30NCnBlbmd1aW5zIHw+IA0KICBzZWxlY3Qoc3BlY2llcywgYmlsbF9sZW5ndGhfbW0sIGZsaXBwZXJfbGVuZ3RoX21tKSB8PiANCiAgaGVhZCgpDQpgYGANCg0KXA0KDQpZb3UgY2FuIGFsc28gKipyZW5hbWUqKiBjb2x1bW5zIHdpdGggYHNlbGVjdCgpYCAoZHBseXIgYWxzbyBoYXMgYSBgcmVuYW1lKClgIGZ1bmN0aW9uKToNCg0KYGBge3IgY2h1bmswOH0NCnBlbmd1aW5zIHw+IA0KICBzZWxlY3Qoc3BlY2llcywgYmlsbCA9IGJpbGxfbGVuZ3RoX21tLCBmbGlwcGVyID0gZmxpcHBlcl9sZW5ndGhfbW0pIHw+IA0KICBoZWFkKCkNCmBgYA0KDQpcDQoNCklmIHlvdSB3YW50IHRvIGV4dHJhY3QgdGhlIHZhbHVlcyBmcm9tIGEgc2luZ2xlIGNvbHVtbiBhbmQgZ2V0IHRoZSByZXN1bHRzIGJhY2sgYXMgYSB2ZWN0b3IsIA0KdXNlIGBwdWxsKClgIChzaW1pbGFyIHRvIHRoZSBgJGAgb3BlcmF0b3IpOg0KDQpgYGB7ciBjaHVuazA5fQ0KcGVuZ3VpbnMgfD4gcHVsbChzcGVjaWVzKSB8PiB0YWJsZSgpDQpgYGANCg0KXA0KDQojIyBBZGQvTW9kaWZ5IENvbHVtbnMNCg0KVG8gKiphZGQgYSBjb2x1bW4qKiwgd2UgY2FuIHVzZSBgbXV0YXRlKClgLiBMZXQncyBjcmVhdGUgYSBuZXcgY29sdW1uIHdpdGggdGhlIHJhdGlvIG9mIHRoZSBiaWxsIHRvIGZsaXBwZXIgbGVuZ3RoOg0KDQpgYGB7ciBjaHVuazEwfQ0KcGVuZ19iaWxsZmxpcF90YmwgPC0gcGVuZ3VpbnMgfD4gDQogIHNlbGVjdChzcGVjaWVzLCBiaWxsX2xlbmd0aF9tbSwgZmxpcHBlcl9sZW5ndGhfbW0pIHw+DQogIG11dGF0ZShiaWxsX2ZsaXBfcmF0aW8gPSBiaWxsX2xlbmd0aF9tbSAvIGZsaXBwZXJfbGVuZ3RoX21tKQ0KICANCmhlYWQocGVuZ19iaWxsZmxpcF90YmwpDQpgYGANCg0KXA0KDQpgbXV0YXRlKClgIGNhbiBhbHNvIGJlIHVzZWQgdG8gbW9kaWZ5IGV4aXN0aW5nIGNvbHVtbnMsIGZvciBleGFtcGxlIHdlIGNvdWxkIHJvdW5kIGJpbGxfZmxpcF9yYXRpbyB0byAzIGRlY2ltYWwgcGxhY2VzLg0KDQpgYGB7ciBjaHVuazExfQ0KcGVuZ19iaWxsZmxpcF90YmwgPC0gcGVuZ19iaWxsZmxpcF90YmwgfD4gDQogIG11dGF0ZShiaWxsX2ZsaXBfcmF0aW8gPSByb3VuZChiaWxsX2ZsaXBfcmF0aW8sIDMpKQ0KDQpoZWFkKHBlbmdfYmlsbGZsaXBfdGJsKQ0KYGBgDQoNClwNCg0KDQojIyBDSEFMTEVOR0UgIzENCg0KQWRkIGEgY29sdW1uIGNhbGxlZCBgYmlsbF9mbGlwX3N1bWAgd2hpY2ggcmVwcmVzZW50cyB0aGUgKipzdW0gb2YgdGhlIGJpbGwgYW5kIGZsaXBwZXIgbGVuZ3RoKiouDQoNCmBgYHtyIGNodW5rMTJ9DQpwZW5ndWlucyB8PiANCiAgbXV0YXRlKGJpbGxfZmxpcF9zdW0gPSBiaWxsX2xlbmd0aF9tbSArIGZsaXBwZXJfbGVuZ3RoX21tKSB8PiANCiAgaGVhZCgpDQpgYGANCg0KXA0KDQojIyBDSEFMTEVOR0UgIzINCg0KV3JpdGUgYW4gZXhwcmVzc2lvbiB0aGF0IHJldHVybnMgKipvbmx5KiogdGhlIGBzcGVjaWVzYCwgYHNleGAsIGFuZCAgYGJpbGxfZmxpcF9zdW1gIGNvbHVtbnMuDQoNCmBgYHtyIGNodW5rMTN9DQpwZW5ndWlucyB8PiANCiAgbXV0YXRlKGJpbGxfZmxpcF9zdW0gPSBiaWxsX2xlbmd0aF9tbSArIGZsaXBwZXJfbGVuZ3RoX21tKSB8PiANCiAgc2VsZWN0KHNwZWNpZXMsIHNleCwgYmlsbF9mbGlwX3N1bSkgfD4gDQogIGhlYWQoKQ0KYGBgDQoNCiMgTWFuaXB1bGF0aW5nIFJvd3MNCg0KIyMgU29ydCBSb3dzDQoNCllvdSBjYW4gKipzb3J0KiogYSB0YWJsZSB1c2luZyBgYXJyYW5nZSgpYCwgcGFzc2luZyB0aGUgY29sdW1uKHMpIHlvdSB3YW50IHRvIHNvcnQgYnkuIA0KDQpTb3J0IGJ5IGZsaXBwZXIgc2l6ZSAoc21hbGxlc3QgdG8gbGFyZ2VzdCk6DQoNCmBgYHtyIGNodW5rMTR9DQpwZW5nX2JpbGxmbGlwX3RibCB8PiANCiAgYXJyYW5nZShmbGlwcGVyX2xlbmd0aF9tbSkgfD4gDQogIGhlYWQoKQ0KYGBgDQoNClwNCg0KVGhlIGRlZmF1bHQgc29ydCBvcmRlciBpcyBhc2NlbmRpbmcsIGJ1dCB5b3UgY2FuIGNoYW5nZSB0aGF0IHRvIGRlc2NlbmRpbmcgYnkgd3JhcHBpbmcgdGhlIGNvbHVtbiBuYW1lIGluIGBkZXNjKClgLg0KDQpUbyBzb3J0IHRoZSByb3dzIGJ5IGxhcmdlc3QgdG8gc21hbGxlc3QgZmxpcHBlciBsZW5ndGg6DQoNCmBgYHtyIGNodW5rMTV9DQpwZW5nX2JpbGxmbGlwX3RibCB8PiANCiAgYXJyYW5nZShkZXNjKGZsaXBwZXJfbGVuZ3RoX21tKSkgfD4gDQogIGhlYWQoKQ0KYGBgDQoNClwNCg0KIyMgU3Vic2V0IFJvd3MNCg0KVGhlIHR3byBmdW5jdGlvbnMgbW9zdCBjb21tb25seSB1c2VkIHRvIHN1YnNldCByb3dzIGluY2x1ZGUgYGZpbHRlcigpYCBhbmQgYHNsaWNlKClgLg0KDQogIC0gdXNlIGBzbGljZSgpYCB0byBzdWJzZXQgYmFzZWQgb24gaW5kaWNlcw0KDQogIC0gdXNlIGBmaWx0ZXIoKWAgdG8gc3Vic2V0IGJhc2VkIG9uIGEgbG9naWNhbCBleHByZXNzaW9ucw0KDQpcDQoNCkxvZ2ljYWwgZXhwcmVzc2lvbnMgeW91IGNhbiB1c2UgaW4gYGZpbHRlcigpYCBpbmNsdWRlOg0KDQohW10oLi9pbWFnZXMvbG9naWNhbC1leHByZXNzaW9ucy03NDB4MjgweDI1Ni5wbmcpDQoNClwNCg0KU3VwcG9zZSB3ZSBvbmx5IHdhbnRlZCB0byB3b3JrIHdpdGggb2JzZXJ2YXRpb25zIG9mICpHZW50b28qIHBlbmd1aW5zOg0KDQpgYGB7ciBjaHVuazE2fQ0KZ2VudG9vX2JpbGxmbGlwX3RibCA8LSBwZW5nX2JpbGxmbGlwX3RibCB8PiBmaWx0ZXIoc3BlY2llcyA9PSAiR2VudG9vIikgDQoNCmdsaW1wc2UoZ2VudG9vX2JpbGxmbGlwX3RibCkNCmBgYA0KDQpcDQoNCklmIHlvdSB3YW50IHRvIGZpbHRlciBvbiB0d28gY3JpdGVyaWEsIGFkZCBhIHNlY29uZCBleHByZXNzaW9uIHRvIGBmaWx0ZXIoKWA6DQoNCmBgYHtyIGNodW5rMTd9DQpwZW5nX2JpbGxmbGlwX3RibCB8PiANCiAgZmlsdGVyKHNwZWNpZXMgPT0gIkdlbnRvbyIsIGZsaXBwZXJfbGVuZ3RoX21tID4gMjIwKSB8PiANCiAgc2VsZWN0KHNwZWNpZXMsIGZsaXBwZXJfbGVuZ3RoX21tKSB8PiANCiAgaGVhZCgpDQpgYGANCg0KXA0KDQpTdXBwb3NlIHdlIHdhbnRlZCB0byBpZGVudGlmeSB0aGUgdG9wIDUgR2VudG9vIG9ic2VydmF0aW9ucyB3aXRoIHRoZSBsYXJnZXN0IGBiaWxsX2ZsaXBfcmF0aW9gIHZhbHVlLiBXZSBjYW4gZG8gdGhhdCB1c2luZyBhIGNvbWJpbmF0aW9uIG9mIGBhcnJhbmdlKClgIGFuZCBgc2xpY2UoKWA6DQoNCmBgYHtyIGNodW5rMTh9DQpnZW50b29fYmlsbGZsaXBfdGJsIHw+IA0KICBhcnJhbmdlKGRlc2MoYmlsbF9mbGlwX3JhdGlvKSkgfD4gDQogIHNsaWNlKDE6NSkgDQpgYGANCg0KXA0KDQpXZSBjb3VsZCBhbHNvIHVzZSBgdG9wX24oKWA6DQoNCmBgYHtyIGNodW5rMTl9DQpnZW50b29fYmlsbGZsaXBfdGJsIHw+IA0KICB0b3Bfbig1LCBiaWxsX2ZsaXBfcmF0aW8pIHw+IA0KICBhcnJhbmdlKGRlc2MoYmlsbF9mbGlwX3JhdGlvKSkNCmBgYA0KDQpcDQoNCiMjIENIQUxMRU5HRSAjMw0KDQpXcml0ZSBhbiBleHByZXNzaW9uIHRoYXQgcHVsbHMgb3V0IGp1c3QgdGhlIG9ic2VydmF0aW9ucyBmcm9tICoqVG9yZ2Vyc2VuIElzbGFuZCoqLiBUaGVuIGNvbXB1dGUgdGhlICoqbnVtYmVyIG9mIHJvd3MqKi4NCg0KYGBge3IgY2h1bmsyMH0NCnggPSBwZW5ndWlucyB8PiBmaWx0ZXIoaXNsYW5kID09ICJUb3JnZXJzZW4iKQ0KeA0KDQpucm93KHgpDQpgYGANCg0KDQojIyBDSEFMTEVOR0UgIzQNCg0KV3JpdGUgYW4gZXhwcmVzc2lvbiB0aGF0IHB1bGxzIG91dCBqdXN0IHRoZSAqKm1hbGVzKiogb24gVG9yZ2Vyc2VuIElzbGFuZCwgYW5kIHRoZW4gKipvcmRlcnMgdGhlbSBieSBib2R5IG1hc3MqKi4NCg0KYGBge3IgY2h1bmsyMX0NCnkgPSBwZW5ndWlucyB8PiBmaWx0ZXIoaXNsYW5kID09ICJUb3JnZXJzZW4iLCBzZXggPT0gIm1hbGUiKSB8PiBhcnJhbmdlKGJvZHlfbWFzc19nKQ0KeQ0KYGBgDQoNCiMjIENIQUxMRU5HRSAjNQ0KDQpXcml0ZSBhbiBleHByZXNzaW9uIHRoYXQgcmV0dXJucyB0aGUgd2VpZ2h0IGFuZCBzcGVjaWVzIG9mIHRoZSBoZWF2aWVzdCBtYWxlIHBlbmd1aW4gb24gVG9yZ2Vyc2VuIElzbGFuZD8gDQoNCmBgYHtyIGNodW5rMjJ9DQpwZW5ndWlucyB8PiANCiAgZmlsdGVyKGlzbGFuZCA9PSAiVG9yZ2Vyc2VuIiwgc2V4ID09ICJtYWxlIikgfD4gDQogIHRvcF9uKGJvZHlfbWFzc19nLCBuID0gMSkgfD4gDQogIHNlbGVjdChpc2xhbmQsIHNleCwgc3BlY2llcywgYm9keV9tYXNzX2cpDQpgYGANCg0KDQpcDQoNCiMgRW5kDQoNClRoYXQncyBpdCEgUmVtZW1iZXIgdG8gc2F2ZSB5b3VyIHdvcmsgdG8gcmVuZGVyIGEgY29weSBvZiB5b3VyIE5vdGVib29rIGluIEhUTUwNCg0KDQoNCg==</div>
 
 
 </div>
@@ -3469,7 +3510,7 @@ $(document).ready(function ()  {
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
     };
-    options.showAndHide = true;
+    options.showAndHide = false;
     options.smoothScroll = true;
 
     // tocify

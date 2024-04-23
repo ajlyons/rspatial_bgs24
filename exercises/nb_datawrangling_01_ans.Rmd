@@ -4,7 +4,8 @@ output:
   html_notebook:
     toc: yes
     toc_depth: 3
-    toc_float: yes
+    toc_float: 
+      collapsed: no
 ---
 
 ```{css echo = FALSE}
@@ -100,7 +101,7 @@ head(penguins)
 
 \
 
-dplyr provides `glimpse()` which is an alternative way preview a tibble:
+`dplyr` also provides `glimpse()` which is an alternative way preview a tibble:
 
 ```{r chunk06}
 glimpse(penguins)
@@ -168,11 +169,9 @@ head(peng_billflip_tbl)
 \
 
 
-# CHALLENGE #1
+## CHALLENGE #1
 
-Add a column called `bill_flip_sum` which represents the sum of the bill and flipper length.
-
-Hint: use `mutate()`
+Add a column called `bill_flip_sum` which represents the **sum of the bill and flipper length**.
 
 ```{r chunk12}
 penguins |> 
@@ -182,15 +181,26 @@ penguins |>
 
 \
 
+## CHALLENGE #2
+
+Write an expression that returns **only** the `species`, `sex`, and  `bill_flip_sum` columns.
+
+```{r chunk13}
+penguins |> 
+  mutate(bill_flip_sum = bill_length_mm + flipper_length_mm) |> 
+  select(species, sex, bill_flip_sum) |> 
+  head()
+```
+
 # Manipulating Rows
 
 ## Sort Rows
 
-You can **sort** a table using `arrange()`, passing the column(s) you want to sort by. The default sort order is ascending, but you can change that to descending by wrapping the column name in `desc()`.
+You can **sort** a table using `arrange()`, passing the column(s) you want to sort by. 
 
 Sort by flipper size (smallest to largest):
 
-```{r chunk13}
+```{r chunk14}
 peng_billflip_tbl |> 
   arrange(flipper_length_mm) |> 
   head()
@@ -198,9 +208,11 @@ peng_billflip_tbl |>
 
 \
 
-Largest to smallest:
+The default sort order is ascending, but you can change that to descending by wrapping the column name in `desc()`.
 
-```{r chunk14}
+To sort the rows by largest to smallest flipper length:
+
+```{r chunk15}
 peng_billflip_tbl |> 
   arrange(desc(flipper_length_mm)) |> 
   head()
@@ -226,9 +238,8 @@ Logical expressions you can use in `filter()` include:
 
 Suppose we only wanted to work with observations of *Gentoo* penguins:
 
-```{r chunk15}
-gentoo_billflip_tbl <- peng_billflip_tbl |> 
-  filter(species == "Gentoo") 
+```{r chunk16}
+gentoo_billflip_tbl <- peng_billflip_tbl |> filter(species == "Gentoo") 
 
 glimpse(gentoo_billflip_tbl)
 ```
@@ -237,18 +248,18 @@ glimpse(gentoo_billflip_tbl)
 
 If you want to filter on two criteria, add a second expression to `filter()`:
 
-```{r chunk16}
+```{r chunk17}
 peng_billflip_tbl |> 
   filter(species == "Gentoo", flipper_length_mm > 220) |> 
   select(species, flipper_length_mm) |> 
-  glimpse()
+  head()
 ```
 
 \
 
-Suppose we wanted to identify the top 5 Gentoo observations with the largest bill_flip_ratio value. We can do that using a combination of `arrange()` and `slice()`:
+Suppose we wanted to identify the top 5 Gentoo observations with the largest `bill_flip_ratio` value. We can do that using a combination of `arrange()` and `slice()`:
 
-```{r chunk17}
+```{r chunk18}
 gentoo_billflip_tbl |> 
   arrange(desc(bill_flip_ratio)) |> 
   slice(1:5) 
@@ -258,7 +269,7 @@ gentoo_billflip_tbl |>
 
 We could also use `top_n()`:
 
-```{r chunk18}
+```{r chunk19}
 gentoo_billflip_tbl |> 
   top_n(5, bill_flip_ratio) |> 
   arrange(desc(bill_flip_ratio))
@@ -266,37 +277,38 @@ gentoo_billflip_tbl |>
 
 \
 
-# CHALLENGE #2
+## CHALLENGE #3
 
-Write an expression that pulls out just the males on Torgersen Island. HOw many are there?
+Write an expression that pulls out just the observations from **Torgersen Island**. Then compute the **number of rows**.
 
-Tip: For challenge questions 2 & 3, mix and match the following functions:
-
-`select()`, `mutate()`, `pull()`, `arrange()`, `filter()`, `slice()`
-
-```{r chunk19}
-x = penguins |> 
-  filter(island == "Torgersen", sex == "male") |> 
-  head()
-
+```{r chunk20}
+x = penguins |> filter(island == "Torgersen")
 x
+
 nrow(x)
 ```
 
 
+## CHALLENGE #4
 
-\
+Write an expression that pulls out just the **males** on Torgersen Island, and then **orders them by body mass**.
 
-# CHALLENGE #3
-
-Compute the ratio of body mass to bill length and add it as a new column. Return just the species, sex, and this ratio.
-
-```{r chunk20}
-penguins |> 
-  mutate(bm_bill_len_ratio = body_mass_g / bill_length_mm) |> 
-  select(species, sex, bm_bill_len_ratio) |> 
-  head()
+```{r chunk21}
+y = penguins |> filter(island == "Torgersen", sex == "male") |> arrange(body_mass_g)
+y
 ```
+
+## CHALLENGE #5
+
+Write an expression that returns the weight and species of the heaviest male penguin on Torgersen Island? 
+
+```{r chunk22}
+penguins |> 
+  filter(island == "Torgersen", sex == "male") |> 
+  top_n(body_mass_g, n = 1) |> 
+  select(island, sex, species, body_mass_g)
+```
+
 
 \
 
