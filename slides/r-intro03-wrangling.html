@@ -444,14 +444,16 @@ argument , and <em>return a tibble</em>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">head</span>(storms)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 13
-##   name   year month   day  hour   lat  long status              category  wind pressure tropicalstorm_force_diameter hurricane_force_diameter
-##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;                  &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;                        &lt;int&gt;                    &lt;int&gt;
-## 1 Amy    1975     6    27     0  27.5 -79   tropical depression       NA    25     1013                           NA                       NA
-## 2 Amy    1975     6    27     6  28.5 -79   tropical depression       NA    25     1013                           NA                       NA
-## 3 Amy    1975     6    27    12  29.5 -79   tropical depression       NA    25     1013                           NA                       NA
-## 4 Amy    1975     6    27    18  30.5 -79   tropical depression       NA    25     1013                           NA                       NA
-## 5 Amy    1975     6    28     0  31.5 -78.8 tropical depression       NA    25     1012                           NA                       NA
-## 6 Amy    1975     6    28     6  32.4 -78.7 tropical depression       NA    25     1012                           NA                       NA</code></pre>
+##   name   year month   day  hour   lat  long status              category  wind pressure tropicalstorm_force_di…¹
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;                  &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;                    &lt;int&gt;
+## 1 Amy    1975     6    27     0  27.5 -79   tropical depression       NA    25     1013                       NA
+## 2 Amy    1975     6    27     6  28.5 -79   tropical depression       NA    25     1013                       NA
+## 3 Amy    1975     6    27    12  29.5 -79   tropical depression       NA    25     1013                       NA
+## 4 Amy    1975     6    27    18  30.5 -79   tropical depression       NA    25     1013                       NA
+## 5 Amy    1975     6    28     0  31.5 -78.8 tropical depression       NA    25     1012                       NA
+## 6 Amy    1975     6    28     6  32.4 -78.7 tropical depression       NA    25     1012                       NA
+## # ℹ abbreviated name: ¹​tropicalstorm_force_diameter
+## # ℹ 1 more variable: hurricane_force_diameter &lt;int&gt;</code></pre>
 </div>
 <p><br />
 </p>
@@ -567,6 +569,8 @@ src="./images/penguiin-culmen-depth_310x200.png" /></p>
 <li>Sorting and subsetting rows</li>
 </ol>
 </div>
+<p><br />
+</p>
 <p><a href='https://raw.githubusercontent.com/ajlyons/rspatial_bgs24/main/exercises/nb_datawrangling_01.Rmd' target='_blank'>nb_datawrangling_01.Rmd</a></p>  <p style='font-size:80%;'><a href='https://ajlyons.github.io/rspatial_bgs24/exercises/nb_datawrangling_01.nb.html' target='_blank' rel='noopener' style='color:#8993d3;'>preview notebook</a> | <a href='https://ajlyons.github.io/rspatial_bgs24/exercises/nb_datawrangling_01_ans.nb.html' target='_blank' style='color:#8993d3;'>answer key</a></p>
 <p><br />
 </p>
@@ -824,14 +828,16 @@ etc.
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">head</span>(storms)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 13
-##   name   year month   day  hour   lat  long status              category  wind pressure tropicalstorm_force_diameter hurricane_force_diameter
-##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;                  &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;                        &lt;int&gt;                    &lt;int&gt;
-## 1 Amy    1975     6    27     0  27.5 -79   tropical depression       NA    25     1013                           NA                       NA
-## 2 Amy    1975     6    27     6  28.5 -79   tropical depression       NA    25     1013                           NA                       NA
-## 3 Amy    1975     6    27    12  29.5 -79   tropical depression       NA    25     1013                           NA                       NA
-## 4 Amy    1975     6    27    18  30.5 -79   tropical depression       NA    25     1013                           NA                       NA
-## 5 Amy    1975     6    28     0  31.5 -78.8 tropical depression       NA    25     1012                           NA                       NA
-## 6 Amy    1975     6    28     6  32.4 -78.7 tropical depression       NA    25     1012                           NA                       NA</code></pre>
+##   name   year month   day  hour   lat  long status              category  wind pressure tropicalstorm_force_di…¹
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;                  &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;                    &lt;int&gt;
+## 1 Amy    1975     6    27     0  27.5 -79   tropical depression       NA    25     1013                       NA
+## 2 Amy    1975     6    27     6  28.5 -79   tropical depression       NA    25     1013                       NA
+## 3 Amy    1975     6    27    12  29.5 -79   tropical depression       NA    25     1013                       NA
+## 4 Amy    1975     6    27    18  30.5 -79   tropical depression       NA    25     1013                       NA
+## 5 Amy    1975     6    28     0  31.5 -78.8 tropical depression       NA    25     1012                       NA
+## 6 Amy    1975     6    28     6  32.4 -78.7 tropical depression       NA    25     1012                       NA
+## # ℹ abbreviated name: ¹​tropicalstorm_force_diameter
+## # ℹ 1 more variable: hurricane_force_diameter &lt;int&gt;</code></pre>
 </div>
 <p><br />
 </p>
