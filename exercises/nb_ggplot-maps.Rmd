@@ -1,13 +1,20 @@
 ---
 title: "Mapping with ggplot"
-output: html_notebook
+output: 
+  html_notebook:
+    toc: yes
+    toc_float: yes
 ---
+
+```{css echo = FALSE}
+h1,h2 {font-weight:bold;}
+```
 
 In this notebook, we'll try out some methods for making maps with ggplot.
 
 # Load packages and set preferences
 
-```{r chunk01, results = 'hold'}
+```{r chunk01, results = 'hold', message = FALSE}
 library(sf)
 library(dplyr)
 library(ggplot2)
@@ -141,15 +148,13 @@ rosm::osm.types()
 # source("nb_ggplot-maps_reload.R")
 ```
 
-### YOUR TURN
+### CHALLENGE
 
-Try a different base map:
+Create the map above with a different basemap (e.g., `cartolight`):
 
 ```{r chunk11}
-ggplot(sf_citybnd_ll) + geom_sf(lwd=1.2) +
-  annotation_map_tile(type = "stamenwatercolor", zoom = 12) +
-  geom_sf(data = sf_nb_ll, col = "navy", fill = NA, lwd = 1.1) +
-  ggtitle("San Francisco Neighborhoods")
+## Your answer here
+
 ```
 
 \

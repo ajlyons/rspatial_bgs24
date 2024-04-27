@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Working with Attribute Tables  " />
+  <meta name="copyright" content="<span class='footer-right'><a href='../acknowledgements.html'>Acknowledgements</a></span><span class='footer-right'><a href=' https://etherpad.wikimedia.org/p/rspatial-bgs24 ' target='_blank'>Forum</a></span><span class='footer-right'><a href=' https://ajlyons.github.io/rspatial_bgs24 '> https://ajlyons.github.io/rspatial_bgs24 </a></span><span class='footer-right'><a href='../index.html'>Home</a></span><span class='footer-subtitle'> R for GIS </span>"/>
+  <meta name="font-size-adjustment" content="2"/>
+  <title>R for GIS  BayGeo, Spring 2024</title>
+  <style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+            pre > code.sourceCode { white-space: pre; position: relative; }
+            pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+            pre > code.sourceCode > span:empty { height: 1.2em; }
+            .sourceCode { overflow: visible; }
+            code.sourceCode > span { color: inherit; text-decoration: inherit; }
+            div.sourceCode { margin: 1em 0; }
+            pre.sourceCode { margin: 0; }
+            @media screen {
+            div.sourceCode { overflow: auto; }
+            }
+            @media print {
+            pre > code.sourceCode { white-space: pre-wrap; }
+            pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+            }
+            pre.numberSource code
+              { counter-reset: source-line 0; }
+            pre.numberSource code > span
+              { position: relative; left: -4em; counter-increment: source-line; }
+            pre.numberSource code > span > a:first-child::before
+              { content: counter(source-line);
+                position: relative; left: -1em; text-align: right; vertical-align: baseline;
+                border: none; display: inline-block;
+                -webkit-touch-callout: none; -webkit-user-select: none;
+                -khtml-user-select: none; -moz-user-select: none;
+                -ms-user-select: none; user-select: none;
+                padding: 0 4px; width: 4em;
+                color: #aaaaaa;
+              }
+            pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+            div.sourceCode
+              {   }
+            @media screen {
+            pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+            }
+            code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+            code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+            code span.at { color: #7d9029; } /* Attribute */
+            code span.bn { color: #40a070; } /* BaseN */
+            code span.bu { color: #008000; } /* BuiltIn */
+            code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+            code span.ch { color: #4070a0; } /* Char */
+            code span.cn { color: #880000; } /* Constant */
+            code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+            code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+            code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+            code span.dt { color: #902000; } /* DataType */
+            code span.dv { color: #40a070; } /* DecVal */
+            code span.er { color: #ff0000; font-weight: bold; } /* Error */
+            code span.ex { } /* Extension */
+            code span.fl { color: #40a070; } /* Float */
+            code span.fu { color: #06287e; } /* Function */
+            code span.im { color: #008000; font-weight: bold; } /* Import */
+            code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+            code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+            code span.op { color: #666666; } /* Operator */
+            code span.ot { color: #007020; } /* Other */
+            code span.pp { color: #bc7a00; } /* Preprocessor */
+            code span.sc { color: #4070a0; } /* SpecialChar */
+            code span.ss { color: #bb6688; } /* SpecialString */
+            code span.st { color: #4070a0; } /* String */
+            code span.va { color: #19177c; } /* Variable */
+            code span.vs { color: #4070a0; } /* VerbatimString */
+            code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+          </style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACkUlEQVQ4jX2SW0jTcRTHTzNyeZlh6lqmm3POdNPC6SxSEzaqafkykOFoIxTDWpKRFV6iQMNLFyMSsQvUW0WORc2WWBmGKEGZXUyz0NrmNmfa1PYgfHsQ1v5oHjgvX875/M45vy/R8mDJ9caxrFIL5CUWJB00Q9n+7Q+l1BetUMuMTL3JpTB0QVnejd1Hu9DQ60G5eQbqB7PIvj0L2bUZ0KZzghWbs0o7Fx3Tc/B6vStm6+g0wrQvIKh2gKKyUxnNSZoO685SC1YDeL1e9Ll+Ia7WCd5pJ4hojQ8g1nViezETYBqZx93BOdwa9jAgsdUT4J6ZQqC6f4GIiLYU9/RzNWYIdU9hd/8rLjN7UGT8DbWROVVMlQsBBWas142DiIikdfbFMF0POIVm2NzM1zwLS+mvcSsnEajpBSv/8RIgucGJ1EYXEs+NwjrlWfUGMee/Y2PFJIJLrFibex8kOsahhCYnUlpnIL1kh9X9/yMKG2yIOOlAsPYnAveZsE75EEQUQLwTwy5Rsxvx9UxApKEPEYY+BiSizA623oaggkdgq4xLKwRLq7i8sy6EFlpg8wNEVwyAd3wAbZ8cPu3CazeCC/sRojYjaL8Jvm8MPWLDBm03A8CveQ9+7RBia4cYU4QfeokwzTOwc6/4OzKXHap/C5ufD0RNo0i4OAZR81dcnnD69Mp3PxBe9GRkuZdFKk7sqTcQ132EpGUMydetSLnpgOSGHVtbxpHU9AX8mkFEG55/ZrjQL1h82V6esPLVh8Sr40i940J6xzzS7s1C0m6HqHEEiTnatgT5gcPijHxltFwhjpRIQpZjBAJ2lFTBFW5TiOPT8mXx6apdcRl5OaJM1Q6hLC9ls3RPTLgok0NELCKiv02kPqt/O1MZAAAAAElFTkSuQmCC" rel="icon" type="image/x-icon" />
+  <meta name="robots" content="noindex,nofollow"/>
+  <script language="javascript" type="text/javascript">
+  function TriShowHide(shID) {
+    shIDspan = shID + "span";
+    shIDdiv = shID + "div";
+    if (document.getElementById(shIDdiv).style.display != 'block') {
+      document.getElementById(shIDdiv).style.display = 'block';
+      txtSpan = "&#9660;";
+    } else {
+      document.getElementById(shIDdiv).style.display = 'none';
+      txtSpan = "&#9654;";
+    }
+    document.getElementById(shIDspan).innerHTML = txtSpan + " ";
+  }
+  function showHide(shID) {
+    if (shID=="soln-show-all") {
+      var allAnswerCode = document.getElementsByClassName("answer-code");
+      for (i = 0; i < allAnswerCode.length; i++) {
+          allAnswerCode[i].style.display = 'block';
+      }
+    } else if (shID=="soln-hide-all") {
+      var allAnswerCode = document.getElementsByClassName("answer-code");
+      for (i = 0; i < allAnswerCode.length; i++) {
+          allAnswerCode[i].style.display = 'none';
+      }
+    } else if (shID=="hints-show-all") {
+      var allAnswerCode = document.getElementsByClassName("hint");
+      for (i = 0; i < allAnswerCode.length; i++) {
+          allAnswerCode[i].style.display = 'block';
+      }
+    } else if (shID=="hints-hide-all") {
+      var allAnswerCode = document.getElementsByClassName("hint");
+      for (i = 0; i < allAnswerCode.length; i++) {
+          allAnswerCode[i].style.display = 'none';
+      }
+    } else {
+      if (document.getElementById(shID)) {
+        if (document.getElementById(shID).style.display != 'block') {
+          document.getElementById(shID).style.display = 'block';
+        } else {
+          document.getElementById(shID).style.display = 'none';
+        }
+      }
+    }
+  }
+  function CopyToClipboard(containerid) {
+  if (document.selection) {
+      var range = document.body.createTextRange();
+      range.moveToElementText(document.getElementById(containerid));
+      range.select().createTextRange();
+      document.execCommand("copy");
+  } else if (window.getSelection) {
+      var range = document.createRange();
+      range.selectNode(document.getElementById(containerid));
+      window.getSelection().addRange(range);
+      document.execCommand("copy");
+      // alert("text copied")
+  }}
+  </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163964617-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-163964617-1');
+  </script>
+  <script src="lib/header-attrs-2.25/header-attrs.js"></script>
+  <link href="lib/slidy-2/styles/slidy.css" rel="stylesheet" />
+  <script src="lib/slidy-2/scripts/slidy.js"></script>
+  <script src="lib/slidy_shiny-1/slidy_shiny.js"></script>
+  <script src="lib/clipboard-1.7.1/clipboard.min.js"></script>
+  <link href="lib/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+  <link href="lib/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+  <script src="lib/klippy-0.0.0.9500/js/klippy.min.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="../css/slidy_styles.css" />
+  <meta name="duration" content="0" />
+</head>
+<body>
+<script type="text/javascript">w3c_slidy.mouse_click_enabled = false;</script>
+<div class="slide titlepage">
+  <h1 class="title"><span class="course-title">R for GIS
+</span><br/><span class="course-subtitle">BayGeo, Spring
+2024</span></h1>
+  <p class="author">
+Working with Attribute Tables
+<br/><img src='images/attribute-table_600x250x256.png'/>
+  </p>
+</div>
+<div class="slide section level1">
+
+<p><br />
+</p>
+<p><br />
+</p>
+<p><img src="./images/postit_bg-trans_with-note_320x320.png"
+style="display:block; margin:1em auto; border:none;" /></p>
+<script>
+  addKlippy('left', 'top', 'auto', '1', 'Copy code', 'Copied!');
+</script>
+</div>
+<div id="gis-attribute-tables" class="slide section level1">
+<h1>GIS Attribute Tables</h1>
+<p>Each layer has its own attribute table.</p>
+<center>
+<img src="./images/attribute-table-neon_788x716x256.png"
+style="display:inline;" />
+</center>
+<p><br />
+</p>
+</div>
+<div id="common-uses-of-the-attribute-table"
+class="slide section level1">
+<h1>Common Uses of the Attribute Table</h1>
+<div style="text-align:center; line-height:2em;">
+<p><strong>1. Symbology</strong><br />
+<img src="./images/attribute-table-symbology_600x400x256.png"
+style="display:inline;" /></p>
+<p><strong>2. Querying Features</strong><br />
+<img src="./images/attribute-table-query_1022x418x256.png"
+style="display:inline;" /></p>
+<p><strong>3. Analysis</strong><br />
+<img src="./images/attribute-table-analysis_450x450x256.png"
+style="display:inline;" /></p>
+</div>
+<p><br />
+</p>
+</div>
+<div id="exploring-the-attribute-table" class="slide section level1">
+<h1>Exploring the Attribute Table</h1>
+<p>Before you start working with the attribute table, it helps to
+understand the data.</p>
+<p>First place to check - <strong>metadata</strong> files that come with
+the data.</p>
+<p><br />
+</p>
+<h2 id="simple-feature-data-frames">Simple Feature Data Frames</h2>
+<table style='max-width:640px; margin:0 auto; border:none;'><tr style='vertical-align:middle;'><td><img src='./images/fireworks-animation_298x277.gif' style='width:298px; height:277px; box-shadow:none; border-radius:0;'></img></td><td style='text-align:center; font-size:100%; font-style:normal; font-family:Comic Sans MS, Comic Sans, cursive; line-height:180%; padding:1em; color:black;'>sf objects are<br/>data frames!</td></tr></table>
+<p>You can use any function from dplyr or base R that works on data
+frames on sf data frames.</p>
+<p>Most dplyr functions will return a sf object</p>
+<p><br />
+</p>
+<h2 id="just-the-attribute-table-please">Just the attribute table
+please!</h2>
+<p>To ‘drop’ the geometry column of a <strong>sf</strong> object, use
+<tt><strong>st_drop_geometry()</strong></tt> (returns a data frame)</p>
+<p>To get the values for a single column, use the
+<tt><strong>$</strong></tt> operator or
+<tt><strong>dplyr::pull()</strong></tt>.</p>
+<p><br />
+</p>
+</div>
+<div id="exploring-a-data-frame" class="slide section level1">
+<h1>Exploring a Data Frame</h1>
+<p>Useful R functions to explore data frames:</p>
+<div class="indented1">
+<p><tt>View() </tt> <em>– popular</em><br />
+<tt>names()<br />
+summary()<br />
+class()<br />
+unique()<br />
+table()<br />
+hist() </tt></p>
+</div>
+<p><br />
+</p>
+</div>
+<div id="attribute-queries" class="slide section level1">
+<h1>Attribute Queries</h1>
+<center>
+<p><em>query</em> = select features</p>
+<em>attribute query</em> = select features by their attribute values
+</center>
+<p><br />
+</p>
+<p>Go-to functions for attribute queries:</p>
+<div class="indented2">
+<p><code>dplyr::filter()</code></p>
+<p><code>dplyr::slice()</code></p>
+</div>
+<p><br />
+</p>
+<h3 id="sample-attribute-queries">Sample Attribute Queries</h3>
+<div class="indented2 indented2r">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="do">## Fires from the 1930s</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>fires_80s <span class="ot">&lt;-</span> yose_fires_pt <span class="sc">|&gt;</span> <span class="fu">filter</span>(DECADE<span class="sc">==</span><span class="dv">1980</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="do">## Fires between 1996 and 2005</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>fires_9605 <span class="ot">&lt;-</span> yose_fires_pt <span class="sc">|&gt;</span> <span class="fu">filter</span>(YEAR <span class="sc">&gt;=</span> <span class="dv">1996</span> <span class="sc">&amp;</span> YEAR <span class="sc">&lt;=</span> <span class="dv">2005</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="do">## Top 10 largest fires</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>fires_top10 <span class="ot">&lt;-</span> yose_fires_pt <span class="sc">|&gt;</span> <span class="fu">slice_max</span>(<span class="at">order_by =</span> ACRES, <span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div>
+</div>
+<p><br />
+</p>
+</div>
+<div id="join-an-attribute-table-to-another-data-frame"
+class="slide section level1">
+<h1>Join an Attribute Table to Another Data Frame</h1>
+<p><img src="./images/sf-join-table_1012x230x256.png"
+style="display:block; margin:1em auto;" /></p>
+<p>To join an attribute table to another data frame based on a common
+column, you can use:</p>
+<div class="indented2">
+<p><code>dplyr::left_join()</code><br />
+<code>dplyr::right_join()</code><br />
+<code>dplyr::inner_join()</code></p>
+</div>
+<p><br />
+</p>
+<p>Why would you do this?</p>
+<p>So you can use the additional columns for:</p>
+<ol style="list-style-type: decimal">
+<li>Symbology<br />
+</li>
+<li>Querying<br />
+</li>
+<li>Analysis</li>
+</ol>
+<p><br />
+</p>
+</div>
+<div id="group-summarize-with-sf-objects-double-duty"
+class="slide section level1">
+<h1>Group &amp; Summarize with sf Objects: Double-Duty</h1>
+<p>A common method in data analysis involves grouping rows in a table
+followed by computing summaries for each group.</p>
+<p>This is accomplished in dplyr with
+<strong><code>group_by()</code></strong> and
+<strong><code>summarise()</code></strong>:</p>
+<div class="indented2 indented2r">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">drop_na</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  <span class="fu">group_by</span>(species, sex) <span class="sc">|&gt;</span> </span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_bill_len =</span> <span class="fu">mean</span>(bill_length_mm),</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>            <span class="at">avg_flipper_len =</span> <span class="fu">mean</span>(flipper_length_mm))</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;species&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 6 × 4
+## # Groups:   species [3]
+##   species   sex    avg_bill_len avg_flipper_len
+##   &lt;fct&gt;     &lt;fct&gt;         &lt;dbl&gt;           &lt;dbl&gt;
+## 1 Adelie    female         37.3            188.
+## 2 Adelie    male           40.4            192.
+## 3 Chinstrap female         46.6            192.
+## 4 Chinstrap male           51.1            200.
+## 5 Gentoo    female         45.6            213.
+## 6 Gentoo    male           49.5            222.</code></pre>
+</div>
+<p><br />
+</p>
+<h2 id="group-and-summarize-a-sf-data-frame">Group and Summarize a sf
+Data Frame</h2>
+<p>If you use group_by() and summarize() on a sf Data Frame, you’ll get
+back another SF data frame with:</p>
+<div class="indented2">
+<ol style="list-style-type: decimal">
+<li><p>the attribute values summarized for each group of features (as
+usual)</p></li>
+<li><p>the <strong>union</strong> (aka dissolve) of each group of
+features as the geometry</p></li>
+</ol>
+</div>
+<p>Example:</p>
+<p>We illustrate this with the attribute table from watersheds
+layer.</p>
+<div class="indented2 indented2r">
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>yose_watersheds_sf <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(<span class="st">&quot;./data/yose_watersheds.gpkg&quot;</span>, <span class="at">layer=</span><span class="st">&quot;calw221&quot;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="fu">tm_shape</span>(yose_watersheds_sf) <span class="sc">+</span> <span class="fu">tm_borders</span>()</span></code></pre></div>
+<p><img src="attrib-tbl_files/figure-slidy/watershed_import_klippy-1.png" width="768" /></p>
+<pre><code>## Reading layer `calw221&#39; from data source `D:\Workshops\R-Spatial\rspatial_mod\outputs\rspatial_bgs24\exercises\data\yose_watersheds.gpkg&#39; using driver `GPKG&#39;
+## Simple feature collection with 127 features and 12 fields
+## Geometry type: POLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 1383.82 ymin: -61442.93 xmax: 81596.71 ymax: 26405.66
+## Projected CRS: NAD83 / California Albers</code></pre>
+<p><br />
+</p>
+<p>The watersheds attribute table has a column “HU” and “HUNAME” which
+are the id number and name of larger watersheds. To find the number of
+smaller watersheds in each larger watershed, we can run:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>watersheds_df <span class="ot">&lt;-</span> yose_watersheds_sf <span class="sc">|&gt;</span> <span class="fu">st_drop_geometry</span>()</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>hu_df <span class="ot">&lt;-</span> watersheds_df <span class="sc">|&gt;</span> </span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  <span class="fu">group_by</span>(HU) <span class="sc">|&gt;</span> </span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">HUNAME =</span> <span class="fu">first</span>(HUNAME), </span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>            <span class="at">NUM_WATERSHEDS =</span> <span class="fu">n</span>(),</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>            <span class="at">AVG_ACRES =</span> <span class="fu">mean</span>(ACRES))</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="fu">glimpse</span>(hu_df)</span></code></pre></div>
+<pre><code>## Rows: 6
+## Columns: 4
+## $ HU             &lt;int&gt; 1, 30, 31, 36, 37, 40
+## $ HUNAME         &lt;chr&gt; &quot;MONO&quot;, &quot;EAST WALKER RIVER&quot;, &quot;WEST WALKER RIVER&quot;, &quot;TUOLUMNE RIVER&quot;, &quot;MERCED RIVER&quot;, &quot;SAN JOAQUIN RIVER&quot;
+## $ NUM_WATERSHEDS &lt;int&gt; 7, 5, 2, 60, 47, 6
+## $ AVG_ACRES      &lt;dbl&gt; 9311.916, 9385.448, 6426.835, 8128.559, 8399.112, 8911.178</code></pre>
+</div>
+<p>The exact same dplyr functions can be used with sf dataframes. The
+result is another sf object where the groups of features have been
+unioned together.</p>
+<div class="indented2 indented2r">
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode r klippy copyme"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>hu_sf <span class="ot">&lt;-</span> yose_watersheds_sf <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="fu">group_by</span>(HU) <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">HUNAME =</span> <span class="fu">first</span>(HUNAME), </span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>            <span class="at">NUM_WATERSHEDS =</span> <span class="fu">n</span>(),</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>            <span class="at">AVG_ACRES =</span> <span class="fu">mean</span>(ACRES))</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>hu_sf</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="do">## Plot</span></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="fu">tm_shape</span>(hu_sf) <span class="sc">+</span> </span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col=</span><span class="st">&quot;HUNAME&quot;</span>, <span class="at">title=</span><span class="st">&quot;HU Watershed&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="fu">tm_shape</span>(yose_watersheds_sf) <span class="sc">+</span></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>  <span class="fu">tm_borders</span>(<span class="at">col=</span><span class="st">&quot;gray60&quot;</span>, <span class="at">lwd=</span><span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">legend.outside =</span> T)</span></code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 4 fields
+## Geometry type: POLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 1383.82 ymin: -61442.93 xmax: 81596.71 ymax: 26405.66
+## Projected CRS: NAD83 / California Albers
+## # A tibble: 6 × 5
+##      HU HUNAME            NUM_WATERSHEDS AVG_ACRES                                                                                         geom
+##   &lt;int&gt; &lt;chr&gt;                      &lt;int&gt;     &lt;dbl&gt;                                                                                &lt;POLYGON [m]&gt;
+## 1     1 MONO                           7     9312. ((70613.55 -24551.79, 70576.82 -24620.61, 70555.84 -24713.47, 70550.74 -24775.76, 70553.5...
+## 2    30 EAST WALKER RIVER              5     9385. ((66826.29 17825.42, 66842.88 17853.58, 66861.79 17868.39, 66915.55 17879.66, 66963.11 17...
+## 3    31 WEST WALKER RIVER              2     6427. ((41216.82 21006.26, 41275.41 20974.09, 41329.18 20937.78, 41342.79 20896.13, 41363.94 20...
+## 4    36 TUOLUMNE RIVER                60     8129. ((23146.17 -25588.36, 23112.63 -25612.56, 23054.77 -25681.3, 23031.97 -25713.11, 23006.08...
+## 5    37 MERCED RIVER                  47     8399. ((29670.04 -58750.01, 29640.86 -58738.67, 29586.24 -58761.95, 29552.98 -58821.12, 29523.3...
+## 6    40 SAN JOAQUIN RIVER              6     8911. ((55704.49 -53548.52, 55754.08 -53648.64, 55792.94 -53706.26, 55849 -53780.87, 55956.66 -...</code></pre>
+<p><img src="attrib-tbl_files/figure-slidy/watershed_summarise_union_klippy-1.png" width="768" /></p>
+</div>
+<p><br />
+</p>
+</div>
+<div id="notebook-time" class="slide section level1">
+<h1>Notebook time!</h1>
+<p>Goal: Explore the <strong>Fire Ignition Points</strong> attribute
+table.</p>
+<p>The <a href="../datasets.html#yose_firehistory"
+target="_blank">Yosemite Fire History</a> geodatabase contains a point
+layer of fire ignition points, and a polygon layer of fire burned areas
+in YNP, 1930-2016.</p>
+<p><img src="attrib-tbl_files/figure-slidy/plot_fire_pts-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><a href='https://raw.githubusercontent.com/ajlyons/rspatial_bgs24/main/exercises/nb_attrib-qry.Rmd' target='_blank'>nb_attrib-qry.Rmd</a></p> <div class='nb_desc'>Compute descriptive stats for the fire ignition points attribute table, and perform attribute queries for plotting</div> <p style='font-size:80%;'><a href='https://ajlyons.github.io/rspatial_bgs24/exercises/nb_attrib-qry.nb.html' target='_blank' rel='noopener' style='color:#8993d3;'>preview notebook</a> | <a href='https://ajlyons.github.io/rspatial_bgs24/exercises/nb_attrib-qry_ans.nb.html' target='_blank' style='color:#8993d3;'>answer key</a></p>
+</div>
+<div id="summary" class="slide section level1">
+<h1>Summary</h1>
+<p>Today we saw how to:</p>
+<div class="compact">
+<ul>
+<li>use <tt>dplyr</tt> functions for data wrangling and attribute
+queries<br />
+</li>
+</ul>
+</div>
+<p>
+<br/>
+<hr/>
+<strong>Next: </strong> <a href="text-functions.html">Working with
+Text</a>
+</p>
+</div>
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+</body>
+</html>

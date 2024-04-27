@@ -102,8 +102,9 @@ ggplot(data = penguins,
 1B\) Visualize your plot of *bill depth* vs. *body mass* by species, using different i) colors, and ii) shapes. [[Hint](https://bit.ly/3C00mjY)] [[Solution](https://bit.ly/3pcHeaL)]
 
 ```{r chunk08}
-## Your answer here
-
+ggplot(data = penguins,
+       mapping = aes(x = bill_depth_mm, y = body_mass_g, color = species, shape = species)) +
+  geom_point()
 ```
 
 \

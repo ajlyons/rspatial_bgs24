@@ -148,13 +148,13 @@ rosm::osm.types()
 # source("nb_ggplot-maps_reload.R")
 ```
 
-### YOUR TURN
+### CHALLENGE
 
-Try a different base map:
+Create the map above with a different basemap (e.g., `cartolight`):
 
 ```{r chunk11}
 ggplot(sf_citybnd_ll) + geom_sf(lwd=1.2) +
-  annotation_map_tile(type = "stamenwatercolor", zoom = 12) +
+  annotation_map_tile(type = "cartolight", zoom = 12) +
   geom_sf(data = sf_nb_ll, col = "navy", fill = NA, lwd = 1.1) +
   ggtitle("San Francisco Neighborhoods")
 ```

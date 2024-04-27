@@ -7,7 +7,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Data Wrangling Pt.2  " />
-  <meta name="copyright" content="<span class='footer-right'><a href='../acknowledgements.html'>Acknowledgements</a></span><span class='footer-right'><a href=' https://etherpad.wikimedia.org/p/rspatial-bgs24 ' target='_blank'>Forum</a></span><span class='footer-right'><a href=' https://ajlyons.github.io/rspatial_bgs24 '> https://ajlyons.github.io/rspatial_bgs24 </a></span><span class='footer-right'><a href='../index.html'>Home</a></span><span class='footer-subtitle'> Spatial Data Analysis with R </span>"/>
+  <meta name="copyright" content="<span class='footer-right'><a href='../acknowledgements.html'>Acknowledgements</a></span><span class='footer-right'><a href=' https://etherpad.wikimedia.org/p/rspatial-bgs24 ' target='_blank'>Forum</a></span><span class='footer-right'><a href=' https://ajlyons.github.io/rspatial_bgs24 '> https://ajlyons.github.io/rspatial_bgs24 </a></span><span class='footer-right'><a href='../index.html'>Home</a></span><span class='footer-subtitle'> R for GIS </span>"/>
   <meta name="font-size-adjustment" content="2"/>
   <title>Wrangling Pt2</title>
   <style type="text/css">
@@ -233,8 +233,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <body>
 <script type="text/javascript">w3c_slidy.mouse_click_enabled = false;</script>
 <div class="slide titlepage">
-  <h1 class="title"><span class="course-title">Spatial Data Analysis
-with R </span><br/><span class="course-subtitle">BayGeo, Spring
+  <h1 class="title"><span class="course-title">R for GIS
+</span><br/><span class="course-subtitle">BayGeo, Spring
 2024</span></h1>
   <p class="author">
 Data Wrangling Pt.2 <br/><img src='images/2d-data-munging_645x160.png'/>
@@ -754,7 +754,7 @@ Excel), save dates as text formatted as:</p>
 </div>
 <div class="indented2 indented2r">
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">format</span>(<span class="fu">Sys.Date</span>(), <span class="st">&quot;%Y-%m-%d&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2024-04-25&quot;</code></pre>
+<pre><code>## [1] &quot;2024-04-27&quot;</code></pre>
 </div>
 <p><br />
 </p>
@@ -771,7 +771,7 @@ rel="noopener">ISO 8601</a>. Example:</p>
 <p><code>lubridate</code> makes this easy with
 <strong><code>format_ISO8601()</code></strong></p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">format_ISO8601</span>(<span class="fu">Sys.time</span>(), <span class="at">usetz =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2024-04-25T08:29:32-0700&quot;</code></pre>
+<pre><code>## [1] &quot;2024-04-27T08:19:26-0700&quot;</code></pre>
 </div>
 </div>
 <p><br />
